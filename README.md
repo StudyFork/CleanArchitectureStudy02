@@ -1,7 +1,11 @@
 # Android Clean Architecture Study-02
 
+</br>
+
 ## 목표
 * Android clean architecture 에 대해 학습하고 간단한 토이 프로젝트에 적용
+
+</br>
 
 ## 계획
 - 11주 과정 (02/02 ~ 04/12 매주 일요일)
