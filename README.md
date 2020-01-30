@@ -40,7 +40,7 @@
 - 박찬호 [chanhoparkcj](https://github.com/chanhoparkcj)
 - 안창환 [devLibCH](https://github.com/devLibCH)
 - 오지수 [machine-human](https://github.com/machine-human)
-- 이기원 [2giwon](https://github.com/2)
+- 이기원 [2giwon](https://github.com/2giwon)
 - 장진혁 [ironelder](https://github.com/ironelder)
 - 이진성 [dlwls5201](https://github.com/dlwls5201)
 - 박상현 [hoyuo](https://github.com/hoyuo)
