@@ -1,0 +1,157 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e56fe533e53b38fe6fc4f8d3831ed5e2/appcompat-1.0.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/49aa687165243dd0a5ebc9b09895459d/core-ktx-1.0.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/cea607855ba0572a674bb9cbd63ac784/constraintlayout-1.1.3/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/14388d556dbea087c54c490ac2af0d57/fragment-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/a26d3330c0374cfed2a92a62c05e8039/vectordrawable-animated-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5347b8114109c225519339708cf221ec/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/6aaddca2d6c1bb7ced11c42c85ea2c9e/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/8ade19711623dad2b62a510294a28045/vectordrawable-1.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/2ac213783bb0c9be228fa6a6fbf64a3f/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/7886812f2cd0611d94af6697d58b7718/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/aeed780c580657e136e86c573d0b8843/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/a9bb16ba2618331b1e9e8090e0f8be8d/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/1ee27b5b6dc87c4eb58f8b70e28a06cf/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5d4ff1e827a9697ca4bf6a1319794dde/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/105d388ee93c1c32329a5650e89f601c/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5af4aad4cfac66aac5770b4150cc3878/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e22e9222d2eb6f9121dc442d59fffe79/core-1.0.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/726eac51b8757a6937e293aa28850015/versionedparcelable-1.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/8113c412b55898e7a9958e5dc5b2ce01/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5ad76253b6724ef26d069e4f23531467/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/231bf09a16a90031c2b4d7c06ff2b762/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/24f297abfb14d88021ada11cbce0c7f3/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/c42deda6fa08522c02f3e718e3357f8a/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/58e3e15b31543186ba945c06e6176a57/lifecycle-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/29bacab76bac776e691066552b0734d4/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/320b57fe7155b7d6393fd96baf595606/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/bba2d74496bbc9bda2f6998cfc2bb850/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/97762d4a4631fda0e1525138d21ba612/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:3:5-43
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:5:5-19:19
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/cea607855ba0572a674bb9cbd63ac784/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/cea607855ba0572a674bb9cbd63ac784/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e22e9222d2eb6f9121dc442d59fffe79/core-1.0.2/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e22e9222d2eb6f9121dc442d59fffe79/core-1.0.2/AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/726eac51b8757a6937e293aa28850015/versionedparcelable-1.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/726eac51b8757a6937e293aa28850015/versionedparcelable-1.0.0/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e22e9222d2eb6f9121dc442d59fffe79/core-1.0.2/AndroidManifest.xml:22:18-86
+	android:supportsRtl
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.ironelder.toyapplication.MainActivity
+ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:12:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e56fe533e53b38fe6fc4f8d3831ed5e2/appcompat-1.0.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e56fe533e53b38fe6fc4f8d3831ed5e2/appcompat-1.0.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/49aa687165243dd0a5ebc9b09895459d/core-ktx-1.0.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/49aa687165243dd0a5ebc9b09895459d/core-ktx-1.0.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/cea607855ba0572a674bb9cbd63ac784/constraintlayout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/cea607855ba0572a674bb9cbd63ac784/constraintlayout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/14388d556dbea087c54c490ac2af0d57/fragment-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/14388d556dbea087c54c490ac2af0d57/fragment-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/a26d3330c0374cfed2a92a62c05e8039/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/a26d3330c0374cfed2a92a62c05e8039/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5347b8114109c225519339708cf221ec/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5347b8114109c225519339708cf221ec/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/6aaddca2d6c1bb7ced11c42c85ea2c9e/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/6aaddca2d6c1bb7ced11c42c85ea2c9e/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/8ade19711623dad2b62a510294a28045/vectordrawable-1.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/8ade19711623dad2b62a510294a28045/vectordrawable-1.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/2ac213783bb0c9be228fa6a6fbf64a3f/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/2ac213783bb0c9be228fa6a6fbf64a3f/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/7886812f2cd0611d94af6697d58b7718/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/7886812f2cd0611d94af6697d58b7718/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/aeed780c580657e136e86c573d0b8843/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/aeed780c580657e136e86c573d0b8843/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/a9bb16ba2618331b1e9e8090e0f8be8d/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/a9bb16ba2618331b1e9e8090e0f8be8d/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/1ee27b5b6dc87c4eb58f8b70e28a06cf/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/1ee27b5b6dc87c4eb58f8b70e28a06cf/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5d4ff1e827a9697ca4bf6a1319794dde/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5d4ff1e827a9697ca4bf6a1319794dde/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/105d388ee93c1c32329a5650e89f601c/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/105d388ee93c1c32329a5650e89f601c/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5af4aad4cfac66aac5770b4150cc3878/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5af4aad4cfac66aac5770b4150cc3878/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e22e9222d2eb6f9121dc442d59fffe79/core-1.0.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.2] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/e22e9222d2eb6f9121dc442d59fffe79/core-1.0.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/726eac51b8757a6937e293aa28850015/versionedparcelable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/726eac51b8757a6937e293aa28850015/versionedparcelable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/8113c412b55898e7a9958e5dc5b2ce01/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/8113c412b55898e7a9958e5dc5b2ce01/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5ad76253b6724ef26d069e4f23531467/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/5ad76253b6724ef26d069e4f23531467/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/231bf09a16a90031c2b4d7c06ff2b762/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/231bf09a16a90031c2b4d7c06ff2b762/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/24f297abfb14d88021ada11cbce0c7f3/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/24f297abfb14d88021ada11cbce0c7f3/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/c42deda6fa08522c02f3e718e3357f8a/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/c42deda6fa08522c02f3e718e3357f8a/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/58e3e15b31543186ba945c06e6176a57/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/58e3e15b31543186ba945c06e6176a57/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/29bacab76bac776e691066552b0734d4/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/29bacab76bac776e691066552b0734d4/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/320b57fe7155b7d6393fd96baf595606/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/320b57fe7155b7d6393fd96baf595606/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/bba2d74496bbc9bda2f6998cfc2bb850/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/bba2d74496bbc9bda2f6998cfc2bb850/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/97762d4a4631fda0e1525138d21ba612/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ironelder/.gradle/caches/transforms-2/files-2.1/97762d4a4631fda0e1525138d21ba612/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+		ADDED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ironelder/study/GoogleCleanArchitectureStudy/CleanArchitectureStudy02/ToyApplication/app/src/main/AndroidManifest.xml
