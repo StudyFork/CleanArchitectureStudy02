@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@id/firstHomeScreen"
+        android:icon="@drawable/ic_folder_black_24dp"
+        android:title="@string/title_menu_first" />
+
+    <item
+        android:id="@id/secondHomeScreen"
+        android:icon="@drawable/ic_folder_black_24dp"
+        android:title="@string/title_menu_second" />
+
+    <item
+        android:id="@id/thirdHomeScreen"
+        android:icon="@drawable/ic_folder_black_24dp"
+        android:title="@string/title_menu_third" />
+</menu>
