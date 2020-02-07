@@ -6,10 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <!--android:name="androidx.navigation.fragment.NavHostFragment"
+    요소에 어떤 NavHost가 구현될지를 정의 (위는 FragmentNavHost임을 정의 해줌)-->
+
+    <!--app:defaultNavHost="true"를 설정하면
+    현재 구현되는 Activity에서의 뒤로 가기 버튼이 우리가 구현한 Navigation에 맞게 동작 됨-->
+
+    <fragment
+        android:id="@+id/nav_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_main" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
