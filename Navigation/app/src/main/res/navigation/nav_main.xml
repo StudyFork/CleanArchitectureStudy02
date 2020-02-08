@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/firstHomeScreen">
+
+    <fragment
+        android:id="@+id/firstHomeScreen"
+        android:name="com.tistory.blackjin.navigationapp.fragment.FirstHomeScreen"
+        android:label="screen_first_home"
+        tools:layout="@layout/screen_first_home">
+        <action
+            android:id="@+id/action_firstHomeScreen_to_twoDepthScreen"
+            app:destination="@id/twoDepthScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/secondHomeScreen"
+        android:name="com.tistory.blackjin.navigationapp.fragment.SecondHomeScreen"
+        android:label="screen_second_home"
+        tools:layout="@layout/screen_second_home" />
+
+    <fragment
+        android:id="@+id/thirdHomeScreen"
+        android:name="com.tistory.blackjin.navigationapp.fragment.ThirdHomeScreen"
+        android:label="screen_third_home"
+        tools:layout="@layout/screen_third_home" />
+    <fragment
+        android:id="@+id/twoDepthScreen"
+        android:name="com.tistory.blackjin.navigationapp.fragment.TwoDepthScreen"
+        android:label="screen_two_depth"
+        tools:layout="@layout/screen_two_depth">
+        <argument
+            android:name="param_count"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_twoDepthScreen"
+        app:destination="@id/twoDepthScreen" />
+</navigation>

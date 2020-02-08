@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/firstHomeScreen"
+        android:icon="@mipmap/ic_launcher"
+        android:title="first" />
+
+    <item
+        android:id="@id/secondHomeScreen"
+        android:icon="@mipmap/ic_launcher"
+        android:title="second" />
+
+    <item
+        android:id="@id/thirdHomeScreen"
+        android:icon="@mipmap/ic_launcher"
+        android:title="third" />
+</menu>
