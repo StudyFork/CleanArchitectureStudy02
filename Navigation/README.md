@@ -232,7 +232,7 @@ findNavController().navigate(direction, options)
 3. ViewModel with NavGraph Scope
 
 ### Site
-[Navigation - google](https://developer.android.com/guide/navigation)
-[SOUP - medium](https://medium.com/@fornewid)
-[남잭슨의 개발 블로그](https://namjackson.tistory.com/28)
-[해리의 유목민](https://medium.com/harrythegreat/android-navigation-component-%EA%B0%9C%EB%85%90%EA%B3%BC-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-1-5ac6ac081643)
+- [Navigation - google](https://developer.android.com/guide/navigation)
+- [SOUP - medium](https://medium.com/@fornewid)
+- [남잭슨의 개발 블로그](https://namjackson.tistory.com/28)
+- [해리의 유목민](https://medium.com/harrythegreat/android-navigation-component-%EA%B0%9C%EB%85%90%EA%B3%BC-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-1-5ac6ac081643)
