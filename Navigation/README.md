@@ -91,7 +91,7 @@ findNavController().navigate(navDirection)
 Navigation.createNavigateOnClickListener(R.id.action_global_thirdHomeScreen)
 ```
 
-(NavController 더 자세한 설명)[https://medium.com/@fornewid/navigation-%ED%9B%91%EC%96%B4%EB%B3%B4%EA%B8%B0-82d23fbc85af]
+[NavController 더 자세한 설명](https://medium.com/@fornewid/navigation-%ED%9B%91%EC%96%B4%EB%B3%B4%EA%B8%B0-82d23fbc85af)
 
 - 잘못된 navigation 실행 시 java.lang.IllegalArgumentException 에러 발생
 
@@ -114,7 +114,7 @@ Navigation.createNavigateOnClickListener(R.id.action_global_thirdHomeScreen)
 //보낼때
 findNavController().navigate(R.id.action_global_thirdHomeScreen, bundleOf("paramCount" to 15))
 
-//받을떄
+//받을때
 val count = arguments?.getInt("paramCount")
 ```
 
@@ -122,11 +122,11 @@ argument 전달을 SafeArgs를 사용해 쉽게 처리 할 수 있다.
 
 
 ```kotlin
-//보낼떄
+//보낼때
 val direction = FirstHomeScreenDirections.actionFirstHomeScreenToTwoDepthScreen(10)
 findNavController().navigate(direction)
 
-//받을떄 방법 1
+//받을때 방법 1
 private val twoDepArgs: TwoDepthScreenArgs by navArgs()
 val count = twoDepArgs.paramCount
 
