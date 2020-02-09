@@ -98,7 +98,7 @@ Navigation.createNavigateOnClickListener(R.id.action_global_thirdHomeScreen)
 ### Action Structure
 
 |Navigation|Mapping|
-|---|---|---|
+|---|---|
 |NavHost|Activity|
 |NavController|FragmentManager|
 |NavGraph|res/navigation(xml)|
@@ -185,7 +185,7 @@ val pendingIntent = NavDeepLinkBuilder(requireContext())
 <nav-graph android:value="@navigation/nav_main" />
 ```
 
-- 위 코드는 없어도 동작됨?? 위 코드만 있을 떄는 동작이 안됨??
+- 위 코드는 없어도 동작됨?? 위 코드만 있을 때는 동작이 안됨??
 
 ### NavigationUI
 
