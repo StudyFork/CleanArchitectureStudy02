@@ -11,7 +11,7 @@
 - 적은 동작으로 네비게이션 UI 패턴을 지원합니다. (navigation drawers, bottom nav)
 - 네비게이션 간에 정보 타입 전달에 안전합니다. (Safe Args)
 - 안드로이드 스튜디오를 통패 네비게이션 플로우를 시각화 및 수정이 가능합니다.
-- ViewModel 자원합니다.
+- ViewModel 지원합니다.
 
 
 ### 지원 버전
