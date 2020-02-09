@@ -35,7 +35,7 @@
 - 화면 이동에 관한 모든 정보를 저장하는 XML 코드
 - 경로 res/navigation
 - <navigation> : NavGraph의 기본 태그
-- <fragment> or <Activity> or <Dialog(2.1.0 부터 지원)> 등의 Destination
+- <fragment> <Activity> <Dialog(2.1.0 부터 지원)> 등의 Destination
 - <action> : 화면 이동에 대한 액션을 정의할 수 있다
 - <argument> : 화면 이동에 대한 파라미터를 정의한다.
 - <deeplink> : 딥링크에 대한 내용을 정의한다.
@@ -55,7 +55,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 ```
