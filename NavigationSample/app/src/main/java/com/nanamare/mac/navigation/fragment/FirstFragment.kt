@@ -55,6 +55,12 @@ class FirstFragment : Fragment() {
                 FirstFragmentDirections.actionFirstFragmentToSecondFragment(999)
             findNavController().navigate(direction)
         }
+
+        view.tv_global_first.setOnClickListener {
+            val direction: NavDirections =
+                ThirdFragmentDirections.actionGlobalThirdFragment()
+            findNavController().navigate(direction)
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

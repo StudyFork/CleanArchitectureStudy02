@@ -18,14 +18,14 @@
         android:id="@+id/secondFragment"
         android:name="com.nanamare.mac.navigation.fragment.SecondFragment"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second" >
+        tools:layout="@layout/fragment_second">
         <action
             android:id="@+id/action_secondFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
         <argument
             android:name="param_count"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/thirdFragment"
@@ -36,6 +36,10 @@
             android:id="@+id/action_thirdFragment_to_nav_main"
             app:popUpTo="@+id/firstFragment" />
     </fragment>
+    <action
+        android:id="@+id/action_global_thirdFragment"
+        app:destination="@id/thirdFragment"
+        app:popUpTo="@id/thirdFragment" />
 
 
 </navigation>
