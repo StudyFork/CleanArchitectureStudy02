@@ -12,7 +12,12 @@
         tools:layout="@layout/screen_first_home">
         <action
             android:id="@+id/action_firstHomeScreen_to_twoDepthScreen"
-            app:destination="@id/twoDepthScreen" />
+            app:destination="@id/twoDepthScreen"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -35,8 +40,13 @@
             android:name="param_count"
             android:defaultValue="0"
             app:argType="integer" />
+        <deepLink
+            app:uri="blackjinapp://action/{param_count}" />
     </fragment>
     <action
         android:id="@+id/action_global_twoDepthScreen"
         app:destination="@id/twoDepthScreen" />
+    <action
+        android:id="@+id/action_global_thirdHomeScreen"
+        app:destination="@id/thirdHomeScreen" />
 </navigation>

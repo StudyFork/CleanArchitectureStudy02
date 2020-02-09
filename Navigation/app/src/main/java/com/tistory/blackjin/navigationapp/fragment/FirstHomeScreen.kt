@@ -1,6 +1,7 @@
 package com.tistory.blackjin.navigationapp.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ class FirstHomeScreen : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("MyTag", "FirstHomeScreen onCreateView")
         return inflater.inflate(R.layout.screen_first_home, container, false)
     }
 
@@ -23,8 +25,16 @@ class FirstHomeScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_first_home.setOnClickListener {
+
+            //findNavController().navigate(R.id.action_firstHomeScreen_to_twoDepthScreen, bundleOf("param_count" to 10))
+
             val direction = FirstHomeScreenDirections.actionFirstHomeScreenToTwoDepthScreen(10)
             findNavController().navigate(direction)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.e("MyTag", "FirstHomeScreen onDestroyView")
     }
 }
