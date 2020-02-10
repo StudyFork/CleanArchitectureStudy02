@@ -34,11 +34,11 @@
 
 - 화면 이동에 관한 모든 정보를 저장하는 XML 코드
 - 경로 res/navigation
-- <navigation> : NavGraph의 기본 태그
-- <fragment> <Activity> <Dialog(2.1.0 부터 지원)> 등의 Destination
-- <action> : 화면 이동에 대한 액션을 정의할 수 있다
-- <argument> : 화면 이동에 대한 파라미터를 정의한다.
-- <deeplink> : 딥링크에 대한 내용을 정의한다.
+- navigation : NavGraph의 기본 태그
+- fragment Activity, Dialog(2.1.0 부터 지원) 태그 등의 Destination
+- action : 화면 이동에 대한 액션을 정의할 수 있다
+- argument : 화면 이동에 대한 파라미터를 정의한다.
+- deeplink : 딥링크에 대한 내용을 정의한다.
 
 **NavHost**
 
@@ -151,18 +151,19 @@ val pendingIntent = NavDeepLinkBuilder(requireContext())
 암시적 딥링크는 인터넷 url등을 통해 이동하는 방식입니다. 기존에는 [Intent Filter](https://developer.android.com/training/app-links/deep-linking#adding-filters)
 방식을 사용했지만 Navigation Component를 사용하면 더욱 쉽게 사용할 수 있습니다.
 
+AndroidManifest에 nav-graph 태그를 추가해 줍니다.
+
 ```xml
 <activity android:name=".MainActivity">
     //...
     <nav-graph android:value="@navigation/nav_main" />
 </activity>
 ```
-AndroidManifest에 <nav-graph> 추가해 줍니다.
 
+Navigation graph에서 Deep Link로 띄울 화면에 deepLink 태그를 추가해 줍니다. 위 예제에서는 www.example.com 링크를 사용하며 param_count 이름의 argument를 전송해 줍니다.
 ```xml
 <deepLink app:uri="www.example.com/{param_count}" />
 ```
-Navigation graph에서 Deep Link로 띄울 화면에 <deepLink>를 추가해 줍니다. 위 예제에서는 www.example.com 링크를 사용하며 param_count 이름의 argument를 전송해 줍니다.
 
 ### NavigationUI
 
