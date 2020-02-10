@@ -68,11 +68,14 @@
 - 불러오는 방법
 
 ```xml
- <!--Activity 호출 시 -->
- val navController = findNavController(R.id.nav_container)
+<!-- From within an Activity -->
+val navController = findNavController(R.id.nav_container)
 
- <!--Fragment 호출 시 -->
- val navController = findNavController()
+<!-- From within an Fragment -->
+val navController = findNavController()
+
+<!-- From within an onClickListener -->
+val navController = view.findVanController()
 
 ```
 
@@ -93,18 +96,6 @@ Navigation.createNavigateOnClickListener(R.id.action_global_thirdHomeScreen)
 [NavController 더 자세한 설명](https://medium.com/@fornewid/navigation-%ED%9B%91%EC%96%B4%EB%B3%B4%EA%B8%B0-82d23fbc85af)
 
 - 잘못된 navigation 실행 시 java.lang.IllegalArgumentException 에러 발생
-
-### Action Structure
-
-|Navigation|Mapping|
-|---|---|
-|NavHost|Activity|
-|NavController|FragmentManager|
-|NavGraph|res/navigation(xml)|
-|NavDestination|Fragment|
-|NavDirections|Intent|
-|NavArgs|Bundle|
-|NavigationUI|UI Helper|
 
 
 ### SafeArgs
@@ -152,39 +143,8 @@ val pendingIntent = NavDeepLinkBuilder(requireContext())
 //notification, widget 등을 사용하여 실행할 수 있습니다.
 ```
 
-2. Implicit DeepLinking(암시적 딥링크)
+2. TODO Implicit DeepLinking(암시적 딥링크)
 
-```xml
-//nav_main
-<argument
-    android:name="param_count"
-    android:defaultValue="0"
-    app:argType="integer" />
-
-<deepLink
-    app:uri="blackjinapp://action/{param_count}" />
-
-//AndroidManifest
-<intent-filter>
-    <action android:name="android.intent.action.VIEW" />
-    <category android:name="android.intent.category.DEFAULT" />
-    <category android:name="android.intent.category.BROWSABLE" />
-
-    <data android:host="action" android:scheme="blackjinapp" />
-</intent-filter>
-```
-
-- Firebase URL 테스트 도구를 사용하여 "blackjinapp://action/1000" 테스트
-
-[Firebase Test](https://firebase.google.com/docs/app-indexing/android/test?hl=ko)
-
-
-```xml
-//AndroidManifest <activity> </activity> 사이에 추가
-<nav-graph android:value="@navigation/nav_main" />
-```
-
-- 위 코드는 없어도 동작됨?? 위 코드만 있을 때는 동작이 안됨??
 
 ### NavigationUI
 
@@ -193,6 +153,7 @@ val pendingIntent = NavDeepLinkBuilder(requireContext())
 - ActionBar
 - DrawerLayout
 - BottomNavigationView
+
 
 ### Animation
 
@@ -225,13 +186,30 @@ findNavController().navigate(direction, options)
     app:popExitAnim="@anim/slide_out_right" />
 ```
 
-### TODO
-1. Transition
-2. Navigation Modularizing
-3. ViewModel with NavGraph Scope
-
 ### Site
 - [Navigation - google](https://developer.android.com/guide/navigation)
 - [SOUP - medium](https://medium.com/@fornewid)
 - [남잭슨의 개발 블로그](https://namjackson.tistory.com/28)
 - [해리의 유목민](https://medium.com/harrythegreat/android-navigation-component-%EA%B0%9C%EB%85%90%EA%B3%BC-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-1-5ac6ac081643)
+
+
+## 2월 9일 스터디 내용 정리
+
+### Navigation Component 사용 해야 할까?
+
+최근 Google은 Single Activity 사용을 권하고 있는 추세이다. 왜 Single Activity를 사용하려고 할까?
+
+이를 짚어보기에 앞서 2019년 이후 deprecated 되는 일부 함수들을 한번 살펴보자
+
+1. Fragment에서 View 생성과 연관된 경우 onActivityCreated 보다는 onViewCreated 사용 권장 [링크](https://android-review.googlesource.com/c/platform/frameworks/support/+/1189651)
+2. Deprecate AsyncTask : AsyncTask는 백그라운드 스레드에서 메인 스레드로의 연산 메커니즘을 손쉽게 구현할 수 있게 해준다. 하지만 context 리소스 누수 문제나 configuration 변경이 일어났을 경우의 크래시 방지에 대한 처리를 직접 해주어야 한다는 불편함이 있다. [링크](https://android-review.googlesource.com/c/platform/frameworks/base/+/1156409)
+
+> 위 업데이트로 짐작 하건데 뷰 간의 화면 전환이 있을 때나 Acitivty 리소스를 사용하는데 있어 구글이 변화를 주는것 같다. Activity가 메모리에서 복원되는 과정이나 Activity간의 데이터를 주고 받는 경우가 복잡해지면서 다양한 사이드 이펙트가 발생하는데 이러한 문제를 고쳐보기 위함이 아닐까?
+
+
+### 총평
+
+> Navigation Component는 SingleActivity를 구현하기 위한 프레임워크이다. 현재 현업에서 사용하시는 분의 의견으로는 Navigation Drawer나 DeepLinking을 구현하는데 있어서는 정말 편리하다고 해주셨다. 하지만 아직 다른 부분에서는 많이 사용하지는 않으신다고...
+
+
+
