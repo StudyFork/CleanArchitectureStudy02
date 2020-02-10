@@ -40,8 +40,8 @@
             android:name="param_count"
             android:defaultValue="0"
             app:argType="integer" />
-        <deepLink
-            app:uri="blackjinapp://action/{param_count}" />
+
+        <deepLink app:uri="www.example.com/{param_count}" />
     </fragment>
     <action
         android:id="@+id/action_global_twoDepthScreen"

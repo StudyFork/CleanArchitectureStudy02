@@ -128,6 +128,9 @@ arguments?.let {
 
 ### DeepLink
 
+딥링크는 앱 네비게이션 중간으로 이동하는 방법 입니다.
+실재 url 또는 노티피의 pending intent 등의 방법으로 이동됩니다.
+
 1. Explicit DeepLinking(명시적 딥링크)
 
 ```kotlin
@@ -143,8 +146,23 @@ val pendingIntent = NavDeepLinkBuilder(requireContext())
 //notification, widget 등을 사용하여 실행할 수 있습니다.
 ```
 
-2. TODO Implicit DeepLinking(암시적 딥링크)
+2. Implicit DeepLinking(암시적 딥링크)
 
+암시적 딥링크는 인터넷 url등을 통해 이동하는 방식입니다. 기존에는 [Intent Filter](https://developer.android.com/training/app-links/deep-linking#adding-filters)
+방식을 사용했지만 Navigation Component를 사용하면 더욱 쉽게 사용할 수 있습니다.
+
+```xml
+<activity android:name=".MainActivity">
+    //...
+    <nav-graph android:value="@navigation/nav_main" />
+</activity>
+```
+AndroidManifest에 <nav-graph> 추가해 줍니다.
+
+```xml
+<deepLink app:uri="www.example.com/{param_count}" />
+```
+Navigation graph에서 Deep Link로 띄울 화면에 <deepLink>를 추가해 줍니다. 위 예제에서는 www.example.com 링크를 사용하며 param_count 이름의 argument를 전송해 줍니다.
 
 ### NavigationUI
 
