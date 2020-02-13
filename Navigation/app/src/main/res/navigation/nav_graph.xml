@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_mainFragment_to_firstPageFragment"
             app:destination="@id/firstPageFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_firstPageOtherFragment"
+            app:destination="@id/firstPageOtherFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/firstPageFragment"
@@ -28,4 +34,9 @@
         android:name="com.ironelder.navigation.SecondPageFragment"
         android:label="fragment_second_page"
         tools:layout="@layout/fragment_second_page" />
+    <fragment
+        android:id="@+id/firstPageOtherFragment"
+        android:name="com.ironelder.navigation.FirstPageOtherFragment"
+        android:label="fragment_first_page_other"
+        tools:layout="@layout/fragment_first_page_other" />
 </navigation>

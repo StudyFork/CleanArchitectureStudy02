@@ -8,35 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment(),View.OnClickListener {
+class FirstPageOtherFragment : Fragment() {
 
-    lateinit var navController:NavController
+    lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_first_page_other, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        mainBtn.setOnClickListener(this)
-        mainOtherBtn.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.mainBtn -> {
-                navController.navigate(R.id.firstPageFragment)
-            }
-            else -> {
-                navController.navigate(R.id.firstPageOtherFragment)
-            }
-        }
     }
 
 
