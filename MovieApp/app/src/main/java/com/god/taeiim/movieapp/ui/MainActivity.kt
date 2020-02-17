@@ -1,7 +1,8 @@
-package com.god.taeiim.movieapp
+package com.god.taeiim.movieapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.god.taeiim.movieapp.R
 
 class MainActivity : AppCompatActivity() {
 
