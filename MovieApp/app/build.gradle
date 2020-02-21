@@ -21,6 +21,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -51,6 +54,7 @@ dependencies {
 
     //koin
     implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     //coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
