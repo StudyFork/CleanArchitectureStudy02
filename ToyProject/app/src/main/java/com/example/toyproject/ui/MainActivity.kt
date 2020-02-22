@@ -1,7 +1,8 @@
-package com.example.toyproject
+package com.example.toyproject.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.toyproject.R
 
 class MainActivity : AppCompatActivity() {
 
