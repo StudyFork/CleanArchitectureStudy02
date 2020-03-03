@@ -34,7 +34,11 @@
         android:id="@+id/chooseFragment"
         android:name="com.ironelder.navigation.ChooseFragment"
         android:label="fragment_choose"
-        tools:layout="@layout/fragment_choose" />
+        tools:layout="@layout/fragment_choose" >
+        <action
+            android:id="@+id/action_chooseFragment_to_specifyFragment"
+            app:destination="@id/specifyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.ironelder.navigation.LoginFragment"
@@ -44,4 +48,18 @@
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/specifyFragment"
+        android:name="com.ironelder.navigation.SpecifyFragment"
+        android:label="fragment_specify"
+        tools:layout="@layout/fragment_specify" >
+        <action
+            android:id="@+id/action_specifyFragment_to_confirmFragment"
+            app:destination="@id/confirmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmFragment"
+        android:name="com.ironelder.navigation.ConfirmFragment"
+        android:label="fragment_confirm"
+        tools:layout="@layout/fragment_confirm" />
 </navigation>
