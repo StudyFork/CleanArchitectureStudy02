@@ -3,15 +3,14 @@ package com.example.toyproject.network
 import com.example.toyproject.data.entity.SearchMovieResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface RetrofitService {
-    val APP_KEY: String
-        get() = "e29f73abf94a892a99c8df777d038279"
 
-    @GET("/search/movie")
+    @GET("search/movie")
     fun requestSearchMovie(
-        api_key: String = APP_KEY,
-        query: String,
-        page: Int
+        @Query("api_key") api_key: String,
+        @Query("query") query: String,
+        @Query("page") page: Int
     ): Call<SearchMovieResponse>
 }
