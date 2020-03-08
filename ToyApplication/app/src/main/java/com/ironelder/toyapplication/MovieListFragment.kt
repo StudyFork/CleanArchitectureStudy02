@@ -38,18 +38,13 @@ class MovieListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Log.d("ironelderLog", "onActivityCreated")
-        rv_movie_list.adapter = MovieListAdapter()
         rv_movie_list.layoutManager = GridLayoutManager(context, 6)
         (rv_movie_list.layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup(){
             override fun getSpanSize(position: Int): Int {
-                return when(position % 5){
-                    0,1,2 -> 2
-                    3,4 -> 3
-                    else -> 0
-                }
+                return 2
             }
         }
+        rv_movie_list.adapter = MovieListAdapter()
         coroutineScope.launch {
             getMovieList()
         }
@@ -59,17 +54,15 @@ class MovieListFragment : Fragment() {
         NetworkServiceApi.movieServiceApi.getMovieList("popular").enqueue(
             object : Callback<MovieListModel> {
                 override fun onFailure(call: Call<MovieListModel>, t: Throwable) {
-                    Log.d("ironelderLog", "onFailure call = $call")
                 }
 
                 override fun onResponse(
                     call: Call<MovieListModel>,
                     response: Response<MovieListModel>
                 ) {
-                    Log.d("ironelderLog", "call = $call")
                     if (response.body()?.movieResultModels != null) {
                         movieList.addAll(mappingImageUrl((response.body() as MovieListModel).movieResultModels))
-                        Log.d("ironelderLog", "movieList = $movieList")
+                        (rv_movie_list.adapter as MovieListAdapter).setMovieList(movieList)
                     }
 
                 }
