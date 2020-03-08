@@ -57,11 +57,11 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_next"
             style="@style/BottomButton"
-            onBlockClick="@{() -> view.onRefresh()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:enabled="true"
             android:gravity="center"
+            android:onClick="@{() -> view.onRefresh()}"
             android:text="새로고침" />
 
     </FrameLayout>

@@ -39,7 +39,6 @@ fun ImageView.rotateImage(url: String?) {
                     )
                 ))
                 .into(this)
-
     }
 }
 

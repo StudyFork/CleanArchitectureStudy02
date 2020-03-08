@@ -12,8 +12,6 @@ class MainViewModel(private val genreDataSourceImpl: GenreDataSourceImpl) : Base
         value = NetworkState.init()
     }
 
-    val liveGenre = MutableLiveData<List<GenreResponse.Genre>>()
-
     fun requestMovieGenre() {
         genreDataSourceImpl.requestGenre(liveGenreNetworkState)
     }

@@ -30,11 +30,9 @@ class AppApplication : Application() {
                 listOf(
                     fragmentModule,
                     networkModule,
-                    utilModule,
                     dataSourceModel,
                     viewModelModule,
-                    apiModule,
-                    contextModule
+                    apiModule
                 )
             )
         }
