@@ -24,6 +24,7 @@
         android:ellipsize="marquee"
         android:textAlignment="gravity"
         android:gravity="center"
+        android:textColor="@color/colorMovieListItemTitleTextColor"
         tool:text="Test Title"
         app:layout_constraintTop_toBottomOf="@id/iv_movie_poster"
         app:layout_constraintRight_toRightOf="parent"
