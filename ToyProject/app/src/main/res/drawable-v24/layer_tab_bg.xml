@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffff" />
+        </shape>
+    </item>
+
+    <item
+        android:left="@dimen/tab_indicator_padding"
+        android:right="@dimen/tab_indicator_padding"
+        android:top="@dimen/tab_indicator_padding">
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="@dimen/tab_indicator_height"
+                android:color="@color/point_5FA9D0" />
+        </shape>
+    </item>
+</layer-list>
