@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.scottyab:secure-preferences-lib:0.1.4@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/69f494a6d8476f14fd41ce94d2ef6f7e/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/69f494a6d8476f14fd41ce94d2ef6f7e/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scottyab/secure-preferences-lib/0.1.4/60c41fb99bc6a2f1234500000e99ce612cc8eb07/secure-preferences-lib-0.1.4-javadoc.jar!/" />
+    </JAVADOC>
+    <LIBRARY_FILE />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scottyab/secure-preferences-lib/0.1.4/46969c85e26d5a067a247b8b295fc66774858f98/secure-preferences-lib-0.1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
