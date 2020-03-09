@@ -2,7 +2,7 @@ package com.template.nanamare.data.source
 
 import android.annotation.SuppressLint
 import com.template.nanamare.data.enum.RequestMovieApiType
-import com.template.nanamare.data.source.impl.MovieDataSourceImpl
+import com.template.nanamare.data.source.impl.MovieDataSource
 import com.template.nanamare.ext.converterErrorBody
 import com.template.nanamare.ext.networkCommunication
 import com.template.nanamare.network.api.MovieAPI
@@ -10,7 +10,7 @@ import com.template.nanamare.network.response.BaseErrorResponse
 import com.template.nanamare.network.response.MovieResponse
 
 @SuppressLint("CheckResult")
-class MovieRemoteDataSource(private val movieAPI: MovieAPI) : MovieDataSourceImpl {
+class MovieRemoteDataSourceImpl(private val movieAPI: MovieAPI) : MovieDataSource {
 
     override fun requestMovies(
         requestMovieApiType: RequestMovieApiType,

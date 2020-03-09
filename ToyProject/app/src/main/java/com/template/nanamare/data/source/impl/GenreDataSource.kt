@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.template.nanamare.network.NetworkState
 import com.template.nanamare.network.response.GenreResponse
 
-interface GenreDataSourceImpl {
+interface GenreDataSource {
 
     fun requestGenre(
         liveGenreNetworkState: MutableLiveData<NetworkState<GenreResponse>>

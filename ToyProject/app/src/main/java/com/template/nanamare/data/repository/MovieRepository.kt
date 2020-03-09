@@ -1,13 +1,13 @@
 package com.template.nanamare.data.repository
 
 import com.template.nanamare.data.enum.RequestMovieApiType
-import com.template.nanamare.data.source.MovieRemoteDataSource
-import com.template.nanamare.data.source.impl.MovieDataSourceImpl
+import com.template.nanamare.data.source.MovieRemoteDataSourceImpl
+import com.template.nanamare.data.source.impl.MovieDataSource
 import com.template.nanamare.network.response.BaseErrorResponse
 import com.template.nanamare.network.response.MovieResponse
 
-class MovieRepository(private val movieRemoteDataSource: MovieRemoteDataSource) :
-    MovieDataSourceImpl {
+class MovieRepository(private val movieRemoteDataSourceImpl: MovieRemoteDataSourceImpl) :
+    MovieDataSource {
 
     override fun requestMovies(
         requestMovieApiType: RequestMovieApiType,
@@ -16,7 +16,7 @@ class MovieRepository(private val movieRemoteDataSource: MovieRemoteDataSource) 
         success: (movieResponse: MovieResponse) -> Unit,
         failed: (errorResponse: BaseErrorResponse) -> Unit
     ) {
-        movieRemoteDataSource.requestMovies(
+        movieRemoteDataSourceImpl.requestMovies(
             requestMovieApiType,
             query,
             page,

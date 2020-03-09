@@ -4,7 +4,7 @@ import com.template.nanamare.data.enum.RequestMovieApiType
 import com.template.nanamare.network.response.BaseErrorResponse
 import com.template.nanamare.network.response.MovieResponse
 
-interface MovieDataSourceImpl {
+interface MovieDataSource {
 
     fun requestMovies(
         requestMovieApiType: RequestMovieApiType,

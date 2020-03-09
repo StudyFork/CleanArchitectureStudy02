@@ -8,11 +8,11 @@ import com.template.nanamare.base.navigator.BaseNavigator
 import com.template.nanamare.base.ui.BaseViewModel
 import com.template.nanamare.data.enum.RequestMovieApiType
 import com.template.nanamare.data.source.MoviePagingDataSourceFactory
-import com.template.nanamare.data.source.impl.MovieDataSourceImpl
+import com.template.nanamare.data.source.impl.MovieDataSource
 import com.template.nanamare.network.response.MovieResponse
 
 class MovieCategoryViewModel(
-    private val movieDataSourceImpl: MovieDataSourceImpl,
+    private val movieDataSource: MovieDataSource,
     private val baseNavigator: BaseNavigator
 ) :
     BaseViewModel() {
@@ -25,7 +25,7 @@ class MovieCategoryViewModel(
     fun requestDiscoverMovies(id: Int, requestMovieApiType: RequestMovieApiType) {
         baseNavigator.showLoadingPopup()
         liveMovies.value = LivePagedListBuilder(MoviePagingDataSourceFactory(
-            movieDataSourceImpl,
+            movieDataSource,
             requestMovieApiType = requestMovieApiType,
             query = id.toString(),
             success = {
@@ -46,7 +46,7 @@ class MovieCategoryViewModel(
     fun searchMovies(query: String, requestMovieApiType: RequestMovieApiType) {
         baseNavigator.showLoadingPopup()
         liveMovies.value = LivePagedListBuilder(MoviePagingDataSourceFactory(
-            movieDataSourceImpl,
+            movieDataSource,
             requestMovieApiType = requestMovieApiType,
             query = query,
             success = {
