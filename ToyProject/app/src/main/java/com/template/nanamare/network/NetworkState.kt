@@ -15,8 +15,9 @@ sealed class NetworkState<out T> {
             Loading -> "Loading"
             is Success -> "Success[data=$item]"
             is Error -> "Error[exception=$throwable]"
-            // is ServerError -> "ServerError[status_code=${errorMessage.first}\nstatus_message=${errorMessage.second}\nsuccess=${errorMessage.third}]r"
-            is ServerError -> "ServerError"
+            is ServerError -> {
+                "ServerError[status_code=${errorMessage.statusCode}\nstatus_message=${errorMessage.statusMessage}\nsuccess=${errorMessage.success}]r"
+            }
         }
     }
 
