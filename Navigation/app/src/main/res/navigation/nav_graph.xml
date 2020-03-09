@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
-
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.ironelder.navigation.MainFragment"
@@ -38,5 +37,72 @@
         android:id="@+id/firstPageOtherFragment"
         android:name="com.ironelder.navigation.FirstPageOtherFragment"
         android:label="fragment_first_page_other"
-        tools:layout="@layout/fragment_first_page_other" />
+        tools:layout="@layout/fragment_first_page_other">
+        <action
+            android:id="@+id/action_mainFragment_to_balanceViewFragment"
+            app:destination="@id/balanceViewFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_chooseFragment"
+            app:destination="@id/chooseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionViewFragment"
+        android:name="com.ironelder.navigation.TransactionViewFragment"
+        android:label="fragment_transaction_view"
+        tools:layout="@layout/fragment_transaction_view" />
+    <fragment
+        android:id="@+id/balanceViewFragment"
+        android:name="com.ironelder.navigation.BalanceViewFragment"
+        android:label="fragment_balance_view"
+        tools:layout="@layout/fragment_balance_view" />
+    <fragment
+        android:id="@+id/chooseFragment"
+        android:name="com.ironelder.navigation.ChooseFragment"
+        android:label="fragment_choose"
+        tools:layout="@layout/fragment_choose" >
+        <action
+            android:id="@+id/action_chooseFragment_to_specifyFragment"
+            app:destination="@id/specifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ironelder.navigation.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/specifyFragment"
+        android:name="com.ironelder.navigation.SpecifyFragment"
+        android:label="fragment_specify"
+        tools:layout="@layout/fragment_specify" >
+        <action
+            android:id="@+id/action_specifyFragment_to_confirmFragment"
+            app:destination="@id/confirmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmFragment"
+        android:name="com.ironelder.navigation.ConfirmFragment"
+        android:label="fragment_confirm"
+        tools:layout="@layout/fragment_confirm" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.ironelder.navigation.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
