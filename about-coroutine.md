@@ -86,7 +86,7 @@
                 delay(1000L)
                 println("1") // 1초 후에 출력
             }
-            jab.await()
+            jab.join() // 사용하지 않을 경우 0 -> 2 -> 1 -> 3 순으로 출력됨
             println("2")
         }
     
