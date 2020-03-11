@@ -10,7 +10,7 @@ abstract class OnSingleClickListener<T>(
 
     override fun onClick(item: T) {
         val now = System.currentTimeMillis()
-        if ((now - lastClickTime) > clickDelayMilliSeconds) {
+        if ((now - lastClickTime) > clickDelayMilliSeconds) { // 중복 클릭 방지
             onSingleClick(item)
             lastClickTime = now
         }
