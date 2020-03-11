@@ -24,8 +24,8 @@
 
         <ImageView
             android:id="@+id/iv_movie_poster"
-            android:layout_width="135dp"
-            android:layout_height="200dp"
+            android:layout_width="88dp"
+            android:layout_height="130dp"
             android:background="@android:color/darker_gray"
             android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
             android:layout_margin="8dp"
             android:ellipsize="end"
             android:lineSpacingExtra="2dp"
-            android:maxLines="6"
+            android:maxLines="3"
             android:text="@{item.overview}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
