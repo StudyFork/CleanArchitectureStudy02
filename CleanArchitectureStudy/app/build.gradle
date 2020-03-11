@@ -63,4 +63,7 @@ dependencies {
 
     // AAC
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    // paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
 }
