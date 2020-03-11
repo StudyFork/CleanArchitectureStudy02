@@ -23,15 +23,19 @@ class MovieRemoteDataSource(
         failed: (errMsg: String) -> Unit
     ) {
         CoroutineScope(Dispatchers.Default).launch {
-            val response = movieApi.getPopularMovies(page).awaitResponse()
+            try {
+                val response = movieApi.getPopularMovies(page).awaitResponse()
 
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-                    response.body()?.let { success(it) }
-                } else {
-                    failed(response.message())
-                    Log.e(tag, response.body().toString())
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        response.body()?.let { success(it) }
+                    } else {
+                        failed(response.message())
+                        Log.e(tag, response.body().toString())
+                    }
                 }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
