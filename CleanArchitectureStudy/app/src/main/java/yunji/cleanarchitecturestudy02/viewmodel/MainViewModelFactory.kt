@@ -12,5 +12,5 @@ class MainViewModelFactory(
     private val movieRepository: MovieRepository
 ) : ViewModelProvider.Factory {
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T = MainViewModel(movieRepository) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(movieRepository) as T
 }
