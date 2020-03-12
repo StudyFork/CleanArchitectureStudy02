@@ -8,7 +8,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/gray_200</item>
-        <item name="colorControlHighlight">@color/cross_hover_color</item>
+        <item name="colorControlHighlight">@color/hover_color</item>
     </style>
 
     <style name="SplashTheme" parent="AppTheme">

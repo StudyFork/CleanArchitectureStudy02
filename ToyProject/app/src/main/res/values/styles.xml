@@ -60,7 +60,7 @@
         <item name="android:windowBackground">?android:colorBackground</item>
 
         <!-- Click 시 Foreground 에 SelectedBackGround 추가-->
-        <item name="colorControlHighlight">@color/cross_hover_color</item>
+        <item name="colorControlHighlight">@color/hover_color</item>
 
         <!-- Additionally if you want animations when dialog opening -->
         <!--<item name="android:windowEnterAnimation">@anim/slide_up</item>-->
