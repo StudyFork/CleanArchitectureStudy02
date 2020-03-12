@@ -2,6 +2,7 @@ package yunji.cleanarchitecturestudy02.model.response
 
 
 import com.google.gson.annotations.SerializedName
+import yunji.cleanarchitecturestudy02.POSTER_BASE_URL
 
 data class Movie(
     @SerializedName("adult")
@@ -33,5 +34,13 @@ data class Movie(
     @SerializedName("vote_count")
     val voteCount: Int
 ) {
+
+    fun getPosterFullPath() = POSTER_BASE_URL + posterPath
+
     override fun equals(other: Any?): Boolean = this.id == (other as Movie).id
+
+    override fun hashCode(): Int {
+        val prime = 31
+        return prime * id
+    }
 }

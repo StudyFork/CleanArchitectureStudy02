@@ -30,7 +30,7 @@
             android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:loadPoster="@{item.posterPath}" />
+            app:loadImage="@{item.posterFullPath}" />
 
         <TextView
             android:id="@+id/tv_movie_title"
