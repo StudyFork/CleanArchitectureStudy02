@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.template.nanamare.data.vo.Movie" />
+    </data>
+
+    <LinearLayout
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/ll_movie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 이미지 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_sketch_symbol" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_thumbnail"
+                loadPoster="@{vm.imgUrl}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black_7"
+                android:scaleType="centerCrop" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="4dp"
+                android:background="@drawable/shape_badge_bg"
+                android:gravity="center"
+                android:paddingStart="4dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="2dp"
+                android:text="@string/item_movie_badge"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_30"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingTop="11.7dp"
+            android:paddingBottom="6.7dp"
+            android:weightSum="10">
+
+            <!-- 영화 타이틀 -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{vm.title}"
+                android:textSize="13.3dp"
+                android:textStyle="bold"
+                tools:text="영화 타이틀" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingBottom="11.3dp"
+            android:weightSum="10">
+
+            <!-- 설명 -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{vm.releaseDate}"
+                android:textSize="11.7dp"
+                tools:text="2029-03-08" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

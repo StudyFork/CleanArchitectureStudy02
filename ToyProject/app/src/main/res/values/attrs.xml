@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+    <declare-styleable name="CustomInputBox">
+        <attr name="cibTitle" format="reference|string" />
+        <attr name="cibHint" format="reference|string" />
+        <attr name="cibLeft" format="reference|string" />
+        <attr name="cibRight" format="reference|string" />
+        <attr name="cibMode" format="enum">
+            <enum name="picker" value="0" />
+            <enum name="input" value="1" />
+            <enum name="select" value="2" />
+        </attr>
+        <attr name="cibTitleVisibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="4" />
+            <enum name="gone" value="8" />
+        </attr>
+        <attr name="android:inputType" />
+        <attr name="android:imeOptions" />
+        <attr name="android:maxLength" />
+        <attr name="android:minLines" />
+    </declare-styleable>
+    -->
+
+</resources>
