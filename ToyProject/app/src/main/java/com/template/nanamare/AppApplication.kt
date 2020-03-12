@@ -37,7 +37,6 @@ class AppApplication : Application() {
             )
         }
 
-        FirebaseApp.initializeApp(this)
         registerActivityLifecycleCallbacks(AppActivityLifecycleCallback)
 
         setDefaultHandler()
