@@ -1,1 +1,0 @@
-# Android Clean Architecture Study
