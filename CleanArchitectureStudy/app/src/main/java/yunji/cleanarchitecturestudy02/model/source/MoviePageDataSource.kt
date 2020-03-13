@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PagedList
-import yunji.cleanarchitecturestudy02.model.repository.MovieRepository
 import yunji.cleanarchitecturestudy02.model.response.Movie
 import yunji.cleanarchitecturestudy02.model.response.MovieListResponse
 
@@ -12,11 +11,12 @@ import yunji.cleanarchitecturestudy02.model.response.MovieListResponse
  * Created by yunji on 12/03/2020
  */
 class MoviePageDataSource private constructor(
-    private val repository: MovieRepository,
+    private val dataSource: MovieDataSource,
     private val onPagingStart: () -> Unit,
     private val onPagingSuccess: (response: MovieListResponse) -> Unit,
     private val onPagingFailed: (errMsg: String) -> Unit
 ) : PageKeyedDataSource<Int, Movie>() {
+    private var totalPages = FIRST_PAGE
 
     companion object {
         private const val FIRST_PAGE = 1
@@ -32,22 +32,23 @@ class MoviePageDataSource private constructor(
     }
 
     class Factory(
-        private val repository: MovieRepository,
+        private val dataSource: MovieDataSource,
         private val onPagingStart: () -> Unit,
         private val onPagingSuccess: (response: MovieListResponse) -> Unit,
         private val onPagingFailed: (errMsg: String) -> Unit
     ) : DataSource.Factory<Int, Movie>() {
 
         override fun create(): DataSource<Int, Movie> =
-            MoviePageDataSource(repository, onPagingStart, onPagingSuccess, onPagingFailed)
+            MoviePageDataSource(dataSource, onPagingStart, onPagingSuccess, onPagingFailed)
     }
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Movie>) {
         run(onPagingStart)
 
-        repository.getPopularMovieList(
+        dataSource.getPopularMovieList(
             FIRST_PAGE,
             success = {
+                totalPages = it.totalPages
                 callback.onResult(it.movies, null, FIRST_PAGE + PAGING_UNIT)
                 onPagingSuccess(it)
             }, failed = {
@@ -57,8 +58,14 @@ class MoviePageDataSource private constructor(
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
-        repository.getPopularMovieList(params.key,
+        if (params.key > totalPages) {
+            return // 마지막 페이지일 경우 로딩하지 않음
+        }
+
+        dataSource.getPopularMovieList(
+            params.key,
             success = {
+                totalPages = it.totalPages
                 callback.onResult(it.movies, params.key + PAGE_SIZE)
                 onPagingSuccess(it)
             }, failed = {
