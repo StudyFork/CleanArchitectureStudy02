@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import yunji.cleanarchitecturestudy02.R
-import yunji.cleanarchitecturestudy02.adapter.MovieRecyclerAdapter
+import yunji.cleanarchitecturestudy02.adapter.MoviePagedRecyclerAdapter
 import yunji.cleanarchitecturestudy02.base.BaseActivity
 import yunji.cleanarchitecturestudy02.databinding.ActivityMainBinding
 import yunji.cleanarchitecturestudy02.listener.OnItemClickListener
@@ -16,7 +16,7 @@ import yunji.cleanarchitecturestudy02.viewmodel.MainViewModel
 import yunji.cleanarchitecturestudy02.viewmodel.MainViewModelFactory
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-    private val movieRecyclerAdapter = MovieRecyclerAdapter()
+    private val movieRecyclerAdapter = MoviePagedRecyclerAdapter()
     private val mainViewModel by lazy {
         ViewModelProvider(this, MainViewModelFactory(MovieRepository))[MainViewModel::class.java]
     }
@@ -24,14 +24,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initAdapter()
         initView()
         observeUiData()
     }
 
-    private fun initView() {
-        binding.viewModel = mainViewModel
-        binding.lifecycleOwner = this@MainActivity
-        binding.rvMain.adapter = movieRecyclerAdapter.apply {
+    private fun initAdapter() {
+        movieRecyclerAdapter.apply {
             onItemClickListener = OnSingleClickListener.wrap(
                 object : OnItemClickListener<Movie> {
                     override fun onClick(item: Movie) {
@@ -39,8 +38,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     }
                 })
         }
+    }
 
-        mainViewModel.getPopularMovies()
+    private fun initView() {
+        binding.apply {
+            viewModel = mainViewModel
+            lifecycleOwner = this@MainActivity
+            rvMain.adapter = movieRecyclerAdapter
+        }
+
+        mainViewModel.initMovieData()
     }
 
     private fun observeUiData() {

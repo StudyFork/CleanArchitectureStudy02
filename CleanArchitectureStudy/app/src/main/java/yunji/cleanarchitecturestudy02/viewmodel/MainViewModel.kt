@@ -3,8 +3,12 @@ package yunji.cleanarchitecturestudy02.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import yunji.cleanarchitecturestudy02.model.repository.MovieRepository
 import yunji.cleanarchitecturestudy02.model.response.Movie
+import yunji.cleanarchitecturestudy02.model.source.MoviePageDataSource
+import java.util.concurrent.Executors
 
 /*
  * Created by yunji on 10/03/2020
@@ -12,43 +16,36 @@ import yunji.cleanarchitecturestudy02.model.response.Movie
 class MainViewModel(
     private val repository: MovieRepository
 ) : ViewModel() {
-    private val _movieList = MutableLiveData<List<Movie>>()
     private val _isLoading = MutableLiveData<Boolean>()
+    private val _isExist = MutableLiveData<Boolean>()
     private val _msgText = MutableLiveData<String>()
-    private var page = 1
-    private var totalPages = 1
-
-    val movieList: LiveData<List<Movie>>
-        get() = _movieList
+    private val executor = Executors.newSingleThreadExecutor()
+    lateinit var pagingMovieList: LiveData<PagedList<Movie>>
 
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    val isExist: LiveData<Boolean>
+        get() = _isExist
+
     val msgText: LiveData<String>
         get() = _msgText
 
-    init {
-        _movieList.value = listOf()
-    }
+    fun initMovieData() {
+        val pageDataSourceFactory = MoviePageDataSource.Factory(repository,
+            onPagingStart = { _isLoading.postValue(true) },
+            onPagingSuccess = {
+                _isLoading.postValue(false)
+                _isExist.postValue(pagingMovieList.value?.size!! > 0)
+            },
+            onPagingFailed = {
+                _msgText.postValue(it)
+                _isLoading.postValue(false)
+                _isExist.postValue(false)
+            })
 
-    fun getPopularMovies() {
-        if (page > totalPages) {
-            return
-        }
-
-        _isLoading.value = true
-        repository.getPopularMovieList(page, success = {
-            totalPages = it.totalPages
-            _movieList.value = _movieList.value?.plus(it.movies)
-            _isLoading.value = false
-        }, failed = {
-            _msgText.value = it
-            _isLoading.value = false
-        })
-    }
-
-    fun getNextPopularMovies() {
-        page += 1
-        getPopularMovies()
+        pagingMovieList = LivePagedListBuilder(pageDataSourceFactory, MoviePageDataSource.moviePageConfig)
+            .setFetchExecutor(executor)
+            .build()
     }
 }
