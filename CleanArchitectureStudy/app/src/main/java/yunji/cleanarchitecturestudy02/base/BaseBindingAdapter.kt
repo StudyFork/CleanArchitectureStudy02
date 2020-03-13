@@ -14,25 +14,25 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
  */
 @Suppress("UNCHECKED_CAST")
 @BindingAdapter("bindItem")
-fun bindItems(rv: RecyclerView, data: List<Any>?) {
-    (rv.adapter as BaseRecyclerView<*, Any>).updateItems(data ?: emptyList())
+fun RecyclerView.bindItems(data: List<Any>?) {
+    (adapter as BaseRecyclerView<*, Any>).updateItems(data ?: emptyList())
 }
 
 @BindingAdapter("loadImage")
-fun loadImageUrl(imageView: ImageView, url: String?) {
-    Glide.with(imageView.context)
+fun ImageView.loadImageUrl(url: String?) {
+    Glide.with(context)
         .load(url)
         .placeholder(ColorDrawable(Color.GRAY))
         .transition(DrawableTransitionOptions.withCrossFade())
-        .into(imageView)
+        .into(this)
 }
 
 @BindingAdapter("setPaddingVertical")
-fun setPaddingVertical(view: View, padding: Int) {
-    view.setPadding(view.paddingLeft, padding, view.paddingRight, padding)
+fun View.setPaddingVertical(padding: Int) {
+    setPadding(paddingLeft, padding, paddingRight, padding)
 }
 
 @BindingAdapter("setPaddingHorizontal")
-fun setPaddingHorizontal(view: View, padding: Int) {
-    view.setPadding(padding, view.paddingTop, padding, view.paddingBottom)
+fun View.setPaddingHorizontal(padding: Int) {
+    setPadding(padding, paddingTop, padding, paddingBottom)
 }

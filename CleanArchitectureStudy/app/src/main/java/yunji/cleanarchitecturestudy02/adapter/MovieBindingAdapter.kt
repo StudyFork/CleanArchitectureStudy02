@@ -9,6 +9,6 @@ import yunji.cleanarchitecturestudy02.model.response.Movie
  * Created by yunji on 13/03/2020
  */
 @BindingAdapter("bindMovieItem")
-fun bindPageItem(rv: RecyclerView, data: PagedList<Movie>?) {
-    (rv.adapter as MoviePagedRecyclerAdapter).submitList(data)
+fun RecyclerView.bindPageItem(data: PagedList<Movie>?) {
+    (adapter as MoviePagedRecyclerAdapter).submitList(data)
 }
