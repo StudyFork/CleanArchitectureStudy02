@@ -35,6 +35,7 @@ class MovieRemoteDataSource(
                     }
                 }
             } catch (e: Exception) {
+                failed(e.message ?: "getPopularMovieList error")
                 e.printStackTrace()
             }
         }
