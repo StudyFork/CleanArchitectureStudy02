@@ -52,7 +52,7 @@
             android:id="@+id/tv_movie_release_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
             android:text="@{item.releaseDate}"
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
