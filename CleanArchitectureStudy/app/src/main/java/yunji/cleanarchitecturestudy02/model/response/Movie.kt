@@ -36,11 +36,4 @@ data class Movie(
 ) {
 
     fun getPosterFullPath() = POSTER_BASE_URL + posterPath
-
-    override fun equals(other: Any?): Boolean = this.id == (other as Movie).id
-
-    override fun hashCode(): Int {
-        val prime = 31
-        return prime * id
-    }
 }
