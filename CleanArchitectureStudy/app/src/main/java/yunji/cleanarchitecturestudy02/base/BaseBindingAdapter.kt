@@ -15,7 +15,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 @Suppress("UNCHECKED_CAST")
 @BindingAdapter("bindItem")
 fun bindItems(rv: RecyclerView, data: List<Any>?) {
-    (rv.adapter as BaseRecyclerView<*, Any>).updateItems(data ?: listOf())
+    (rv.adapter as BaseRecyclerView<*, Any>).updateItems(data ?: emptyList())
 }
 
 @BindingAdapter("loadImage")
