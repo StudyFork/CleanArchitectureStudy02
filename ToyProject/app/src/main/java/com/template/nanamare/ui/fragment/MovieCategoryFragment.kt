@@ -2,26 +2,18 @@ package com.template.nanamare.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
-import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.template.nanamare.R
 import com.template.nanamare.adapter.MovieAdapter
 import com.template.nanamare.base.navigator.BaseNavigator
 import com.template.nanamare.base.ui.BaseFragment
-import com.template.nanamare.base.ui.BaseViewHolder
 import com.template.nanamare.data.enum.RequestMovieApiType
-import com.template.nanamare.data.vo.Movie
-import com.template.nanamare.databinding.ItemMovieBinding
 import com.template.nanamare.databinding.MovieCategoryFragmentBinding
 import com.template.nanamare.decoration.GridSpacingItemDecoration
 import com.template.nanamare.network.response.GenreResponse
-import com.template.nanamare.network.response.MovieResponse
 import com.template.nanamare.vm.MovieCategoryViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
