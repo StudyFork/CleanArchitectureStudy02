@@ -24,17 +24,17 @@ class MovieRemoteDataSourceImpl(private val movieAPI: MovieAPI) : MovieDataSourc
             RequestMovieApiType.DISCOVER -> movieAPI.requestMovies(withGenres = query)
             RequestMovieApiType.SEARCH -> movieAPI.searchMovies(query = query)
         }.networkCommunication()
-            .subscribe({
-                when (it.isSuccessful) {
+            .subscribe({ response ->
+                when (response.isSuccessful) {
                     true -> {
-                        it.body()?.let {
+                        response.body()?.let {
                             success(it)
                         } ?: run {
                             failed(BaseErrorResponse(-1, "", false))
                         }
                     }
                     false -> {
-                        it.errorBody()?.let {
+                        response.errorBody()?.let {
                             failed(converterErrorBody(it.string()))
                         } ?: run {
                             failed(BaseErrorResponse(-1, "", false))
