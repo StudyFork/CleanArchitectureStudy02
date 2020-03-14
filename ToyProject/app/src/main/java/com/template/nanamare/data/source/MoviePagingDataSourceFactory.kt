@@ -3,11 +3,12 @@ package com.template.nanamare.data.source
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.template.nanamare.data.enum.RequestMovieApiType
+import com.template.nanamare.data.source.impl.MovieDataSource
 import com.template.nanamare.network.response.BaseErrorResponse
 import com.template.nanamare.network.response.MovieResponse
 
 class MoviePagingDataSourceFactory(
-    private val movieDataSource: com.template.nanamare.data.source.impl.MovieDataSource,
+    private val movieDataSource: MovieDataSource,
     private val requestMovieApiType: RequestMovieApiType,
     private val query: String,
     private val success: () -> Unit,
@@ -15,12 +16,12 @@ class MoviePagingDataSourceFactory(
 ) : DataSource.Factory<Int, MovieResponse.Result>() {
 
     override fun create(): DataSource<Int, MovieResponse.Result> {
-        return MovieDataSource()
+        return MoviePagingDataSource()
     }
 
     private var totalPage = 1
 
-    inner class MovieDataSource : PageKeyedDataSource<Int, MovieResponse.Result>() {
+    inner class MoviePagingDataSource : PageKeyedDataSource<Int, MovieResponse.Result>() {
 
         override fun loadInitial(
             params: LoadInitialParams<Int>,
