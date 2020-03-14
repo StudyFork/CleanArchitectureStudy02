@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.template.nanamare.R
+import com.template.nanamare.adapter.MovieAdapter
 import com.template.nanamare.base.navigator.BaseNavigator
 import com.template.nanamare.base.ui.BaseFragment
 import com.template.nanamare.base.ui.BaseViewHolder
@@ -34,36 +35,7 @@ class MovieCategoryFragment(private val genre: GenreResponse.Genre) :
     private val column by lazy { resources.getInteger(R.integer.grid_column) }
     private val space by lazy { resources.getDimension(R.dimen.grid_space).toInt() }
 
-    private val movieAdapter by lazy {
-        object :
-            PagedListAdapter<MovieResponse.Result, RecyclerView.ViewHolder>(POST_COMPARATOR) {
-            override fun onCreateViewHolder(
-                parent: ViewGroup,
-                viewType: Int
-            ): RecyclerView.ViewHolder {
-                return object : BaseViewHolder<MovieResponse.Result, ItemMovieBinding>(
-                    R.layout.item_movie, parent
-                ) {
-                    init {
-                        itemView.setOnClickListener {
-                        }
-                    }
-
-                    override fun onViewCreated(item: MovieResponse.Result?) {
-                        binding.run {
-                            item?.let {
-                                vm = Movie(item.title, item.releaseDate, item.posterPath)
-                            }
-                        }
-                    }
-                }
-            }
-
-            override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-                (holder as? BaseViewHolder<*, *>)?.onBindViewHolder(getItem(position))
-            }
-        }
-    }
+    private val movieAdapter by lazy { MovieAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -104,45 +76,6 @@ class MovieCategoryFragment(private val genre: GenreResponse.Genre) :
     override fun closeSearchView() {
         super.closeSearchView()
         movieCategoryViewModel.requestDiscoverMovies(genre.id, RequestMovieApiType.DISCOVER)
-    }
-
-
-    companion object {
-        val POST_COMPARATOR = object : DiffUtil.ItemCallback<MovieResponse.Result>() {
-            private val PAYLOAD_SCORE = Any()
-            override fun areContentsTheSame(
-                oldItem: MovieResponse.Result,
-                newItem: MovieResponse.Result
-            ): Boolean =
-                oldItem == newItem
-
-            override fun areItemsTheSame(
-                oldItem: MovieResponse.Result,
-                newItem: MovieResponse.Result
-            ): Boolean =
-                oldItem === newItem
-
-            override fun getChangePayload(
-                oldItem: MovieResponse.Result,
-                newItem: MovieResponse.Result
-            ): Any? {
-                return if (sameExceptScore(oldItem, newItem)) {
-                    PAYLOAD_SCORE
-                } else {
-                    null
-                }
-            }
-
-            private fun sameExceptScore(
-                oldItem: MovieResponse.Result,
-                newItem: MovieResponse.Result
-            ): Boolean {
-                // DON'T do this copy in a real app, it is just convenient here for the demo :)
-                // because reddit randomizes scores, we want to pass it as a payload to minimize
-                // UI updates between refreshes
-                return oldItem.copy() == newItem
-            }
-        }
     }
 
 }
