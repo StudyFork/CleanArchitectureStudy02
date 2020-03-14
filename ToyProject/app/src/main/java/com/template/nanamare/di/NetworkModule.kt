@@ -33,7 +33,18 @@ val networkModule: Module = module {
             .addInterceptor {
                 val original = it.request()
                 val request = original.newBuilder().apply {
-                    // nothing
+                    url(
+                        original.url().newBuilder().apply {
+                            addQueryParameter(
+                                "api_key",
+                                BuildConfig.SECRET_KEY
+                            )
+                            addQueryParameter(
+                                "language",
+                                BuildConfig.LANGUAGE
+                            )
+                        }.build()
+                    )
                 }.method(original.method(), original.body()).build()
                 it.proceed(request)
             }
