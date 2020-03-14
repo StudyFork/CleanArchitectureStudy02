@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
@@ -13,7 +14,7 @@ import androidx.fragment.app.FragmentManager
 import com.template.nanamare.base.navigator.BaseNavigator
 
 
-abstract class BaseDialogFragment<B : ViewDataBinding>(private val layoutId: Int)
+abstract class BaseDialogFragment<B : ViewDataBinding>(@LayoutRes private val layoutId: Int)
     : DialogFragment(), BaseNavigator {
 
     lateinit var binding: B

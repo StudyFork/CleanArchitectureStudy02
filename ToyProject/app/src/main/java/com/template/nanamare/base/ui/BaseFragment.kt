@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
+import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -13,7 +14,7 @@ import com.template.nanamare.R
 import com.template.nanamare.base.navigator.BaseNavigator
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class BaseFragment<B : ViewDataBinding>(private val layoutId: Int) : Fragment(),
+abstract class BaseFragment<B : ViewDataBinding>(@LayoutRes private val layoutId: Int) : Fragment(),
     SearchView.OnQueryTextListener, BaseNavigator {
 
     protected lateinit var binding: B
