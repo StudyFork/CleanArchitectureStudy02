@@ -10,10 +10,10 @@ import com.template.nanamare.BuildConfig
  */
 object Logger {
 
-    private val BUILD_TYPE = "debug"
-    private val FLAVOR = "dev"
+    private const val BUILD_TYPE = "debug"
+    private const val FLAVOR = "dev"
 
-    val FORMAT : String = "[%s] : %s"
+    private const val FORMAT : String = "[%s] : %s"
 
     /** Log Level Error  */
     fun e(tag: String, exception: Exception, content : String = "") {

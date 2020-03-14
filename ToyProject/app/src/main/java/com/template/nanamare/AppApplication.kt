@@ -60,8 +60,5 @@ class AppApplication : Application() {
     companion object {
         @JvmStatic
         val TAG_APPLICATION: String = AppApplication::class.java.simpleName
-        private const val BUILD_TYPE = "debug"
-        private const val FLAVOR = "dev"
-    }
 
 }
