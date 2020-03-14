@@ -21,10 +21,10 @@ class MainViewModel(private val genreDataSource: GenreDataSource) : BaseViewMode
             .doOnTerminate {
                 liveGenreNetworkState.value = NetworkState.init()
             }
-            .subscribe({
-                when (it.isSuccessful) {
+            .subscribe({ response ->
+                when (response.isSuccessful) {
                     true -> {
-                        it.body()?.let {
+                        response.body()?.let {
                             liveGenreNetworkState.value = NetworkState.success(it)
                         } ?: run {
                             liveGenreNetworkState.value =
@@ -32,7 +32,7 @@ class MainViewModel(private val genreDataSource: GenreDataSource) : BaseViewMode
                         }
                     }
                     false -> {
-                        it.errorBody()?.let {
+                        response.errorBody()?.let {
                             liveGenreNetworkState.value =
                                 NetworkState.serverError(converterErrorBody(it.string()))
                         } ?: run {
