@@ -1,5 +1,6 @@
 package com.template.nanamare.base.ui
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import java.util.logging.Logger
 
 abstract class BaseViewHolder<ITEM : Any, B : ViewDataBinding>(
     @LayoutRes layoutRes: Int,
@@ -23,6 +25,7 @@ abstract class BaseViewHolder<ITEM : Any, B : ViewDataBinding>(
             executePendingBindings()
         }
     } catch (e: Exception) {
+        Log.d("BaseViewHolder", e.toString())
         itemView.visibility = View.GONE
     }
 

@@ -26,7 +26,8 @@ import org.jetbrains.anko.backgroundColorResource
 import org.jetbrains.anko.dip
 
 
-abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId: Int) : AppCompatActivity(),
+abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId: Int) :
+    AppCompatActivity(),
     BaseNavigator {
 
     protected lateinit var binding: B
@@ -34,6 +35,13 @@ abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId
     protected val compositeDisposable = CompositeDisposable()
     private var loadingPopup: LoadingDialog? = null
     private var toast: Toast? = null
+    private val toastLayout by lazy {
+        layoutInflater.inflate(
+            R.layout.custom_toast,
+            binding.root as ViewGroup,
+            false
+        )
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,15 +88,11 @@ abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId
     }
 
     override fun showToast(msg: String, error: Boolean) {
-        if (toast != null) {
-            toast?.cancel()
-        }
-        val layout = layoutInflater.inflate(R.layout.custom_toast, binding.root as ViewGroup, false)
         val size = Point()
         windowManager.defaultDisplay.getSize(size)
-        layout.findViewById<TextView>(R.id.tv_toast_text).run {
-            text = msg
+        toastLayout.findViewById<TextView>(R.id.tv_toast_text).run {
             width = size.x
+            text = msg
             backgroundColorResource = if (error) {
                 R.color.error
             } else {
@@ -96,10 +100,13 @@ abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId
             }
         }
         Handler(Looper.getMainLooper()).post {
+            if (toast != null) {
+                toast?.cancel()
+            }
             toast = Toast(applicationContext).apply {
                 setGravity(Gravity.FILL_HORIZONTAL or Gravity.BOTTOM, 0, dip(70))
                 duration = Toast.LENGTH_SHORT
-                view = layout
+                view = toastLayout
             }
             toast?.show()
         }

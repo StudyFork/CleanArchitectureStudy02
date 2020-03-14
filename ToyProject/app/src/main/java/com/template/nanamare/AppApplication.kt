@@ -2,7 +2,6 @@ package com.template.nanamare
 
 import android.app.Application
 import com.google.android.play.core.missingsplits.MissingSplitsManagerFactory
-import com.google.firebase.FirebaseApp
 import com.template.nanamare.base.ui.BaseExceptionHandler
 import com.template.nanamare.di.*
 import org.koin.android.ext.koin.androidContext
@@ -60,5 +59,6 @@ class AppApplication : Application() {
     companion object {
         @JvmStatic
         val TAG_APPLICATION: String = AppApplication::class.java.simpleName
+    }
 
 }
