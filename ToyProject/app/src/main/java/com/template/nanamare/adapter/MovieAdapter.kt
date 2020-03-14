@@ -28,7 +28,7 @@ class MovieAdapter : PagedListAdapter<MovieResponse.Result, RecyclerView.ViewHol
             override fun onViewCreated(item: MovieResponse.Result?) {
                 binding.run {
                     item?.let {
-                        vm = Movie(item.title, item.releaseDate, item.posterPath)
+                        vm = Movie(it.title, it.releaseDate, it.posterPath)
                     }
                 }
             }
