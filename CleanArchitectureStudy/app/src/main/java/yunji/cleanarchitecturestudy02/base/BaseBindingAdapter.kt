@@ -23,6 +23,7 @@ fun ImageView.loadImageUrl(url: String?) {
     Glide.with(context)
         .load(url)
         .placeholder(ColorDrawable(Color.GRAY))
+        .error(ColorDrawable(Color.DKGRAY))
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
 }

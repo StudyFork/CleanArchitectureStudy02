@@ -10,7 +10,7 @@ import yunji.cleanarchitecturestudy02.listener.OnItemClickListener
  * Created by yunji on 09/03/2020
  */
 abstract class BasePagedRecyclerView<B : ViewDataBinding, T : Any>(
-    itemDiffUtilCallback: BaseDiffUtilCallback<T>,
+    itemDiffUtilCallback: BaseDiffUtilCallback<T> = BaseDiffUtilCallback(),
     @LayoutRes private val layoutResId: Int
 ) : PagedListAdapter<T, BaseViewHolder<B, T>>(itemDiffUtilCallback) {
 
