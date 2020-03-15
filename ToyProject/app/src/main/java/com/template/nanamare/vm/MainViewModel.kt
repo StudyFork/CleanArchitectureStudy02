@@ -15,29 +15,22 @@ class MainViewModel(private val genreDataSource: GenreDataSource) : BaseViewMode
 
     fun requestMovieGenre() {
         compositeDisposable.add(genreDataSource.requestGenre(liveGenreNetworkState)
-            .doOnSubscribe {
-                liveGenreNetworkState.value = NetworkState.loading()
-            }
-            .doOnTerminate {
-                liveGenreNetworkState.value = NetworkState.init()
-            }
+            .doOnSubscribe { liveGenreNetworkState.value = NetworkState.loading() }
+            .doOnTerminate { liveGenreNetworkState.value = NetworkState.init() }
             .subscribe({ response ->
                 when (response.isSuccessful) {
                     true -> {
                         response.body()?.let {
                             liveGenreNetworkState.value = NetworkState.success(it)
                         } ?: run {
-                            liveGenreNetworkState.value =
-                                NetworkState.error(Throwable("empty body"))
+                            liveGenreNetworkState.value = NetworkState.error(Throwable("empty body"))
                         }
                     }
                     false -> {
                         response.errorBody()?.let {
-                            liveGenreNetworkState.value =
-                                NetworkState.serverError(converterErrorBody(it.string()))
+                            liveGenreNetworkState.value = NetworkState.serverError(converterErrorBody(it.string()))
                         } ?: run {
-                            liveGenreNetworkState.value =
-                                NetworkState.error(Throwable("empty errorBody"))
+                            liveGenreNetworkState.value = NetworkState.error(Throwable("empty errorBody"))
                         }
                     }
                 }

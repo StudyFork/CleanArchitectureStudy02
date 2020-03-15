@@ -41,9 +41,7 @@ class MainActivity : BaseActivity<MainActivityBinding>(R.layout.main_activity) {
                         replaceFragmentInActivity(MovieFragment(it.item.genres), R.id.flContent)
                     }
                     is NetworkState.Error -> showToast(it.throwable.toString())
-                    is NetworkState.ServerError -> showToast(
-                        "${it.errorMessage.statusCode}\n${it.errorMessage.statusMessage}\n${it.errorMessage.success}"
-                    )
+                    is NetworkState.ServerError -> showToast(it.toString())
                 }
             })
         }
