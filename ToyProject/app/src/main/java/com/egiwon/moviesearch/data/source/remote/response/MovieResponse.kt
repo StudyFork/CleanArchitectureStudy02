@@ -1,5 +1,6 @@
 package com.egiwon.moviesearch.data.source.remote.response
 
+import com.egiwon.moviesearch.data.model.MovieEntity
 import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
@@ -43,3 +44,15 @@ data class MovieResponse(
         val voteCount: Int
     )
 }
+
+fun MovieResponse.mapToMovieEntities(): List<MovieEntity> =
+    this.results.map { movieResponse ->
+        MovieEntity(
+            id = movieResponse.id,
+            title = movieResponse.title,
+            population = movieResponse.popularity,
+            posterPath = movieResponse.posterPath,
+            overView = movieResponse.overview
+        )
+    }
+

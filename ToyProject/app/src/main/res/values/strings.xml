@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MovieSearch</string>
+    <string name="error_text">error</string>
 </resources>
