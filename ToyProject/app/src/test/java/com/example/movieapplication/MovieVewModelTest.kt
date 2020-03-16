@@ -3,6 +3,7 @@ package com.example.movieapplication
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.movieapplication.data.model.ResultWrapper
 import com.example.movieapplication.data.repository.MovieRepository
+import com.example.movieapplication.presenter.model.Movie
 import com.example.movieapplication.presenter.model.MovieItem
 import com.example.movieapplication.presenter.movie.MovieViewModel
 import com.example.movieapplication.utils.LiveDataTestUtil
@@ -43,7 +44,7 @@ class MovieVewModelTest {
     fun `영화 정보 받아오기 성공 케이스`() {
         runBlocking {
             //given
-            val success = ResultWrapper.Success(listOf(MovieItem()))
+            val success = ResultWrapper.Success(Movie(movies = listOf(MovieItem())))
             `when`(movieRepository.getPopularMovie(1)).thenReturn(success)
 
             //when
@@ -53,7 +54,7 @@ class MovieVewModelTest {
             val movies = LiveDataTestUtil.getValue(movieViewModel.movies)
             val moviesVisibility = LiveDataTestUtil.getValue(movieViewModel.moviesVisibility)
 
-            Assert.assertEquals(success.value, movies)
+            Assert.assertEquals(success.value.movies, movies)
             Assert.assertEquals(true, moviesVisibility)
         }
     }
@@ -100,30 +101,52 @@ class MovieVewModelTest {
     fun `데이터 갱신 시 page cnt 증가 케이스`() {
         runBlocking {
             //given
-            val success1 = ResultWrapper.Success(listOf(MovieItem(id = 1)))
+            val success1 =
+                ResultWrapper.Success(Movie(totalPages = 10, movies = listOf(MovieItem(id = 1))))
             `when`(movieRepository.getPopularMovie(1)).thenReturn(success1)
 
-            val success2 = ResultWrapper.Success(listOf(MovieItem(id = 2)))
+            val success2 =
+                ResultWrapper.Success(Movie(totalPages = 10, movies = listOf(MovieItem(id = 2))))
             `when`(movieRepository.getPopularMovie(2)).thenReturn(success2)
 
-            val success3 = ResultWrapper.Success(listOf(MovieItem(id = 3)))
+            val success3 =
+                ResultWrapper.Success(Movie(totalPages = 10, movies = listOf(MovieItem(id = 3))))
             `when`(movieRepository.getPopularMovie(3)).thenReturn(success3)
 
             //when & then
             movieViewModel.loadMovie()
 
             val movies1 = LiveDataTestUtil.getValue(movieViewModel.movies)
-            Assert.assertEquals(success1.value, movies1)
+            Assert.assertEquals(success1.value.movies, movies1)
 
             movieViewModel.addMovie()
 
             val movies2 = LiveDataTestUtil.getValue(movieViewModel.movies)
-            Assert.assertEquals(success2.value, movies2)
+            Assert.assertEquals(success2.value.movies, movies2)
 
             movieViewModel.addMovie()
 
             val movies3 = LiveDataTestUtil.getValue(movieViewModel.movies)
-            Assert.assertEquals(success3.value, movies3)
+            Assert.assertEquals(success3.value.movies, movies3)
+        }
+    }
+
+    @Test
+    fun `데이터 갱신 시 total pages 초과 케이스`() {
+        runBlocking {
+            //given
+            val success =
+                ResultWrapper.Success(Movie(totalPages = 1, movies = listOf(MovieItem(id = 1))))
+            `when`(movieRepository.getPopularMovie(1)).thenReturn(success)
+
+            //when
+            movieViewModel.loadMovie()
+            movieViewModel.addMovie()
+
+            //then
+            val toast =
+                LiveDataTestUtil.getValue(movieViewModel.toastLiveData).getContentIfNotHandled()
+            Assert.assertEquals("Last Page", toast)
         }
     }
 }
