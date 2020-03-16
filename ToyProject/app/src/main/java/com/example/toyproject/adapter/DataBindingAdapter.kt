@@ -9,11 +9,12 @@ import com.example.toyproject.ui.main.MainMoviePostingRecyclerAdapter
 
 @BindingAdapter("bind:replace")
 fun RecyclerView.replaceAll(item: List<SearchMovieData>?) {
-    if (!item.isNullOrEmpty()) (adapter as? MainMoviePostingRecyclerAdapter)!!.setItemList(item as ArrayList<SearchMovieData>)
+    if (!item.isNullOrEmpty()) (adapter as? MainMoviePostingRecyclerAdapter)?.setItemList(item as ArrayList<SearchMovieData>)
 }
 
 @BindingAdapter("bind:bindImage")
-fun bindImage(imageView: ImageView, imageUri: String) {
-    if (imageUri.isNotEmpty())
-    Glide.with(imageView.context).load(imageUri).into(imageView)
+fun ImageView.bindImage(imageUri: String) {
+    if (imageUri.isNotEmpty()) {
+        Glide.with(this.context).load(imageUri).into(this)
+    }
 }
