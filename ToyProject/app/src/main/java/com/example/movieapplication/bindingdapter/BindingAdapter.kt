@@ -21,11 +21,9 @@ fun ImageView.setLayoutHeight(imageHeight: Int) {
 
 @BindingAdapter("bind:setImageUrl")
 fun ImageView.setImageUrl(url: String?) {
-    if (url != null) {
-        Glide.with(context)
-            .load(url)
-            .placeholder(R.drawable.place_holder)
-            .error(R.drawable.error_holder)
-            .into(this)
-    }
+    Glide.with(context)
+        .load(url)
+        .placeholder(R.drawable.place_holder)
+        .error(R.drawable.error_holder)
+        .into(this)
 }
