@@ -1,7 +1,6 @@
-package com.ironelder.toyapplication.splash
+package com.ironelder.toyapplication.presentation.splash
 
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +8,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import com.ironelder.toyapplication.R
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
-class SplashFragment : Fragment() {
+class SplashFragment : Fragment(), CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + Job()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,14 +22,18 @@ class SplashFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Handler().postDelayed({
-            context?.let {
-                findNavController().navigate(R.id.action_splashFragment_to_movieListFragment)
+        launch {
+            delay(2000)
+            withContext(Dispatchers.Main){
+                context?.let {
+                    findNavController().navigate(R.id.action_splashFragment_to_popularMovieListFragment)
+                }
             }
-        }, 2500)
+        }
     }
 
 }
