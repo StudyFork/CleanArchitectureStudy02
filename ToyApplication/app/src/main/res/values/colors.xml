@@ -6,4 +6,5 @@
     <color name="colorSplashBackground">#0C1C23</color>
     <color name="colorStatusBarBackground">#0C1C23</color>
     <color name="colorMovieListItemTitleTextColor">#FFFFFF</color>
+    <color name="colorMovieProgressBarTintColor">#01D277</color>
 </resources>

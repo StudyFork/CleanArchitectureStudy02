@@ -1,4 +1,4 @@
-package com.ironelder.toyapplication.model.movielist
+package com.ironelder.toyapplication.data.models.movielist
 
 data class MovieResultModel(
     val adult: Boolean,

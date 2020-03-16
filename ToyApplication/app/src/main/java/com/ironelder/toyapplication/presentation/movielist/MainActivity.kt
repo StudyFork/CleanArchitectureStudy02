@@ -1,10 +1,9 @@
-package com.ironelder.toyapplication
+package com.ironelder.toyapplication.presentation.movielist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.ironelder.toyapplication.R
 
 class MainActivity : AppCompatActivity() {
 

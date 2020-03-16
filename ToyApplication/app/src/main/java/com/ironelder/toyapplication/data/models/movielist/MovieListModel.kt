@@ -1,7 +1,6 @@
-package com.ironelder.toyapplication.model.movielist
+package com.ironelder.toyapplication.data.models.movielist
 
 import com.google.gson.annotations.SerializedName
-import com.ironelder.toyapplication.IMAGE_BASE_URL
 
 data class MovieListModel(
     val page: Int,

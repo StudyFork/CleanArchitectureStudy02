@@ -1,13 +1,12 @@
-package com.ironelder.toyapplication
+package com.ironelder.toyapplication.common.components
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ironelder.toyapplication.model.movielist.MovieResultModel
+import com.ironelder.toyapplication.R
+import com.ironelder.toyapplication.data.models.movielist.MovieResultModel
 import kotlinx.android.synthetic.main.item_movie_list.view.*
 
 
