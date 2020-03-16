@@ -20,7 +20,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.moviewViewModel = movieViewModel
+        binding.movieViewModel = movieViewModel
 
         initObservable()
         initRecyclerView()
@@ -30,19 +30,11 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
 
     private fun initObservable() {
 
-        movieViewModel.movies.observe(this, Observer {
+        movieViewModel.movies.observe(viewLifecycleOwner, Observer {
             movieAdapter.addItems(it)
         })
 
-        movieViewModel.loading.observe(this, Observer { flag ->
-            if (flag) {
-                binding.pbMovie.visibility = View.VISIBLE
-            } else {
-                binding.pbMovie.visibility = View.GONE
-            }
-        })
-
-        movieViewModel.bottomLoading.observe(this, Observer { flag ->
+        movieViewModel.bottomLoading.observe(viewLifecycleOwner, Observer { flag ->
             if (flag) {
                 movieAdapter.addBottomLoading()
                 binding.rvMovie.scrollToPosition(movieAdapter.itemCount - 1)

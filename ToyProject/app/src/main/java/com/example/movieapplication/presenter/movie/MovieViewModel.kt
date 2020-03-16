@@ -2,17 +2,22 @@ package com.example.movieapplication.presenter.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.example.movieapplication.base.BaseViewModel
+import com.example.movieapplication.data.model.ResultWrapper
 import com.example.movieapplication.data.repository.MovieRepository
 import com.example.movieapplication.presenter.model.MovieItem
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
 
     private var isBottomLoading = false
     private var page = 1
+
+    private val _errorMessage = MutableLiveData<String>("")
+    val errorMessage: LiveData<String> get() = _errorMessage
+    val moviesVisibility = Transformations.map(_errorMessage) { it.isEmpty() }
 
     private val _loading = MutableLiveData<Boolean>(false)
     val loading: LiveData<Boolean> get() = _loading
@@ -27,17 +32,20 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
 
         showLoading()
 
-        viewModelScope.launch(ioDispatchers) {
-            try {
-                val items = movieRepo.get(1)
+        viewModelScope.launch {
+            hideLoading()
 
-                withContext(uiDispatchers) {
-                    hideLoading()
-                    _movies.value = items
+            val result = movieRepo.get(page = 1)
+            when (result) {
+                is ResultWrapper.Success -> {
+                    _movies.value = result.value
+                    hideError()
                 }
-            } catch (e: Exception) {
-                withContext(uiDispatchers) {
-                    hideLoading()
+                is ResultWrapper.HttpException -> {
+                    showError(result.error)
+                }
+                is ResultWrapper.NetworkError -> {
+                    showError(result.error)
                 }
             }
         }
@@ -53,20 +61,36 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
 
             isBottomLoading = true
 
-            viewModelScope.launch(ioDispatchers) {
+            viewModelScope.launch {
 
-                val items = movieRepo.get(page)
-
-                withContext(uiDispatchers) {
-
-                    hideBottomLoading()
-
-                    isBottomLoading = false
-
-                    _movies.value = items
+                val result = movieRepo.get(page)
+                when (result) {
+                    is ResultWrapper.Success -> {
+                        _movies.value = result.value
+                        hideError()
+                    }
+                    is ResultWrapper.HttpException -> {
+                        showError(result.error)
+                    }
+                    is ResultWrapper.NetworkError -> {
+                        showError(result.error)
+                    }
                 }
+
+                //result 보다 아래에 위치해야 합니다.
+                hideBottomLoading()
+
+                isBottomLoading = false
             }
         }
+    }
+
+    private fun showError(error: String) {
+        _errorMessage.value = error
+    }
+
+    private fun hideError() {
+        _errorMessage.value = ""
     }
 
     private fun showLoading() {
@@ -85,3 +109,4 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
         _bottomLoading.postValue(false)
     }
 }
+
