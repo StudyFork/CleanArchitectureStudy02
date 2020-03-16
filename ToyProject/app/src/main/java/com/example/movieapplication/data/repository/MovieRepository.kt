@@ -5,5 +5,5 @@ import com.example.movieapplication.presenter.model.MovieItem
 
 interface MovieRepository {
 
-    suspend fun get(page: Int = 1): ResultWrapper<List<MovieItem>>
+    suspend fun getPopularMovie(page: Int = 1): ResultWrapper<List<MovieItem>>
 }

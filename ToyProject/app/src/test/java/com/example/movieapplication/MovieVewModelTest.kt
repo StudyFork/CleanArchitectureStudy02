@@ -44,7 +44,7 @@ class MovieVewModelTest {
         runBlocking {
             //given
             val success = ResultWrapper.Success(listOf(MovieItem()))
-            `when`(movieRepository.get(1)).thenReturn(success)
+            `when`(movieRepository.getPopularMovie(1)).thenReturn(success)
 
             //when
             movieViewModel.loadMovie()
@@ -63,7 +63,7 @@ class MovieVewModelTest {
         runBlocking {
             //given
             val httpException = ResultWrapper.HttpException(404, "http error")
-            `when`(movieRepository.get(1)).thenReturn(httpException)
+            `when`(movieRepository.getPopularMovie(1)).thenReturn(httpException)
 
             //when
             movieViewModel.loadMovie()
@@ -82,7 +82,7 @@ class MovieVewModelTest {
         runBlocking {
             //given
             val httpException = ResultWrapper.NetworkError()
-            `when`(movieRepository.get(1)).thenReturn(httpException)
+            `when`(movieRepository.getPopularMovie(1)).thenReturn(httpException)
 
             //when
             movieViewModel.loadMovie()
@@ -101,13 +101,13 @@ class MovieVewModelTest {
         runBlocking {
             //given
             val success1 = ResultWrapper.Success(listOf(MovieItem(id = 1)))
-            `when`(movieRepository.get(1)).thenReturn(success1)
+            `when`(movieRepository.getPopularMovie(1)).thenReturn(success1)
 
             val success2 = ResultWrapper.Success(listOf(MovieItem(id = 2)))
-            `when`(movieRepository.get(2)).thenReturn(success2)
+            `when`(movieRepository.getPopularMovie(2)).thenReturn(success2)
 
             val success3 = ResultWrapper.Success(listOf(MovieItem(id = 3)))
-            `when`(movieRepository.get(3)).thenReturn(success3)
+            `when`(movieRepository.getPopularMovie(3)).thenReturn(success3)
 
             //when & then
             movieViewModel.loadMovie()
