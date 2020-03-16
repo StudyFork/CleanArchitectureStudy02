@@ -5,11 +5,11 @@ import com.ironelder.toyapplication.common.utils.IMAGE_BASE_URL
 import com.ironelder.toyapplication.common.utils.MOVIE_BASE_URL
 import com.ironelder.toyapplication.common.utils.NETWORK_TIMEOUT
 import com.ironelder.toyapplication.data.service.NetworkService
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NetworkServiceApi {
@@ -18,7 +18,7 @@ object NetworkServiceApi {
             Retrofit.Builder()
                 .baseUrl(MOVIE_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .addConverterFactory(MoshiConverterFactory.create())
                 .client(okHttpClient)
                 .build()
         return@lazy retrofit.create(NetworkService::class.java)

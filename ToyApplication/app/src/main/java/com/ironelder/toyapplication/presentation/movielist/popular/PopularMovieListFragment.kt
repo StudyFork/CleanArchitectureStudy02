@@ -12,7 +12,7 @@ import com.ironelder.toyapplication.common.components.MovieListAdapter
 import com.ironelder.toyapplication.data.api.NetworkServiceApi
 import com.ironelder.toyapplication.data.models.movielist.MovieListModel
 import com.ironelder.toyapplication.data.models.movielist.MovieResultModel
-import kotlinx.android.synthetic.main.fragment_popular_movie_list.*
+import kotlinx.android.synthetic.main.popular_movie_list_fragment.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -23,8 +23,8 @@ import retrofit2.Response
 
 class PopularMovieListFragment : Fragment() {
 
-    private val completableJob = Job()
-    private val coroutineScope = CoroutineScope(Dispatchers.IO + completableJob)
+//    private val completableJob = Job()
+//    private val coroutineScope = CoroutineScope(Dispatchers.IO + completableJob)
     private val movieList = arrayListOf<MovieResultModel>()
 
     override fun onCreateView(
@@ -32,7 +32,7 @@ class PopularMovieListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_popular_movie_list, container, false)
+        return inflater.inflate(R.layout.popular_movie_list_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -40,13 +40,13 @@ class PopularMovieListFragment : Fragment() {
         pb_loading.visibility = View.VISIBLE
         rv_movie_list.adapter =
             MovieListAdapter()
-        coroutineScope.launch {
-            getMovieList()
-        }
+//        coroutineScope.launch {
+//            getMovieList()
+//        }
     }
 
     fun getMovieList() {
-        NetworkServiceApi.movieServiceApi.getMovieList("popular").enqueue(
+        NetworkServiceApi.movieServiceApi.getPopularMovieList("popular").enqueue(
             object : Callback<MovieListModel> {
                 override fun onFailure(call: Call<MovieListModel>, t: Throwable) {
                 }
@@ -88,6 +88,6 @@ class PopularMovieListFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        completableJob.cancel()
+//        completableJob.cancel()
     }
 }

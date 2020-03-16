@@ -15,11 +15,21 @@
             app:destination="@id/popularMovieListFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_searchMovieListFragment"
+            app:destination="@id/searchMovieListFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/popularMovieListFragment"
         android:name="com.ironelder.toyapplication.presentation.movielist.popular.PopularMovieListFragment"
         android:label="fragment_movie_list"
-        tools:layout="@layout/fragment_popular_movie_list" />
+        tools:layout="@layout/popular_movie_list_fragment" />
+    <fragment
+        android:id="@+id/searchMovieListFragment"
+        android:name="com.ironelder.toyapplication.presentation.movielist.search.SearchMovieListFragment"
+        android:label="search_movie_list_fragment"
+        tools:layout="@layout/search_movie_list_fragment" />
 </navigation>

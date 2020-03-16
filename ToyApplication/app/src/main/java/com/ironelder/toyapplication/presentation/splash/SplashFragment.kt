@@ -11,10 +11,7 @@ import com.ironelder.toyapplication.R
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class SplashFragment : Fragment(), CoroutineScope {
-
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + Job()
+class SplashFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,15 +22,24 @@ class SplashFragment : Fragment(), CoroutineScope {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        launch {
+        CoroutineScope(Dispatchers.Main).launch {
             delay(2000)
-            withContext(Dispatchers.Main){
-                context?.let {
-                    findNavController().navigate(R.id.action_splashFragment_to_popularMovieListFragment)
-                }
+            context?.let {
+//                    findNavController().navigate(R.id.action_splashFragment_to_popularMovieListFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_searchMovieListFragment)
+
             }
         }
+//        launch {
+//            delay(2000)
+//            withContext(Dispatchers.Main){
+//                context?.let {
+////                    findNavController().navigate(R.id.action_splashFragment_to_popularMovieListFragment)
+//                    findNavController().navigate(R.id.action_splashFragment_to_searchMovieListFragment)
+//
+//                }
+//            }
+//        }
     }
 
 }
