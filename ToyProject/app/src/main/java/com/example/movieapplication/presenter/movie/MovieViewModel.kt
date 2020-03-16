@@ -35,7 +35,7 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
         viewModelScope.launch {
             hideLoading()
 
-            val result = movieRepo.get(page = 1)
+            val result = movieRepo.getPopularMovie(page = 1)
             when (result) {
                 is ResultWrapper.Success -> {
                     _movies.value = result.value
@@ -63,7 +63,7 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
 
             viewModelScope.launch {
 
-                val result = movieRepo.get(page)
+                val result = movieRepo.getPopularMovie(page)
                 when (result) {
                     is ResultWrapper.Success -> {
                         _movies.value = result.value

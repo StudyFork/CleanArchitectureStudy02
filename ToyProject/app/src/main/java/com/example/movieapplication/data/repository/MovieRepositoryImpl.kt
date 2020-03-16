@@ -27,7 +27,7 @@ class MovieRepositoryImpl(
     private val imageWidth = (deviceWidth - (imageMargin * 3)) / 2
     private val imageHeight = imageWidth * (imageHeightRatio / imageWidthRatio)
 
-    override suspend fun get(page: Int): ResultWrapper<List<MovieItem>> {
+    override suspend fun getPopularMovie(page: Int): ResultWrapper<List<MovieItem>> {
         return try {
             val response = movieApi.getPopular(Constant.apiKey, page)
             val movieItems = response.results.map {
