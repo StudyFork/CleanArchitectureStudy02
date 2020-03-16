@@ -56,12 +56,11 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
             layoutManager = GridLayoutManager(this.context, MovieAdapter.spanCount).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
-                        return when (MovieAdapter.ViewType.getViewType(
-                            movieAdapter.getItemViewType(position)
-                        )) {
-                            MovieAdapter.ViewType.MOVIE -> 1
-                            MovieAdapter.ViewType.LOADING -> 2
-                        }
+                        return MovieAdapter.ViewType.getViewType(
+                            movieAdapter.getItemViewType(
+                                position
+                            )
+                        ).spanCount
                     }
                 }
             }

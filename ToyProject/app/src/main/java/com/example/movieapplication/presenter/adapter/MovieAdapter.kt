@@ -127,8 +127,8 @@ class MovieAdapter : RecyclerView.Adapter<BaseViewHolder<ViewDataBinding, MovieI
         }
     }
 
-    enum class ViewType {
-        MOVIE, LOADING;
+    enum class ViewType(val spanCount: Int) {
+        MOVIE(1), LOADING(spanCount);
 
         companion object {
             fun getViewType(value: Int) = values()[value]
