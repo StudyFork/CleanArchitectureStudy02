@@ -1,8 +1,10 @@
 package com.example.movieapplication
 
+import androidx.annotation.DimenRes
+
 interface AppProvider {
 
     fun getDeviceWidth(): Int
 
-    fun getDimens(dimensId: Int): Float
+    fun getDimens(@DimenRes dimensId: Int): Float
 }
