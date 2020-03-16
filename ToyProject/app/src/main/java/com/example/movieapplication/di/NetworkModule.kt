@@ -2,8 +2,10 @@ package com.example.movieapplication.di
 
 import com.example.movieapplication.BuildConfig
 import com.example.movieapplication.constant.Constant
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.CallAdapter
 import retrofit2.Converter
@@ -39,11 +41,14 @@ val networkModule = module {
             writeTimeout(5, TimeUnit.SECONDS)
 
             // 이 클라이언트를 통해 오고 가는 네트워크 요청/응답을 로그로 표시하도록 합니다.
-            addInterceptor(get())
+            addInterceptor(get(named("interceptor_debug")))
+
+            // Header 또는 QueryParam을 추가해 줍니다.
+            addInterceptor(get(named("interceptor_header")))
         }.build()
     }
 
-    single<okhttp3.Interceptor> {
+    single(named("interceptor_debug")) {
 
         //val debug: Boolean by inject(named("debug"))
 
@@ -56,4 +61,20 @@ val networkModule = module {
         }
     }
 
+    single(named("interceptor_header")) {
+        Interceptor { chain ->
+
+            val request = chain.request()
+            val httpUrl = request.url().newBuilder()
+                .addQueryParameter("api_key", Constant.apiKey)
+                .build()
+
+            chain.proceed(
+                request.newBuilder()
+                    //.addHeader()
+                    .url(httpUrl)
+                    .build()
+            )
+        }
+    }
 }

@@ -2,7 +2,6 @@ package com.example.movieapplication.data.repository
 
 import com.example.movieapplication.AppProvider
 import com.example.movieapplication.R
-import com.example.movieapplication.constant.Constant
 import com.example.movieapplication.data.model.ErrorResponse
 import com.example.movieapplication.data.model.ResultWrapper
 import com.example.movieapplication.data.model.mapToPresenter
@@ -29,7 +28,7 @@ class MovieRepositoryImpl(
 
     override suspend fun getPopularMovie(page: Int): ResultWrapper<List<MovieItem>> {
         return try {
-            val response = movieApi.getPopular(Constant.apiKey, page)
+            val response = movieApi.getPopular(page)
             val movieItems = response.results.map {
                 it.mapToPresenter(imageWidth.toInt(), imageHeight.toInt())
             }
