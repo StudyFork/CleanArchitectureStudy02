@@ -38,11 +38,9 @@ class MovieAdapter : RecyclerView.Adapter<BaseViewHolder<ViewDataBinding, MovieI
             if (this is MovieViewHolder) {
                 itemView.setOnClickListener {
                     onItemClickListener?.let { listener ->
-                        itemView.setOnClickListener {
-                            listener.onItemClick(
-                                items[adapterPosition]
-                            )
-                        }
+                        listener.onItemClick(
+                            items[adapterPosition]
+                        )
                     }
                 }
             }
