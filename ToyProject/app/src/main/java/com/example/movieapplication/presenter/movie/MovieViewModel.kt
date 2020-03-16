@@ -8,11 +8,13 @@ import com.example.movieapplication.base.BaseViewModel
 import com.example.movieapplication.data.model.ResultWrapper
 import com.example.movieapplication.data.repository.MovieRepository
 import com.example.movieapplication.presenter.model.MovieItem
+import com.example.movieapplication.utils.Event
 import kotlinx.coroutines.launch
 
 class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
 
     private var isBottomLoading = false
+    private var totalPages = 0
     private var page = 1
 
     private val _errorMessage = MutableLiveData<String>("")
@@ -28,6 +30,9 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
     private val _movies = MutableLiveData<List<MovieItem>>(mutableListOf())
     val movies: LiveData<List<MovieItem>> get() = _movies
 
+    private val _toastLiveData = MutableLiveData<Event<String>>()
+    val toastLiveData: LiveData<Event<String>> get() = _toastLiveData
+
     fun loadMovie() {
 
         showLoading()
@@ -38,7 +43,8 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
             val result = movieRepo.getPopularMovie(page = 1)
             when (result) {
                 is ResultWrapper.Success -> {
-                    _movies.value = result.value
+                    totalPages = result.value.totalPages
+                    _movies.value = result.value.movies
                     hideError()
                 }
                 is ResultWrapper.HttpException -> {
@@ -55,6 +61,11 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
 
         if (!isBottomLoading) {
 
+            if (totalPages <= page) {
+                _toastLiveData.value = Event("Last Page")
+                return
+            }
+
             showBottomLoading()
 
             page++
@@ -66,7 +77,7 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
                 val result = movieRepo.getPopularMovie(page)
                 when (result) {
                     is ResultWrapper.Success -> {
-                        _movies.value = result.value
+                        _movies.value = result.value.movies
                         hideError()
                     }
                     is ResultWrapper.HttpException -> {

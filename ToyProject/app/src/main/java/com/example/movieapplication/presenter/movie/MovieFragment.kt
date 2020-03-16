@@ -2,6 +2,7 @@ package com.example.movieapplication.presenter.movie
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,7 +30,6 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
 
 
     private fun initObservable() {
-
         movieViewModel.movies.observe(viewLifecycleOwner, Observer {
             movieAdapter.addItems(it)
         })
@@ -40,6 +40,12 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
                 binding.rvMovie.scrollToPosition(movieAdapter.itemCount - 1)
             } else {
                 movieAdapter.removeBottomLoading()
+            }
+        })
+
+        movieViewModel.toastLiveData.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let { msg ->
+                Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
             }
         })
     }

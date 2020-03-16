@@ -6,7 +6,7 @@ import com.example.movieapplication.data.model.ErrorResponse
 import com.example.movieapplication.data.model.ResultWrapper
 import com.example.movieapplication.data.model.mapToPresenter
 import com.example.movieapplication.data.source.remote.MovieApi
-import com.example.movieapplication.presenter.model.MovieItem
+import com.example.movieapplication.presenter.model.Movie
 import com.google.gson.Gson
 import retrofit2.HttpException
 import timber.log.Timber
@@ -26,13 +26,16 @@ class MovieRepositoryImpl(
     private val imageWidth = (deviceWidth - (imageMargin * 3)) / 2
     private val imageHeight = imageWidth * (imageHeightRatio / imageWidthRatio)
 
-    override suspend fun getPopularMovie(page: Int): ResultWrapper<List<MovieItem>> {
+    override suspend fun getPopularMovie(page: Int): ResultWrapper<Movie> {
         return try {
             val response = movieApi.getPopular(page)
-            val movieItems = response.results.map {
-                it.mapToPresenter(imageWidth.toInt(), imageHeight.toInt())
-            }
-            ResultWrapper.Success(movieItems)
+            val movie = Movie(
+                totalPages = response.totalPages,
+                movies = response.results.map {
+                    it.mapToPresenter(imageWidth.toInt(), imageHeight.toInt())
+                }
+            )
+            ResultWrapper.Success(movie)
         } catch (throwable: Throwable) {
             Timber.e(throwable)
             when (throwable) {
