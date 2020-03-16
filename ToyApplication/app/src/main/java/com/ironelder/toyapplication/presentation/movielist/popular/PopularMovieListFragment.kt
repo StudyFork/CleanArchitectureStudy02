@@ -1,16 +1,18 @@
-package com.ironelder.toyapplication
+package com.ironelder.toyapplication.presentation.movielist.popular
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import com.ironelder.toyapplication.model.movielist.MovieListModel
-import com.ironelder.toyapplication.model.movielist.MovieResultModel
-import kotlinx.android.synthetic.main.fragment_movie_list.*
+import com.ironelder.toyapplication.R
+import com.ironelder.toyapplication.common.utils.IMAGE_BASE_URL
+import com.ironelder.toyapplication.common.components.MovieListAdapter
+import com.ironelder.toyapplication.data.api.NetworkServiceApi
+import com.ironelder.toyapplication.data.models.movielist.MovieListModel
+import com.ironelder.toyapplication.data.models.movielist.MovieResultModel
+import kotlinx.android.synthetic.main.fragment_popular_movie_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -19,10 +21,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-/**
- * A simple [Fragment] subclass.
- */
-class MovieListFragment : Fragment() {
+class PopularMovieListFragment : Fragment() {
 
     private val completableJob = Job()
     private val coroutineScope = CoroutineScope(Dispatchers.IO + completableJob)
@@ -33,18 +32,14 @@ class MovieListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_list, container, false)
+        return inflater.inflate(R.layout.fragment_popular_movie_list, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        rv_movie_list.layoutManager = GridLayoutManager(context, 6)
-        (rv_movie_list.layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup(){
-            override fun getSpanSize(position: Int): Int {
-                return 2
-            }
-        }
-        rv_movie_list.adapter = MovieListAdapter()
+        pb_loading.visibility = View.VISIBLE
+        rv_movie_list.adapter =
+            MovieListAdapter()
         coroutineScope.launch {
             getMovieList()
         }
@@ -63,6 +58,7 @@ class MovieListFragment : Fragment() {
                     if (response.body()?.movieResultModels != null) {
                         movieList.addAll(mappingImageUrl((response.body() as MovieListModel).movieResultModels))
                         (rv_movie_list.adapter as MovieListAdapter).setMovieList(movieList)
+                        pb_loading.visibility = View.GONE
                     }
 
                 }
