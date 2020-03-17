@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.paging.PagedList
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseRecyclerView {
@@ -33,19 +34,19 @@ abstract class BaseRecyclerView {
         }
     }
 
-    abstract class BaseAdapter<I : BaseIdentifier, B : ViewDataBinding>(
+    abstract class BaseAdapter<BI : BaseIdentifier, B : ViewDataBinding>(
         @LayoutRes private val layoutResId: Int,
         private val bindingId: Int
-    ) : ListAdapter<I, BaseViewHolder<B>>(object : DiffUtil.ItemCallback<I>() {
-        override fun areItemsTheSame(oldItem: I, newItem: I): Boolean {
+    ) : PagedListAdapter<BI, BaseViewHolder<B>>(object : DiffUtil.ItemCallback<BI>() {
+        override fun areItemsTheSame(oldItem: BI, newItem: BI): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: I, newItem: I): Boolean {
+        override fun areContentsTheSame(oldItem: BI, newItem: BI): Boolean {
             return oldItem == newItem
         }
-    }) {
 
+    }) {
         private lateinit var layoutInflater: LayoutInflater
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<B> =
@@ -54,7 +55,7 @@ abstract class BaseRecyclerView {
         override fun onBindViewHolder(holder: BaseViewHolder<B>, position: Int) =
             holder.onBindViewHolder(getItem(position))
 
-        fun replaceAll(items: List<I>?) {
+        fun replaceAll(items: PagedList<BI>?) {
             if (items != null) {
                 submitList(items)
             }
