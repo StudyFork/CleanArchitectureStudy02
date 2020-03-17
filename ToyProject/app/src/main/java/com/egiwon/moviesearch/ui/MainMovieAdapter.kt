@@ -4,14 +4,14 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseRecyclerView
+import com.egiwon.moviesearch.data.model.MovieEntity
 import com.egiwon.moviesearch.databinding.ItemMovieBinding
-import com.egiwon.moviesearch.ui.vo.MovieViewObject
 
 class MainMovieAdapter(
     @LayoutRes private val layoutResId: Int = R.layout.item_movie,
     private val bindingId: Int,
     private val viewModel: MainViewModel
-) : BaseRecyclerView.BaseAdapter<MovieViewObject, ItemMovieBinding>(
+) : BaseRecyclerView.BaseAdapter<MovieEntity, ItemMovieBinding>(
     layoutResId,
     bindingId
 ) {

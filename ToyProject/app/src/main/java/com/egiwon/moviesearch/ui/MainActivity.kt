@@ -1,6 +1,7 @@
 package com.egiwon.moviesearch.ui
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.egiwon.moviesearch.BR
 import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseActivity
@@ -21,5 +22,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
         }
 
         viewModel.loadPopularMovies()
+
+        viewModel.resultMovieList.observe(this, Observer {
+            (binding.rvMovieList.adapter as? MainMovieAdapter)?.run {
+                replaceAll(it)
+            }
+        })
     }
 }

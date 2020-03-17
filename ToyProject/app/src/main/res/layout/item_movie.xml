@@ -11,7 +11,7 @@
 
         <variable
             name="movie"
-            type="com.egiwon.moviesearch.ui.vo.MovieViewObject" />
+            type="com.egiwon.moviesearch.data.model.MovieEntity" />
 
     </data>
 
