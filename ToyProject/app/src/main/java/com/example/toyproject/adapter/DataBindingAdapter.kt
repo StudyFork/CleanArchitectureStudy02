@@ -9,7 +9,9 @@ import com.example.toyproject.ui.main.MainMoviePostingRecyclerAdapter
 
 @BindingAdapter("bind:replace")
 fun RecyclerView.replaceAll(item: List<SearchMovieData>?) {
-    if (!item.isNullOrEmpty()) (adapter as? MainMoviePostingRecyclerAdapter)?.setItemList(item as ArrayList<SearchMovieData>)
+    if (!item.isNullOrEmpty()) {
+        (adapter as? MainMoviePostingRecyclerAdapter)?.setItemList(item as ArrayList<SearchMovieData>)
+    }
 }
 
 @BindingAdapter("bind:bindImage")
