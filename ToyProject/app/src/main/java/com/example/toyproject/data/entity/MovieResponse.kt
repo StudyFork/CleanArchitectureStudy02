@@ -1,5 +1,6 @@
 package com.example.toyproject.data.entity
 
+import com.example.toyproject.network.NetworkConstant
 import com.google.gson.annotations.SerializedName
 
 data class SearchMovieResponse(
@@ -8,8 +9,10 @@ data class SearchMovieResponse(
 )
 
 data class SearchMovieData(
-    val id: String,
-    val poster_path: String
+    @SerializedName("id")
+    val movieId: String,
+    @SerializedName("poster_path")
+    val posterPath: String
 ) {
-    fun getPosterUrl(): String = "https://image.tmdb.org/t/p/w200/$poster_path"
+    fun getPosterUrl(): String = "${NetworkConstant.IMAGE_PATH}$posterPath"
 }
