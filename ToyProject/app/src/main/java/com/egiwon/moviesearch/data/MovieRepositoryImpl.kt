@@ -9,8 +9,11 @@ import com.egiwon.moviesearch.data.source.remote.MovieRemoteDataSource
 import com.egiwon.moviesearch.data.source.remote.response.mapToMovieEntities
 import com.egiwon.moviesearch.ext.onFailureRequestMovie
 import com.egiwon.moviesearch.ext.onSuccessRequestMovie
+import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 
 class MovieRepositoryImpl(
     private val movieRemoteDataSource: MovieRemoteDataSource
@@ -25,9 +28,18 @@ class MovieRepositoryImpl(
         onSuccess: onSuccessRequestMovie,
         onFailure: onFailureRequestMovie
     ): LiveData<PagedList<MovieEntity>> {
+
         val movieDataSourceFactory =
             MovieDataSourceFactory(compositeDisposable, movieRemoteDataSource, onSuccess, onFailure)
+
         return LivePagedListBuilder(movieDataSourceFactory, MovieDataSourceFactory.moviePageConfig)
+            .setFetchExecutor {
+                Completable
+                    .fromRunnable(it)
+                    .subscribeOn(Schedulers.io())
+                    .subscribe()
+                    .addTo(compositeDisposable)
+            }
             .build()
     }
 
