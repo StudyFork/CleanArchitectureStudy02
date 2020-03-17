@@ -7,6 +7,7 @@ import com.egiwon.moviesearch.base.BaseViewModel
 import com.egiwon.moviesearch.data.MovieRepository
 import com.egiwon.moviesearch.data.model.mapToMovieViewObject
 import com.egiwon.moviesearch.ui.vo.MovieViewObject
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -19,17 +20,22 @@ class MainViewModel(
     private val _resultMovieList = MutableLiveData<List<MovieViewObject>>()
     val resultMovieList: LiveData<List<MovieViewObject>> get() = _resultMovieList
 
-    private val page: Int = 1
-
     fun loadPopularMovies() {
-        repository.getPopularMovies(page)
-            .subscribeOn(Schedulers.io())
+        Single.create<List<MovieViewObject>> { emitter ->
+            repository.getPagingPopularMovies(
+                compositeDisposable = compositeDisposable,
+                onSuccess = { resultMovieList ->
+                    emitter.onSuccess(resultMovieList.map { it.mapToMovieViewObject() })
+                }, onFailure = {
+                mutableShowErrorTextResId.value = R.string.error_load_fail_text
+            }
+            )
+        }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(onSuccess = { resultList ->
-                _resultMovieList.value = resultList.map { it.mapToMovieViewObject() }
-            }, onError = {
-                mutableShowErrorTextResId.value = R.string.error_text
-            })
+            .subscribeBy { resultList ->
+                _resultMovieList.value = resultList
+            }
             .addTo(compositeDisposable)
+
     }
 }
