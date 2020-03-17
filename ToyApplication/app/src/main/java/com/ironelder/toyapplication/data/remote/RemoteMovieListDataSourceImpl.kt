@@ -11,6 +11,6 @@ class RemoteMovieListDataSourceImpl : RemoteMovieListDataSource {
         page: Int?,
         adult: Boolean?
     ):MovieListModel {
-        return NetworkServiceApi.imageServiceApi.getSearchMovie(query = query)
+        return NetworkServiceApi.movieServiceApi.getSearchMovie(query = query)
     }
 }

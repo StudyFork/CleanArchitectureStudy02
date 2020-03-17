@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface NetworkService {
 
     //TODO : After Change Call -> Deferred
-    @GET("{type}")
+    @GET("movie/{type}")
     fun getPopularMovieList(
         @Path("type") type: String,
         @Query("page") page: Int? = 1,
@@ -19,18 +19,10 @@ interface NetworkService {
     ): Call<MovieListModel>
 
     @GET("search/movie")
-    suspend fun getSearchMovie2(
+    suspend fun getSearchMovie(
         @Query("query") query: String,
         @Query("page") page: Int? = 1,
         @Query("include_adult") adult: Boolean? = false,
-        @Query("api_key") api_key: String = API_KEY
-    ): MovieListModel
-
-    @GET("popular")
-    suspend fun getSearchMovie(
-        query: String,
-        page: Int? = 1,
-        adult: Boolean? = false,
         @Query("api_key") api_key: String = API_KEY
     ): MovieListModel
 }

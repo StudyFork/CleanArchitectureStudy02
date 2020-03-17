@@ -2,6 +2,7 @@ package com.ironelder.toyapplication.presentation.movielist.popular
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +24,8 @@ import retrofit2.Response
 
 class PopularMovieListFragment : Fragment() {
 
-//    private val completableJob = Job()
-//    private val coroutineScope = CoroutineScope(Dispatchers.IO + completableJob)
+    private val completableJob = Job()
+    private val coroutineScope = CoroutineScope(Dispatchers.IO + completableJob)
     private val movieList = arrayListOf<MovieResultModel>()
 
     override fun onCreateView(
@@ -40,15 +41,16 @@ class PopularMovieListFragment : Fragment() {
         pb_loading.visibility = View.VISIBLE
         rv_movie_list.adapter =
             MovieListAdapter()
-//        coroutineScope.launch {
-//            getMovieList()
-//        }
+        coroutineScope.launch {
+            getMovieList()
+        }
     }
 
     fun getMovieList() {
         NetworkServiceApi.movieServiceApi.getPopularMovieList("popular").enqueue(
             object : Callback<MovieListModel> {
                 override fun onFailure(call: Call<MovieListModel>, t: Throwable) {
+                    Log.d("ironelderLog", "Message = ${t.message}")
                 }
 
                 override fun onResponse(
@@ -88,6 +90,6 @@ class PopularMovieListFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-//        completableJob.cancel()
+        completableJob.cancel()
     }
 }

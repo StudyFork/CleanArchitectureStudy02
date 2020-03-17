@@ -1,5 +1,6 @@
 package com.ironelder.toyapplication.presentation.movielist.search
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
@@ -12,11 +13,11 @@ import kotlinx.coroutines.Dispatchers
 
 class SearchMovieListViewModel : ViewModel() {
     private val repository: MovieRepository = MovieRepositoryImpl(RemoteMovieListDataSourceImpl())
-    val coroutineExceptionHandler = CoroutineExceptionHandler{_, t -> {
+    val coroutineExceptionHandler = CoroutineExceptionHandler{_, t ->
         t.printStackTrace()
-    }}
+    }
     val data : LiveData<MovieListModel> = liveData(Dispatchers.IO + coroutineExceptionHandler) {
-        val retrievedData = repository.getSearchMovie("Test")
+        val retrievedData = repository.getSearchMovie("Car")
         emit(retrievedData)
     }
 }

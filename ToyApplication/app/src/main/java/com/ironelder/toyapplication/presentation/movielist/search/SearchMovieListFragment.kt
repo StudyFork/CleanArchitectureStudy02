@@ -52,7 +52,7 @@ class SearchMovieListFragment : Fragment() {
 
     }
     private fun showData() {
-        viewModel.data.observe(this, Observer {
+        viewModel.data.observe(this.viewLifecycleOwner, Observer {
             Log.d("ironelderLog", "response = $it")
         })
     }

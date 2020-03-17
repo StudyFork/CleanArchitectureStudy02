@@ -25,21 +25,11 @@ class SplashFragment : Fragment() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(2000)
             context?.let {
-//                    findNavController().navigate(R.id.action_splashFragment_to_popularMovieListFragment)
+//                findNavController().navigate(R.id.action_splashFragment_to_popularMovieListFragment)
                 findNavController().navigate(R.id.action_splashFragment_to_searchMovieListFragment)
 
             }
         }
-//        launch {
-//            delay(2000)
-//            withContext(Dispatchers.Main){
-//                context?.let {
-////                    findNavController().navigate(R.id.action_splashFragment_to_popularMovieListFragment)
-//                    findNavController().navigate(R.id.action_splashFragment_to_searchMovieListFragment)
-//
-//                }
-//            }
-//        }
     }
 
 }
