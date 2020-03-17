@@ -52,7 +52,7 @@ class MovieDataSourceFactory(
         override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, MovieEntity>) {
 
             if (params.key < totalPage) {
-                remoteDataSource.getPopularMovies(START_PAGE)
+                remoteDataSource.getPopularMovies(params.key)
                     .subscribeOn(Schedulers.io())
                     .subscribeBy(
                         onSuccess = {
