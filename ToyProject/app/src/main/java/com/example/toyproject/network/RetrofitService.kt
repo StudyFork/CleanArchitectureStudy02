@@ -9,7 +9,7 @@ interface RetrofitService {
 
     @GET("search/movie")
     fun requestSearchMovie(
-        @Query("api_key") api_key: String,
+        @Query("api_key") apiKey: String,
         @Query("query") query: String,
         @Query("page") page: Int
     ): Call<SearchMovieResponse>

@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class MainViewModel() : ViewModel() {
-    val TAG = this.javaClass.name
+    private val TAG = this.javaClass.name
     val movieData = MutableLiveData<List<SearchMovieData>>()
     val query = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()

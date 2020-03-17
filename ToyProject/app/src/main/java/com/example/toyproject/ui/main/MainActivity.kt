@@ -9,9 +9,9 @@ import com.example.toyproject.R
 import com.example.toyproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-    lateinit var adapter: MainMoviePostingRecyclerAdapter
-    val mainViewModel: MainViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
+    private val adapter: MainMoviePostingRecyclerAdapter = MainMoviePostingRecyclerAdapter()
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,21 +21,22 @@ class MainActivity : AppCompatActivity() {
 
         initailize()
         initBinding()
-        test()
+        loadingMovies()
     }
 
     private fun initailize() {
-        adapter = MainMoviePostingRecyclerAdapter()
         binding.rcvPoster.layoutManager = GridLayoutManager(this@MainActivity, 3)
     }
 
     private fun initBinding() {
-        binding.vm = mainViewModel
-        binding.lifecycleOwner = this@MainActivity
-        binding.rcvPoster.adapter = adapter
+        binding.apply {
+            binding.vm = mainViewModel
+            binding.lifecycleOwner = this@MainActivity
+            binding.rcvPoster.adapter = adapter
+        }
     }
 
-    private fun test() {
+    private fun loadingMovies() {
         mainViewModel.searchMovie()
     }
 }
