@@ -1,8 +1,10 @@
 package com.egiwon.moviesearch.data.source.remote.service
 
+import com.egiwon.moviesearch.data.source.remote.response.MovieDetailResponse
 import com.egiwon.moviesearch.data.source.remote.response.MovieResponse
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieService {
@@ -13,10 +15,10 @@ interface MovieService {
         @Query("language") language: String = "ko"
     ): Single<MovieResponse>
 
-//    @GET("3/movie/{movieId}")
-//    fun getMovieDetails(
-//        @Path("movieId") movieId: Int,
-//        @Query("language") language: String = DEFAULT_LANGUAGE
-//    ): Call<MovieDetailsResponse>
+    @GET("3/movie/{movieId}")
+    fun getMovieDetails(
+        @Path("movieId") movieId: Int,
+        @Query("language") language: String = "ko"
+    ): Single<MovieDetailResponse>
 
 }
