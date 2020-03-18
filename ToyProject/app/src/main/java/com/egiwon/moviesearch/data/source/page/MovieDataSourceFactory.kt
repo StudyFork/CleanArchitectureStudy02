@@ -14,7 +14,6 @@ import io.reactivex.schedulers.Schedulers
 class MovieDataSourceFactory(
     private val compositeDisposable: CompositeDisposable,
     private val remoteDataSource: MovieRemoteDataSource,
-    private val onSuccess: (List<MovieEntity>) -> Unit,
     private val onFailure: (Throwable) -> Unit
 ) : DataSource.Factory<Int, MovieEntity>() {
 
@@ -40,7 +39,6 @@ class MovieDataSourceFactory(
                         totalPage = it.totalPages
                         val resultList = it.mapToMovieEntities()
                         callback.onResult(resultList, 0, START_PAGE + 1)
-                        onSuccess(resultList)
                     },
                     onError = {
                         onFailure(it)
@@ -59,7 +57,6 @@ class MovieDataSourceFactory(
                             totalPage = it.totalPages
                             val resultList = it.mapToMovieEntities()
                             callback.onResult(resultList, params.key + 1)
-                            onSuccess(resultList)
                         },
                         onError = {
                             onFailure(it)
