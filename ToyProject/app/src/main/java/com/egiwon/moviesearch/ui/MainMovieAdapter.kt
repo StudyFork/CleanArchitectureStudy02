@@ -6,6 +6,7 @@ import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseRecyclerView
 import com.egiwon.moviesearch.data.model.MovieEntity
 import com.egiwon.moviesearch.databinding.ItemMovieBinding
+import com.egiwon.moviesearch.wrapper.GlideWrapper
 
 class MainMovieAdapter(
     @LayoutRes private val layoutResId: Int = R.layout.item_movie,
@@ -30,6 +31,10 @@ class MainMovieAdapter(
 
         init {
             binding.vm = viewModel
+        }
+
+        override fun onRecycledViewHolder() {
+            GlideWrapper.clearImage(binding.ivMoviePoster)
         }
     }
 

@@ -32,6 +32,8 @@ abstract class BaseRecyclerView {
                 executePendingBindings()
             }
         }
+
+        open fun onRecycledViewHolder() = Unit
     }
 
     abstract class BaseAdapter<BI : BaseIdentifier, B : ViewDataBinding>(
@@ -47,13 +49,17 @@ abstract class BaseRecyclerView {
         }
 
     }) {
-        private lateinit var layoutInflater: LayoutInflater
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<B> =
             object : BaseViewHolder<B>(parent, layoutResId, bindingId) {}
 
         override fun onBindViewHolder(holder: BaseViewHolder<B>, position: Int) =
             holder.onBindViewHolder(getItem(position))
+
+        override fun onViewRecycled(holder: BaseViewHolder<B>) {
+            super.onViewRecycled(holder)
+            holder.onRecycledViewHolder()
+        }
 
         fun replaceAll(items: PagedList<BI>?) {
             if (items != null) {
