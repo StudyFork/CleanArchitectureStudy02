@@ -55,9 +55,6 @@ fun MovieResponse.mapToMovieEntities(): List<MovieEntity> =
                 posterPath = movieResponse.posterPath,
                 overView = movieResponse.overview
             )
-        }.onFailure {
-            it.message
         }.getOrNull() ?: MovieEntity()
-
     }
 
