@@ -1,7 +1,6 @@
 package com.egiwon.moviesearch.ui
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseViewModel
@@ -14,15 +13,9 @@ class MainViewModel(
 
     lateinit var resultMovieList: LiveData<PagedList<MovieEntity>>
 
-    private val _loading = MutableLiveData<Boolean>()
-    val loading: LiveData<Boolean> get() = _loading
-
     fun loadPopularMovies() {
         resultMovieList = repository.getPagingPopularMovies(
             compositeDisposable = compositeDisposable,
-            onSuccess = {
-
-            },
             onFailure = {
                 mutableShowErrorTextResId.value = R.string.error_load_fail_text
             }

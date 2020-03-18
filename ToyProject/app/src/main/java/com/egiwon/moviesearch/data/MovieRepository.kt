@@ -12,7 +12,6 @@ interface MovieRepository {
 
     fun getPagingPopularMovies(
         compositeDisposable: CompositeDisposable,
-        onSuccess: (response: List<MovieEntity>) -> Unit,
         onFailure: (Throwable) -> Unit
     ): LiveData<PagedList<MovieEntity>>
 
