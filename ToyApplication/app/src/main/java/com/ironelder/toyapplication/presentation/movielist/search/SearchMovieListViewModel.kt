@@ -16,7 +16,7 @@ class SearchMovieListViewModel : ViewModel() {
     val coroutineExceptionHandler = CoroutineExceptionHandler{_, t ->
         t.printStackTrace()
     }
-    val data : LiveData<MovieListModel> = liveData(Dispatchers.IO + coroutineExceptionHandler) {
+    val searchResultData : LiveData<MovieListModel> = liveData(Dispatchers.IO + coroutineExceptionHandler) {
         val retrievedData = repository.getSearchMovie("Car")
         emit(retrievedData)
     }
