@@ -18,9 +18,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
     implementation "com.jakewharton.rxbinding3:rxbinding:3.1.0"
 
-    // SwipeRefreshLayout
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-
     // koin
     implementation 'org.koin:koin-androidx-viewmodel:2.1.3'
 
