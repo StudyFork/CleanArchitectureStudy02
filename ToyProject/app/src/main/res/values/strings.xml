@@ -3,4 +3,5 @@
     <string name="error_load_fail_text">load fail</string>
     <string name="string_night_mode">Night</string>
     <string name="string_day_mode">Day_Mode</string>
+    <string name="string_running_time">%1$s분</string>
 </resources>

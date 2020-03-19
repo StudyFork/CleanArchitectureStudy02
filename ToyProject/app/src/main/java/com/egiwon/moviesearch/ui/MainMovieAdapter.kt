@@ -4,11 +4,14 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseRecyclerView
+import com.egiwon.moviesearch.base.onItemClick
 import com.egiwon.moviesearch.data.model.MovieEntity
 import com.egiwon.moviesearch.databinding.ItemMovieBinding
+import com.egiwon.moviesearch.ext.onThrottleButtonClickListener
 import com.egiwon.moviesearch.wrapper.GlideWrapper
 
 class MainMovieAdapter(
+    private val onItemClick: onItemClick<Int>,
     @LayoutRes private val layoutResId: Int = R.layout.item_movie,
     private val bindingId: Int,
     private val viewModel: MainViewModel
@@ -21,7 +24,11 @@ class MainMovieAdapter(
         parent: ViewGroup,
         viewType: Int
     ): BaseRecyclerView.BaseViewHolder<ItemMovieBinding> =
-        MovieViewHolder(parent, layoutResId, bindingId)
+        MovieViewHolder(parent, layoutResId, bindingId).apply {
+            itemView.onThrottleButtonClickListener(compositeDisposable) {
+                onItemClick(getItem(adapterPosition)?.id ?: 0)
+            }
+        }
 
     inner class MovieViewHolder(
         parent: ViewGroup,
