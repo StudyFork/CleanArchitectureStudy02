@@ -16,15 +16,25 @@ data class MovieDetailResponse(
     val posterPath: String,
     @SerializedName("release_date")
     val releaseDate: String,
+    @SerializedName("runtime")
+    val runtime: Int,
     @SerializedName("title")
-    val title: String
+    val title: String,
+    @SerializedName("vote_average")
+    val voteAverage: Double,
+    @SerializedName("vote_count")
+    val voteCount: Int
 )
 
-fun MovieDetailResponse.mapToMovieDetailEntity(): MovieDetailEntity = MovieDetailEntity(
-    id = id,
-    overview = overview,
-    popularity = popularity,
-    posterPath = posterPath,
-    releaseDate = releaseDate,
-    title = title
-)
+fun MovieDetailResponse.mapToMovieDetailEntity(): MovieDetailEntity =
+    runCatching {
+        MovieDetailEntity(
+            id = id,
+            overview = overview,
+            voteAverage = voteAverage,
+            posterPath = posterPath,
+            releaseDate = releaseDate,
+            title = title,
+            runtime = runtime
+        )
+    }.getOrNull() ?: MovieDetailEntity()
