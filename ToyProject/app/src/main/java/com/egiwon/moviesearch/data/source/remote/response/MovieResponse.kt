@@ -51,9 +51,7 @@ fun MovieResponse.mapToMovieEntities(): List<MovieEntity> =
             MovieEntity(
                 id = movieResponse.id,
                 title = movieResponse.title,
-                population = movieResponse.popularity,
-                posterPath = movieResponse.posterPath,
-                overView = movieResponse.overview
+                posterPath = movieResponse.posterPath
             )
         }.getOrNull() ?: MovieEntity()
     }
