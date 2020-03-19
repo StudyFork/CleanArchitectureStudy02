@@ -7,7 +7,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 object GlideWrapper {
 
-    fun asyncLoadImage(target: ImageView, url: String) {
+    fun asyncLoadImage(target: ImageView, url: String?) {
         Glide.with(target)
             .load("$POSTER_BASE_URL$url")
             .transition(DrawableTransitionOptions.withCrossFade())
