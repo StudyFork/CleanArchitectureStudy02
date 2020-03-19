@@ -9,6 +9,9 @@ import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import io.reactivex.disposables.CompositeDisposable
+
+typealias onItemClick<T> = ((T)) -> Unit
 
 abstract class BaseRecyclerView {
 
@@ -50,6 +53,8 @@ abstract class BaseRecyclerView {
 
     }) {
 
+        protected val compositeDisposable = CompositeDisposable()
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<B> =
             object : BaseViewHolder<B>(parent, layoutResId, bindingId) {}
 
@@ -59,6 +64,11 @@ abstract class BaseRecyclerView {
         override fun onViewRecycled(holder: BaseViewHolder<B>) {
             super.onViewRecycled(holder)
             holder.onRecycledViewHolder()
+        }
+
+        override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+            super.onDetachedFromRecyclerView(recyclerView)
+            compositeDisposable.dispose()
         }
 
         fun replaceAll(items: PagedList<BI>?) {
