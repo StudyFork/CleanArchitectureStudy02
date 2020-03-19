@@ -1,11 +1,9 @@
-package com.egiwon.moviesearch.ui.vo
+package com.egiwon.moviesearch.ui.model
 
 import com.egiwon.moviesearch.base.BaseIdentifier
 
 data class MovieViewObject(
     override val id: Int,
     val title: String,
-    val population: Double,
-    val posterPath: String,
-    val overView: String
+    val posterPath: String
 ) : BaseIdentifier()

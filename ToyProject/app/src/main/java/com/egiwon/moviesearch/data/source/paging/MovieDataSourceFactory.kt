@@ -1,4 +1,4 @@
-package com.egiwon.moviesearch.data.source.page
+package com.egiwon.moviesearch.data.source.paging
 
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
