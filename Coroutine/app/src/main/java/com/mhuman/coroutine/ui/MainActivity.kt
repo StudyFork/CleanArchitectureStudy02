@@ -30,8 +30,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
                 this@MainActivity,
                 object : Observer<PagedList<Result>> {
                     override fun onChanged(t: PagedList<Result>?) {
-                        adapter.submitList(null)
-                        adapter.notifyDataSetChanged()
                         adapter.submitList(t)
                     }
                 })
