@@ -15,4 +15,8 @@ data class SearchMovieData(
     val posterPath: String
 ) {
     fun getPosterUrl(): String = "${NetworkConstant.IMAGE_PATH}$posterPath"
+
+    fun onClickItem() {
+        // TODO: 2020-03-23
+    }
 }

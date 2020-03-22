@@ -43,13 +43,8 @@ class MainMoviePostingRecyclerAdapter :
     }
 
 
-    inner class ViewHolder(val binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.root.setOnClickListener({
-                // TODO: 2020-03-06 clickListener
-            })
-        }
-
+    inner class ViewHolder(private val binding: ItemMainBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movieData: SearchMovieData) {
             binding.movieData = movieData
         }

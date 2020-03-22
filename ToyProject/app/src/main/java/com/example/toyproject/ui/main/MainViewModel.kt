@@ -17,14 +17,22 @@ class MainViewModel() : ViewModel() {
     fun searchMovie() {
         runBlocking {
             launch {
-                MovieRepositoryImpl.getMovieData(query.toString(), success = {
+                MovieRepositoryImpl.getMovieData(query.value!!, success = {
                     movieData.value = it.searchMovieResults
                 }, fail = {
                     Log.e(TAG, it.message)
                 })
             }
-            isLoading.value = true
+            showLoading()
         }
+        hideLoading()
+    }
+
+    private fun showLoading() {
+        isLoading.value = true
+    }
+
+    private fun hideLoading() {
         isLoading.value = false
     }
 }
