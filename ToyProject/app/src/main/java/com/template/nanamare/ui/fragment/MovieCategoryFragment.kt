@@ -18,7 +18,7 @@ import com.template.nanamare.vm.MovieCategoryViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class MovieCategoryFragment(private val genre: GenreResponse.Genre) :
+class MovieCategoryFragment(private val genre: GenreResponse.Genre? = null) :
     BaseFragment<MovieCategoryFragmentBinding>(R.layout.movie_category_fragment), BaseNavigator {
 
     private val movieCategoryViewModel by viewModel<MovieCategoryViewModel> {
@@ -33,7 +33,6 @@ class MovieCategoryFragment(private val genre: GenreResponse.Genre) :
         super.onViewCreated(view, savedInstanceState)
 
         binding.run {
-            tvLabel.text = getString(R.string.desc_movie, genre.name)
             rv.run {
                 adapter = movieAdapter
                 layoutManager = GridLayoutManager(context, column)
@@ -41,7 +40,10 @@ class MovieCategoryFragment(private val genre: GenreResponse.Genre) :
                 ViewCompat.setNestedScrollingEnabled(this, false)
             }
 
-            movieCategoryViewModel.requestDiscoverMovies(genre.id, RequestMovieApiType.DISCOVER)
+            genre?.let {
+                tvLabel.text = getString(R.string.desc_movie, it.name)
+                movieCategoryViewModel.requestDiscoverMovies(it.id, RequestMovieApiType.DISCOVER)
+            }
         }
 
         movieCategoryViewModel.liveMovies.observe(viewLifecycleOwner, Observer {
@@ -67,7 +69,9 @@ class MovieCategoryFragment(private val genre: GenreResponse.Genre) :
 
     override fun closeSearchView() {
         super.closeSearchView()
-        movieCategoryViewModel.requestDiscoverMovies(genre.id, RequestMovieApiType.DISCOVER)
+        genre?.let {
+            movieCategoryViewModel.requestDiscoverMovies(it.id, RequestMovieApiType.DISCOVER)
+        }
     }
 
 }

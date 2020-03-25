@@ -12,10 +12,16 @@ import org.koin.dsl.module
  * setupKoinFragmentFactory() in activity before super.onCreate(savedInstanceState)
  */
 val fragmentModule: Module = module {
-    fragment { (movies: List<GenreResponse.Genre>) ->
+    fragment(override = true) {
+        MovieFragment()
+    }
+    fragment(override = true) { (movies: List<GenreResponse.Genre>) ->
         MovieFragment(movies)
     }
-    fragment { (movie: GenreResponse.Genre) ->
+    fragment(override = true) {
+        MovieCategoryFragment()
+    }
+    fragment(override = true) { (movie: GenreResponse.Genre) ->
         MovieCategoryFragment(movie)
     }
 }

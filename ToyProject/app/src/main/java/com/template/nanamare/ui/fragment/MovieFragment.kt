@@ -9,7 +9,7 @@ import com.template.nanamare.databinding.MovieFragmentBinding
 import com.template.nanamare.network.response.GenreResponse
 import com.template.nanamare.ui.activity.MainActivity
 
-class MovieFragment(private val genres: List<GenreResponse.Genre>) :
+class MovieFragment(private val genres: List<GenreResponse.Genre>? = null) :
     BaseFragment<MovieFragmentBinding>(R.layout.movie_fragment) {
 
     private val baseViewPager by lazy { BaseViewPager(childFragmentManager) }
@@ -17,8 +17,10 @@ class MovieFragment(private val genres: List<GenreResponse.Genre>) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
-            for (genre in genres) {
-                baseViewPager.addFragment(MovieCategoryFragment(genre), genre.name)
+            genres?.let {
+                for (genre in it) {
+                    baseViewPager.addFragment(MovieCategoryFragment(genre), genre.name)
+                }
             }
             viewPager.adapter = baseViewPager
             (requireActivity() as MainActivity).tlLayout.setupWithViewPager(viewPager)
