@@ -1,5 +1,6 @@
 package com.egiwon.moviesearch.base
 
+import android.util.ArrayMap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -11,14 +12,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.disposables.CompositeDisposable
 
-typealias onItemClick<T> = ((T)) -> Unit
-
 abstract class BaseRecyclerView {
 
     abstract class BaseViewHolder<VDB : ViewDataBinding>(
         parent: ViewGroup,
         @LayoutRes resourceId: Int,
-        private val bindingId: Int?
+        private val bindingId: Int?,
+        private val viewModels: ArrayMap<Int?, BaseViewModel>? = null
     ) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context)
             .inflate(resourceId, parent, false)
@@ -31,6 +31,13 @@ abstract class BaseRecyclerView {
             if (item == null) return
 
             binding.run {
+                viewModels?.let {
+                    for (key in it.keys) {
+                        if (key == null) continue
+                        setVariable(key, it[key])
+                    }
+                }
+
                 setVariable(bindingId, item)
                 executePendingBindings()
             }
@@ -41,7 +48,8 @@ abstract class BaseRecyclerView {
 
     abstract class BaseAdapter<IDENTIFIER : BaseIdentifier, VDB : ViewDataBinding>(
         @LayoutRes private val layoutResId: Int,
-        private val bindingId: Int
+        private val bindingId: Int,
+        private val viewModels: ArrayMap<Int?, BaseViewModel>? = null
     ) : PagedListAdapter<IDENTIFIER, BaseViewHolder<VDB>>(object :
         DiffUtil.ItemCallback<IDENTIFIER>() {
         override fun areItemsTheSame(oldItem: IDENTIFIER, newItem: IDENTIFIER): Boolean {
@@ -57,7 +65,7 @@ abstract class BaseRecyclerView {
         protected val compositeDisposable = CompositeDisposable()
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<VDB> =
-            object : BaseViewHolder<VDB>(parent, layoutResId, bindingId) {}
+            object : BaseViewHolder<VDB>(parent, layoutResId, bindingId, viewModels) {}
 
         override fun onBindViewHolder(holder: BaseViewHolder<VDB>, position: Int) =
             holder.onBindViewHolder(getItem(position))
@@ -76,8 +84,6 @@ abstract class BaseRecyclerView {
             if (items != null) {
                 submitList(items)
             }
-
-            notifyDataSetChanged()
         }
 
     }
