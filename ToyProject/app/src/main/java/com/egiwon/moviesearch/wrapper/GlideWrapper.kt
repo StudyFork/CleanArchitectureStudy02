@@ -15,7 +15,6 @@ object GlideWrapper {
             .skipMemoryCache(true)
             .into(target)
     }
-
     fun clearImage(target: ImageView) {
         Glide.with(target).clear(target)
     }
