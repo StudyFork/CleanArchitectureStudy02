@@ -12,13 +12,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.egiwon.moviesearch.R
 
-abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>(
+abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel>(
     @LayoutRes private val layoutResId: Int
 ) : AppCompatActivity(layoutResId) {
 
     protected abstract val viewModel: VM
 
-    protected lateinit var binding: B
+    protected lateinit var binding: VDB
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +60,7 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>(
         viewModel.showErrorTextResId.observe(this, Observer { showToast(it) })
     }
 
-    protected fun bind(action: B.() -> Unit) {
+    protected fun bind(action: VDB.() -> Unit) {
         binding.run(action)
     }
 
