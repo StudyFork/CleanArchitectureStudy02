@@ -1,18 +1,32 @@
 package com.egiwon.moviesearch.ext
 
 import android.view.View
-import com.jakewharton.rxbinding3.view.clicks
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import java.util.concurrent.TimeUnit
+import androidx.databinding.BindingAdapter
 
-fun View.onThrottleButtonClickListener(
-    compositeDisposable: CompositeDisposable,
-    action: () -> Unit
-) {
-    clicks().throttleFirst(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-        .subscribe { action() }
-        .addTo(compositeDisposable)
+private typealias OnClickListener = (View) -> Unit
+
+@BindingAdapter("onSingleClick")
+fun View.onSingleClick(listener: View.OnClickListener) {
+    setOnClickListener(OnSingleClickListener {
+        run(listener::onClick)
+    })
 }
 
+class OnSingleClickListener(private val listener: OnClickListener) : View.OnClickListener {
+
+    override fun onClick(v: View?) {
+        val now = System.currentTimeMillis()
+        if (now - lastTime < INTERVAL) return
+        lastTime = now
+        if (v != null) {
+            listener(v)
+        }
+    }
+
+    companion object {
+
+        private const val INTERVAL: Long = 300
+
+        private var lastTime: Long = 0
+    }
+}
