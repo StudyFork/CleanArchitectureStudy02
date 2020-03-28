@@ -2,7 +2,6 @@ package com.egiwon.moviesearch.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.ArrayMap
 import androidx.lifecycle.Observer
 import com.egiwon.moviesearch.BR
 import com.egiwon.moviesearch.R
@@ -27,7 +26,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
             rvMovieList.adapter = object : BaseAdapter<MovieEntity, ItemMovieBinding>(
                 R.layout.item_movie,
                 BR.movie,
-                ArrayMap<Int?, BaseViewModel>().apply {
+                mutableMapOf<Int?, BaseViewModel>().apply {
                     put(BR.vm, viewModel)
                 }
             ) {}
