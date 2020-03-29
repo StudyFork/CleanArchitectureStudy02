@@ -4,15 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
-
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.ironelder.navigation.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_transactionViewFragment"
-            app:destination="@id/transactionViewFragment" />
+            android:id="@+id/action_mainFragment_to_firstPageFragment"
+            app:destination="@id/firstPageFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_firstPageOtherFragment"
+            app:destination="@id/firstPageOtherFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/firstPageFragment"
+        android:name="com.ironelder.navigation.FirstPageFragment"
+        android:label="fragment_first_page"
+        tools:layout="@layout/fragment_first_page" >
+        <action
+            android:id="@+id/action_firstPageFragment_to_secondPageFragment"
+            app:destination="@id/secondPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondPageFragment"
+        android:name="com.ironelder.navigation.SecondPageFragment"
+        android:label="fragment_second_page"
+        tools:layout="@layout/fragment_second_page" />
+    <fragment
+        android:id="@+id/firstPageOtherFragment"
+        android:name="com.ironelder.navigation.FirstPageOtherFragment"
+        android:label="fragment_first_page_other"
+        tools:layout="@layout/fragment_first_page_other">
         <action
             android:id="@+id/action_mainFragment_to_balanceViewFragment"
             app:destination="@id/balanceViewFragment" />
