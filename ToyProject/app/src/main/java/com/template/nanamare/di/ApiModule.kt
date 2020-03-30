@@ -1,7 +1,6 @@
 package com.template.nanamare.di
 
-import com.template.nanamare.network.api.GenreAPI
-import com.template.nanamare.network.api.MovieAPI
+import com.template.nanamare.network.api.*
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -17,4 +16,7 @@ const val DI_API_NO_AUTH = "DI_API_NO_AUTH"
 val apiModule = module {
     single(named(DI_API_NO_AUTH)) { (get(named(DI_RETROFIT_NO_AUTH)) as Retrofit).create(GenreAPI::class.java) }
     single(named(DI_API_NO_AUTH)) { (get(named(DI_RETROFIT_NO_AUTH)) as Retrofit).create(MovieAPI::class.java) }
+    single(named(DI_API_NO_AUTH)) { (get(named(DI_RETROFIT_NO_AUTH)) as Retrofit).create(MovieVideoAPI::class.java) }
+    single(named(DI_API_NO_AUTH)) { (get(named(DI_RETROFIT_NO_AUTH)) as Retrofit).create(MovieCreditAPI::class.java) }
+    single(named(DI_API_NO_AUTH)) { (get(named(DI_RETROFIT_NO_AUTH)) as Retrofit).create(MovieDetailAPI::class.java) }
 }

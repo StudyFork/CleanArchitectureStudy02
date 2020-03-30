@@ -8,8 +8,6 @@ import retrofit2.Response
 
 interface GenreDataSource {
 
-    fun requestGenre(
-        liveGenreNetworkState: MutableLiveData<NetworkState<GenreResponse>>
-    ) : Single<Response<GenreResponse>>
+    fun requestGenre() : Single<Response<GenreResponse>>
 
 }

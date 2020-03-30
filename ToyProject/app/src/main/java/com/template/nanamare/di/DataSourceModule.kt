@@ -1,11 +1,8 @@
 package com.template.nanamare.di
 
-import com.template.nanamare.data.repository.GenreRepository
-import com.template.nanamare.data.repository.MovieRepository
-import com.template.nanamare.data.source.GenreRemoteDataSourceImpl
-import com.template.nanamare.data.source.MovieRemoteDataSourceImpl
-import com.template.nanamare.data.source.impl.GenreDataSource
-import com.template.nanamare.data.source.impl.MovieDataSource
+import com.template.nanamare.data.repository.*
+import com.template.nanamare.data.source.*
+import com.template.nanamare.data.source.impl.*
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -19,4 +16,13 @@ val dataSourceModel = module {
 
     single { MovieRemoteDataSourceImpl(get(named(DI_API_NO_AUTH))) }
     single { MovieRepository(get()) as MovieDataSource }
+
+    single { MovieVideoRemoteDataSourceImpl(get(named(DI_API_NO_AUTH))) }
+    single { MovieVideoRepository(get()) as MovieVideoDataSource }
+
+    single { MovieCreditRemoteDataSourceImpl(get(named(DI_API_NO_AUTH))) }
+    single { MovieCreditRepository(get()) as MovieCreditDataSource }
+
+    single { MovieDetailRemoteDataSourceImpl(get(named(DI_API_NO_AUTH))) }
+    single { MovieDetailRepository(get()) as MovieDetailDataSource }
 }
