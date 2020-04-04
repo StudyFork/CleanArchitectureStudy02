@@ -1,4 +1,4 @@
-package com.template.nanamare.network.api
+package com.template.nanamare.network.api.movie
 
 import com.template.nanamare.network.response.GenreResponse
 import io.reactivex.Single

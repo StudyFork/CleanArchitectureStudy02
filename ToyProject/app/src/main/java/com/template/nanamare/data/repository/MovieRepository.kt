@@ -16,7 +16,7 @@ class MovieRepository(private val movieRemoteDataSourceImpl: MovieRemoteDataSour
         success: (movieResponse: MovieResponse) -> Unit,
         failed: (errorResponse: BaseErrorResponse) -> Unit
     ) {
-        movieRemoteDataSourceImpl.requestMovies(
+        return movieRemoteDataSourceImpl.requestMovies(
             requestMovieApiType,
             query,
             page,
