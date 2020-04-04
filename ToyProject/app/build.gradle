@@ -54,7 +54,6 @@ android {
         }
         dev {
             applicationIdSuffix ".dev"
-            buildConfigField "String", "VIDEO_URL", "\"https://www.youtube.com/watch\""
             buildConfigField "String", "LANGUAGE", "\"en\""
             buildConfigField "String", "SECRET_KEY", "\"73f6ff111acbb24ea793d4aa0e1271a1\""
             buildConfigField "String", "SERVER_URL", "\"https://api.themoviedb.org/\""
@@ -136,7 +135,5 @@ dependencies {
 
     implementation libraries.pagingRuntime
     implementation libraries.pagingRxJava2
-
-    implementation libraries.expendableTextview
 
 }

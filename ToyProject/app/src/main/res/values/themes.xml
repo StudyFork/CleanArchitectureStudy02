@@ -30,7 +30,7 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
-    <style name="RadiusDialogTheme" parent="AppTheme">
+    <style name="RecentAccountTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowBackground">@android:drawable/screen_background_dark_transparent</item>
@@ -38,10 +38,6 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:backgroundDimEnabled">false</item>
-    </style>
-
-    <style name="NestedScrollViewTheme" parent="AppTheme">
-        <item name="colorPrimary">@color/primary_400</item>
     </style>
 
 

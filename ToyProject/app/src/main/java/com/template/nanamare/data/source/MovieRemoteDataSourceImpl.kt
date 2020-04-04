@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import com.template.nanamare.data.enum.RequestMovieApiType
 import com.template.nanamare.data.source.impl.MovieDataSource
 import com.template.nanamare.ext.converterErrorBody
-import com.template.nanamare.ext.networkDispatchToMain
+import com.template.nanamare.ext.networkCommunication
 import com.template.nanamare.network.api.MovieAPI
 import com.template.nanamare.network.response.BaseErrorResponse
 import com.template.nanamare.network.response.MovieResponse
@@ -23,7 +23,7 @@ class MovieRemoteDataSourceImpl(private val movieAPI: MovieAPI) : MovieDataSourc
         when (requestMovieApiType) {
             RequestMovieApiType.DISCOVER -> movieAPI.requestMovies(withGenres = query)
             RequestMovieApiType.SEARCH -> movieAPI.searchMovies(query = query)
-        }.networkDispatchToMain()
+        }.networkCommunication()
             .subscribe({ response ->
                 when (response.isSuccessful) {
                     true -> {

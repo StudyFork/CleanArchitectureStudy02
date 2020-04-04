@@ -9,10 +9,6 @@ import com.template.nanamare.base.ui.SimpleRecyclerView
 fun RecyclerView.replaceAll(list: List<Any>?) {
     (this.adapter as? SimpleRecyclerView.Adapter<Any, *>)?.run {
         replaceAll(list)
+        notifyDataSetChanged()
     }
-}
-
-@BindingAdapter("adapter")
-fun RecyclerView.bindRecyclerViewAdapter(adapter: SimpleRecyclerView.Adapter<Any, *>) {
-    this.adapter = adapter
 }

@@ -1,7 +1,6 @@
 package com.template.nanamare.adapter
 
 import android.view.ViewGroup
-import androidx.core.util.Consumer
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +10,7 @@ import com.template.nanamare.data.vo.Movie
 import com.template.nanamare.databinding.ItemMovieBinding
 import com.template.nanamare.network.response.MovieResponse
 
-class MovieAdapter(val consumer: Consumer<Int>) : PagedListAdapter<MovieResponse.Result, RecyclerView.ViewHolder>(
+class MovieAdapter : PagedListAdapter<MovieResponse.Result, RecyclerView.ViewHolder>(
     COMPARATOR
 ) {
     override fun onCreateViewHolder(
@@ -23,7 +22,6 @@ class MovieAdapter(val consumer: Consumer<Int>) : PagedListAdapter<MovieResponse
         ) {
             init {
                 itemView.setOnClickListener {
-                    consumer.accept(adapterPosition)
                 }
             }
 

@@ -46,12 +46,8 @@ buildscript {
         jUnitVersion = '4.12'
         ktxVersion = '1.1.0'
         metarialsVersion = '1.2.0-alpha01'
-        expendableTextview = '0.1.4'
 
         libraries = [
-                // expandable textView
-                expendableTextview     : "com.ms-square:expandableTextView:$expendableTextview",
-
                 // paging
                 pagingRuntime          : "android.arch.paging:runtime:$pagingVersion",
                 pagingRxJava2          : "android.arch.paging:rxjava2:$pagingVersion",

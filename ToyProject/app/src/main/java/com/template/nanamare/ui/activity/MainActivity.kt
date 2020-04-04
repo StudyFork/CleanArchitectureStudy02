@@ -37,7 +37,9 @@ class MainActivity : BaseActivity<MainActivityBinding>(R.layout.main_activity) {
                 when (it) {
                     is NetworkState.Init -> hideLoadingPopup()
                     is NetworkState.Loading -> showLoadingPopup()
-                    is NetworkState.Success<GenreResponse> -> replaceFragmentInActivity(MovieFragment(it.item.genres), R.id.flContent)
+                    is NetworkState.Success<GenreResponse> -> {
+                        replaceFragmentInActivity(MovieFragment(it.item.genres), R.id.flContent)
+                    }
                     is NetworkState.Error -> showToast(it.throwable.toString())
                     is NetworkState.ServerError -> showToast(it.toString())
                 }

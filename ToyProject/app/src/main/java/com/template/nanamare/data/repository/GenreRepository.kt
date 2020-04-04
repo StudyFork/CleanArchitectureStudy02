@@ -12,8 +12,9 @@ class GenreRepository(private val genreRemoteDataSourceImpl: GenreRemoteDataSour
     GenreDataSource {
 
     override fun requestGenre(
+        liveGenreNetworkState: MutableLiveData<NetworkState<GenreResponse>>
     ): Single<Response<GenreResponse>> {
-        return genreRemoteDataSourceImpl.requestGenre()
+        return genreRemoteDataSourceImpl.requestGenre(liveGenreNetworkState)
     }
 
 }
