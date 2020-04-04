@@ -1,11 +1,7 @@
 # Android Clean Architecture Study-02
 
-</br>
-
 ## 목표
 * Android clean architecture 에 대해 학습하고 간단한 토이 프로젝트에 적용
-
-</br>
 
 ## 계획
 - 11주 과정 (02/02 ~ 04/12 매주 일요일)
@@ -33,8 +29,6 @@
 - 11주차
   - 회고 
 
-</br>
-
 ## 참여인원
 - 박태임 [taeiim](https://github.com/taeiim)
 - 박찬호 [chanhoparkcj](https://github.com/chanhoparkcj)
@@ -47,8 +41,6 @@
 - 손유정 [handnew04](https://github.com/handnew04)
 - 신현성 [Nanamare](https://github.com/Nanamare)
 - 이윤지 [zion830](https://github.com/zion830)
-
-</br>
 
 ## 오류 수정 및 개선
 * issue 혹은 PR 로 주시면 감사하겠습니다!!
