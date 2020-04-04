@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="grid_space">3.3dp</dimen>
+
+    <dimen name="toolbar_height">56dp</dimen>
+
+    <dimen name="box_title_width">100dp</dimen>
+
+    <dimen name="dp13">13dp</dimen>
+
+    <dimen name="dp12">12dp</dimen>
+
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="login_card_view_height">180dp</dimen>
+
+    <dimen name="login_card_view_text_line_spacing_extra">3sp</dimen>
+
+    <dimen name="secure_keyboard_min_height">228dp</dimen>
+
+    <!-- 메인 컨텐츠 -->
+    <dimen name="content_margin_bottom">50dp</dimen>
+
+    <!--  탭 인디케이터 -->
+    <dimen name="tab_indicator_height">1.7dp</dimen>
+    <dimen name="tab_indicator_padding">-1.7dp</dimen>
+
+    <!-- 폰트 크기 -->
+    <dimen name="font_25">8.3sp</dimen>
+    <dimen name="font_27">9sp</dimen>
+    <dimen name="font_30">10sp</dimen>
+    <dimen name="font_33">11sp</dimen>
+    <dimen name="font_36">12sp</dimen>
+    <dimen name="font_39">13sp</dimen>
+    <dimen name="font_40">13.3sp</dimen>
+    <dimen name="font_42">14sp</dimen>
+    <dimen name="font_45">15sp</dimen>
+    <dimen name="font_48">16sp</dimen>
+    <dimen name="font_50">16.6sp</dimen>
+    <dimen name="font_51">17sp</dimen>
+    <dimen name="font_54">18sp</dimen>
+    <dimen name="font_60">20sp</dimen>
+    <dimen name="font_81">27sp</dimen>
+    <dimen name="font_120">40sp</dimen>
+    <dimen name="font_150">50sp</dimen>
+    <dimen name="font_180">60sp</dimen>
+
+</resources>

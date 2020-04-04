@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- tab layout -->
+    <style name="TabLayout" parent="TextAppearance.Design.Tab" />
+
+    <style name="TabLayout.Label">
+        <item name="android:textSize">@dimen/font_33</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <!-- app bar style -->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
+
+    <!-- toolbar style -->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SettingSWitch" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/colorPrimary</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/white</item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#D5D5D5</item>
+
+    </style>
+
+    <style name="BottomButton" parent="@style/H2BoldWhite">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_badge_bg</item>
+        <item name="android:enabled">false</item>
+    </style>
+
+    <style name="DarkBottomButton" parent="@style/H2BoldWhite">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_badge_bg</item>
+        <item name="android:enabled">false</item>
+    </style>
+
+    <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <!-- Set this to true if you want Full Screen without status bar -->
+        <item name="android:windowFullscreen">false</item>
+
+        <item name="android:windowIsFloating">false</item>
+
+        <!-- This is important! Don't forget to set window background -->
+        <item name="android:windowBackground">?android:colorBackground</item>
+
+        <!-- Click 시 Foreground 에 SelectedBackGround 추가-->
+        <item name="colorControlHighlight">@color/hover_color</item>
+
+        <!-- Additionally if you want animations when dialog opening -->
+        <!--<item name="android:windowEnterAnimation">@anim/slide_up</item>-->
+        <!--<item name="android:windowExitAnimation">@anim/slide_down</item>-->
+
+    </style>
+
+</resources>
