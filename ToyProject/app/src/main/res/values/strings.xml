@@ -8,9 +8,6 @@
     <string name="action_search" translatable="false">Search</string>
 
     <string name="desc_movie" translatable="false">How are these %s movies?</string>
-
     <string name="item_movie_badge" translatable="false">Best movie</string>
-
-    <string name="see_sample_movie">View trailer</string>
 
 </resources>
