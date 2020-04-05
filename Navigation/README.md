@@ -2,6 +2,8 @@
 
 </br>
 
+## Navigation
+
 ### Navigation 이점
 
 - fragment transactions 을 자동으로 조작해줍니다.
@@ -229,6 +231,3 @@ findNavController().navigate(direction, options)
 ### 총평
 
 > Navigation Component는 SingleActivity를 구현하기 위한 프레임워크이다. 현재 현업에서 사용하시는 분의 의견으로는 Navigation Drawer나 DeepLinking을 구현하는데 있어서는 정말 편리하다고 해주셨다. 하지만 아직 다른 부분에서는 많이 사용하지는 않으신다고...
-
-
-
