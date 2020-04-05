@@ -54,4 +54,11 @@ class VideoFragment(private val liveVideoUrl: String? = null) :
         }.extract(videoViewModel.liveVideoPath.value, true, true)
 
     }
+
+    override fun onStop() {
+        super.onStop()
+        binding.videoView.player?.release()
+    }
+
+
 }
