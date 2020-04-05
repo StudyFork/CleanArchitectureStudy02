@@ -11,13 +11,22 @@ import com.example.movieapplication.base.BaseFragment
 import com.example.movieapplication.databinding.FragmentMovieBinding
 import com.example.movieapplication.presenter.adapter.MovieAdapter
 import com.example.movieapplication.presenter.adapter.itemdecoration.MovieItemDecoration
+import com.example.movieapplication.presenter.model.MovieItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie) {
 
     private val movieViewModel: MovieViewModel by viewModel()
 
-    private val movieAdapter by lazy { MovieAdapter() }
+    private val movieAdapter by lazy {
+        MovieAdapter().apply {
+            onItemClickListener = object : MovieAdapter.OnItemClickListener {
+                override fun onItemClick(data: MovieItem) {
+
+                }
+            }
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

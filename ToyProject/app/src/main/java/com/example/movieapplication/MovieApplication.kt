@@ -1,10 +1,7 @@
 package com.example.movieapplication
 
 import android.app.Application
-import com.example.movieapplication.di.appModule
-import com.example.movieapplication.di.dataModule
-import com.example.movieapplication.di.networkModule
-import com.example.movieapplication.di.viewModuleModule
+import com.example.movieapplication.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.context.startKoin
@@ -40,7 +37,7 @@ class MovieApplication : Application() {
 
             modules(
                 listOf(
-                    appModule, dataModule, networkModule, viewModuleModule
+                    appModule, dataModule, domainModule, networkModule, viewModuleModule
                 )
             )
         }

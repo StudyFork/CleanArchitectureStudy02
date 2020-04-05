@@ -5,13 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.example.movieapplication.base.BaseViewModel
-import com.example.movieapplication.data.model.ResultWrapper
-import com.example.movieapplication.data.repository.MovieRepository
+import com.example.movieapplication.domain.GetPopularMovieUseCase
+import com.example.movieapplication.domain.result.ResultWrapper
 import com.example.movieapplication.presenter.model.MovieItem
 import com.example.movieapplication.utils.Event
 import kotlinx.coroutines.launch
 
-class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
+class MovieViewModel(
+    private val getPopularMovieUseCase: GetPopularMovieUseCase
+) : BaseViewModel() {
 
     private var isBottomLoading = false
     private var totalPages = 0
@@ -38,9 +40,8 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
         showLoading()
 
         viewModelScope.launch {
-            hideLoading()
 
-            val result = movieRepo.getPopularMovie(page = 1)
+            val result = getPopularMovieUseCase.get(page = 1)
             when (result) {
                 is ResultWrapper.Success -> {
                     totalPages = result.value.totalPages
@@ -54,6 +55,8 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
                     showError(result.error)
                 }
             }
+
+            hideLoading()
         }
     }
 
@@ -74,7 +77,7 @@ class MovieViewModel(private val movieRepo: MovieRepository) : BaseViewModel() {
 
             viewModelScope.launch {
 
-                val result = movieRepo.getPopularMovie(page)
+                val result = getPopularMovieUseCase.get(page)
                 when (result) {
                     is ResultWrapper.Success -> {
                         _movies.value = result.value.movies
