@@ -14,17 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/iv_movie_detail_poster"
-            app:layout_constraintEnd_toEndOf="@id/iv_movie_detail_poster"
-            app:layout_constraintStart_toStartOf="@id/iv_movie_detail_poster"
-            app:layout_constraintTop_toTopOf="@id/iv_movie_detail_poster" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_movie_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="180dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_movie_detail_poster"
-            android:layout_width="180dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"
             android:adjustViewBounds="true"
@@ -32,22 +31,24 @@
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="H,20:30"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_movie_detail"
             app:layout_constraintTop_toTopOf="parent"
             app:loadAsyncImage="@{movieDetailInfo.posterPath}"
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_movie_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_margin="16dp"
             android:gravity="clip_vertical|start"
             android:text="@{movieDetailInfo.title}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:singleLine="true"
             app:layout_constraintStart_toEndOf="@id/iv_movie_detail_poster"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="영화 이름" />
 
@@ -63,7 +64,8 @@
             android:rating="@{(float)(movieDetailInfo.voteAverage / 2)}"
             android:stepSize="0.5"
             app:layout_constraintStart_toEndOf="@id/iv_movie_detail_poster"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_title"
+            tools:rating="4.5" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_movie_release_date"
