@@ -1,5 +1,6 @@
 package com.egiwon.moviesearch.data.source.remote.response
 
+import com.egiwon.moviesearch.data.model.MovieCastEntity
 import com.egiwon.moviesearch.data.model.MovieDetailEntity
 import com.google.gson.annotations.SerializedName
 
@@ -26,7 +27,9 @@ data class MovieDetailResponse(
     val voteCount: Int
 )
 
-fun MovieDetailResponse.mapToMovieDetailEntity(): MovieDetailEntity =
+fun MovieDetailResponse.mapToMovieDetailEntity(
+    movieCredit: List<MovieCastEntity> = emptyList()
+) =
     runCatching {
         MovieDetailEntity(
             id = id,
@@ -35,6 +38,7 @@ fun MovieDetailResponse.mapToMovieDetailEntity(): MovieDetailEntity =
             posterPath = posterPath,
             releaseDate = releaseDate,
             title = title,
-            runtime = runtime
+            runtime = runtime,
+            movieCredits = movieCredit
         )
     }.getOrNull() ?: MovieDetailEntity()
