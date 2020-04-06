@@ -2,6 +2,7 @@ package com.egiwon.moviesearch.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.Observer
 import com.egiwon.moviesearch.BR
 import com.egiwon.moviesearch.R
@@ -23,18 +24,22 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
 
         bind {
             vm = viewModel
-            rvMovieList.adapter = object : BaseAdapter<MovieEntity, ItemMovieBinding>(
-                R.layout.item_movie,
-                BR.movie,
-                mutableMapOf<Int?, BaseViewModel>().apply {
-                    put(BR.vm, viewModel)
-                }
-            ) {}
-            rvMovieList.setHasFixedSize(true)
+            initAdapter()
         }
 
         viewModel.loadPopularMovies()
         observingViewModel()
+    }
+
+    private fun ActivityMainBinding.initAdapter() {
+        rvMovieList.adapter = object : BaseAdapter<MovieEntity, ItemMovieBinding>(
+            R.layout.item_movie,
+            BR.movie,
+            mutableMapOf<Int?, BaseViewModel>().apply {
+                put(BR.vm, viewModel)
+            }
+        ) {}
+        rvMovieList.setHasFixedSize(true)
     }
 
     private fun observingViewModel() {
@@ -43,7 +48,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
                 putExtra(KEY_MOVIE_ID, it.id)
             }
 
-            startActivity(intent)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this)
+            startActivity(intent, options.toBundle())
         })
 
     }
