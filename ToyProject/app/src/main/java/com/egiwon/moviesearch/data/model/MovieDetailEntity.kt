@@ -9,7 +9,8 @@ data class MovieDetailEntity(
     val posterPath: String = "",
     val releaseDate: String = "",
     val title: String = "",
-    val runtime: Int = 0
+    val runtime: Int = 0,
+    val movieCredits: List<MovieCastEntity>? = emptyList()
 )
 
 fun MovieDetailEntity.mapToMovieDetailViewObject(): MovieDetailViewObject =
