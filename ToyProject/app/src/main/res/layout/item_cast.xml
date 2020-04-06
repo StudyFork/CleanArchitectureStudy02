@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.egiwon.moviesearch.ui.detail.MovieDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_width="50dp">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_cast_profile"
+            app:layout_constraintEnd_toEndOf="@id/iv_cast_profile"
+            app:layout_constraintStart_toStartOf="@id/iv_cast_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_cast_profile" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_cast_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="50dp" />
+
+        <ImageView
+            android:id="@+id/iv_cast_profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_cast_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadAsyncCastImage="@{vm.movieDetailInfo.posterPath}"
+            tools:src="@tools:sample/avatars" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
