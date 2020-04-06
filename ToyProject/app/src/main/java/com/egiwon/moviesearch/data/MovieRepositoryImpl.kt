@@ -7,11 +7,13 @@ import com.egiwon.moviesearch.data.model.MovieDetailEntity
 import com.egiwon.moviesearch.data.model.MovieEntity
 import com.egiwon.moviesearch.data.source.paging.MovieDataSourceFactory
 import com.egiwon.moviesearch.data.source.remote.MovieRemoteDataSource
+import com.egiwon.moviesearch.data.source.remote.response.mapToMovieCreditEntity
 import com.egiwon.moviesearch.data.source.remote.response.mapToMovieDetailEntity
 import com.egiwon.moviesearch.data.source.remote.response.mapToMovieEntities
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 
@@ -45,7 +47,14 @@ class MovieRepositoryImpl(
     }
 
     override fun getMovieDetailInfo(movieId: Int): Single<MovieDetailEntity> =
-        movieRemoteDataSource.getMovieDetailInfo(movieId)
-            .map { movieDetailResponse -> movieDetailResponse.mapToMovieDetailEntity() }
+        Single.zip(
+            movieRemoteDataSource.getMovieDetailInfo(movieId),
+            movieRemoteDataSource.getMovieCredits(movieId),
+            BiFunction { movieDetailResult, creditResult ->
+                movieDetailResult.mapToMovieDetailEntity(
+                    creditResult.mapToMovieCreditEntity().cast
+                )
+            }
+        )
 
 }

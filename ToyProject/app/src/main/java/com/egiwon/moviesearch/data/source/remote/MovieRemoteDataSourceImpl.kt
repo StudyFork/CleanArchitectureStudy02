@@ -1,5 +1,6 @@
 package com.egiwon.moviesearch.data.source.remote
 
+import com.egiwon.moviesearch.data.source.remote.response.MovieCreditsResponse
 import com.egiwon.moviesearch.data.source.remote.response.MovieDetailResponse
 import com.egiwon.moviesearch.data.source.remote.response.MovieResponse
 import com.egiwon.moviesearch.data.source.remote.service.MovieService
@@ -16,5 +17,9 @@ class MovieRemoteDataSourceImpl(
 
     override fun getMovieDetailInfo(id: Int): Single<MovieDetailResponse> =
         movieService.getMovieDetails(id)
+            .subscribeOn(Schedulers.io())
+
+    override fun getMovieCredits(id: Int): Single<MovieCreditsResponse> =
+        movieService.getMovieCredits(id)
             .subscribeOn(Schedulers.io())
 }
