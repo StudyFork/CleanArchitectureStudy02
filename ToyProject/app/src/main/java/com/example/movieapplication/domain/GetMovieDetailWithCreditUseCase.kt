@@ -6,6 +6,7 @@ import com.example.movieapplication.domain.repository.CreditRepository
 import com.example.movieapplication.domain.repository.MovieRepository
 import com.example.movieapplication.domain.result.ResultWrapper
 import com.example.movieapplication.presenter.model.MovieDetail
+import com.example.movieapplication.utils.DataUtil
 import com.google.gson.Gson
 import retrofit2.HttpException
 import timber.log.Timber
@@ -27,9 +28,9 @@ class GetMovieDetailWithCreditUseCase(
                 posterPath = movieInfo.posterPath,
                 title = movieInfo.title,
                 summary = movieInfo.overview,
-                releaseDate = movieInfo.releaseDate,
-                voteAverage = movieInfo.voteAverage.toString(),
-                voteCount = movieInfo.voteCount.toString(),
+                releaseDate = DataUtil.getDate(movieInfo.releaseDate),
+                voteAverage = DataUtil.getPercent(movieInfo.voteAverage),
+                voteCount = DataUtil.getCommaCount(movieInfo.voteCount),
                 actors = actors.map {
                     MovieDetail.Actor(
                         profileUrl = it.profilePath,
