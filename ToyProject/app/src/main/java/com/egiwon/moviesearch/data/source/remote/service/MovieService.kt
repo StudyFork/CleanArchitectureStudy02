@@ -1,5 +1,6 @@
 package com.egiwon.moviesearch.data.source.remote.service
 
+import com.egiwon.moviesearch.data.source.remote.response.MovieCreditsResponse
 import com.egiwon.moviesearch.data.source.remote.response.MovieDetailResponse
 import com.egiwon.moviesearch.data.source.remote.response.MovieResponse
 import io.reactivex.Single
@@ -21,4 +22,9 @@ interface MovieService {
         @Query("language") language: String = "ko"
     ): Single<MovieDetailResponse>
 
+    @GET("3/movie/{movieId}/credits")
+    fun getMovieCredits(
+        @Path("movieId") movieId: Int,
+        @Query("language") language: String = "ko"
+    ): Single<MovieCreditsResponse>
 }
