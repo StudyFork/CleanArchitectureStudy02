@@ -11,4 +11,12 @@ object MovieUtil {
             "https://image.tmdb.org/t/p/w500/${posterPath}" // 500 x 750
         }
     }
+
+    fun getActorProfile(profileUrl: String?): String {
+        return if (TextUtils.isEmpty(profileUrl)) {
+            ""
+        } else {
+            "https://image.tmdb.org/t/p/w500/${profileUrl}" // 500 x 750
+        }
+    }
 }

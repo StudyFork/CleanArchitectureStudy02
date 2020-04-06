@@ -1,7 +1,7 @@
 package com.example.movieapplication.data.model
 
 
-import com.example.movieapplication.presenter.model.MovieItem
+import com.example.movieapplication.domain.model.MovieEntity
 import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
@@ -46,7 +46,7 @@ data class MovieResponse(
     )
 }
 
-fun MovieResponse.Result.mapToPresenter(width: Int, height: Int) = MovieItem(
+fun MovieResponse.Result.mapToDomain() = MovieEntity.MovieItemEntity(
     id = id,
     title = title,
     posterPath = if (posterPath.isNullOrEmpty()) {
@@ -54,7 +54,5 @@ fun MovieResponse.Result.mapToPresenter(width: Int, height: Int) = MovieItem(
     } else {
         posterPath
     },
-    releaseDate = releaseDate,
-    width = width,
-    height = height
+    releaseDate = releaseDate
 )

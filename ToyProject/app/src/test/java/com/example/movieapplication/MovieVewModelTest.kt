@@ -1,8 +1,8 @@
 package com.example.movieapplication
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.movieapplication.data.model.ResultWrapper
-import com.example.movieapplication.data.repository.MovieRepository
+import com.example.movieapplication.domain.GetPopularMovieUseCase
+import com.example.movieapplication.domain.result.ResultWrapper
 import com.example.movieapplication.presenter.model.Movie
 import com.example.movieapplication.presenter.model.MovieItem
 import com.example.movieapplication.presenter.movie.MovieViewModel
@@ -30,14 +30,14 @@ class MovieVewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    private lateinit var movieRepository: MovieRepository
+    private lateinit var getPopularMovieUseCase: GetPopularMovieUseCase
 
     private lateinit var movieViewModel: MovieViewModel
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        movieViewModel = MovieViewModel(movieRepository)
+        movieViewModel = MovieViewModel(getPopularMovieUseCase)
     }
 
     @Test
@@ -45,7 +45,7 @@ class MovieVewModelTest {
         runBlocking {
             //given
             val success = ResultWrapper.Success(Movie(movies = listOf(MovieItem())))
-            `when`(movieRepository.getPopularMovie(1)).thenReturn(success)
+            `when`(getPopularMovieUseCase.get(1)).thenReturn(success)
 
             //when
             movieViewModel.loadMovie()
@@ -64,7 +64,7 @@ class MovieVewModelTest {
         runBlocking {
             //given
             val httpException = ResultWrapper.HttpException(404, "http error")
-            `when`(movieRepository.getPopularMovie(1)).thenReturn(httpException)
+            `when`(getPopularMovieUseCase.get(1)).thenReturn(httpException)
 
             //when
             movieViewModel.loadMovie()
@@ -83,7 +83,7 @@ class MovieVewModelTest {
         runBlocking {
             //given
             val httpException = ResultWrapper.NetworkError()
-            `when`(movieRepository.getPopularMovie(1)).thenReturn(httpException)
+            `when`(getPopularMovieUseCase.get(1)).thenReturn(httpException)
 
             //when
             movieViewModel.loadMovie()
@@ -103,15 +103,15 @@ class MovieVewModelTest {
             //given
             val success1 =
                 ResultWrapper.Success(Movie(totalPages = 10, movies = listOf(MovieItem(id = 1))))
-            `when`(movieRepository.getPopularMovie(1)).thenReturn(success1)
+            `when`(getPopularMovieUseCase.get(1)).thenReturn(success1)
 
             val success2 =
                 ResultWrapper.Success(Movie(totalPages = 10, movies = listOf(MovieItem(id = 2))))
-            `when`(movieRepository.getPopularMovie(2)).thenReturn(success2)
+            `when`(getPopularMovieUseCase.get(2)).thenReturn(success2)
 
             val success3 =
                 ResultWrapper.Success(Movie(totalPages = 10, movies = listOf(MovieItem(id = 3))))
-            `when`(movieRepository.getPopularMovie(3)).thenReturn(success3)
+            `when`(getPopularMovieUseCase.get(3)).thenReturn(success3)
 
             //when & then
             movieViewModel.loadMovie()
@@ -137,7 +137,7 @@ class MovieVewModelTest {
             //given
             val success =
                 ResultWrapper.Success(Movie(totalPages = 1, movies = listOf(MovieItem(id = 1))))
-            `when`(movieRepository.getPopularMovie(1)).thenReturn(success)
+            `when`(getPopularMovieUseCase.get(1)).thenReturn(success)
 
             //when
             movieViewModel.loadMovie()
