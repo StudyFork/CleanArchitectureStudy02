@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapplication.R
@@ -23,6 +24,13 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
             onItemClickListener = object : MovieAdapter.OnItemClickListener {
                 override fun onItemClick(data: MovieItem) {
 
+                    //SafeArgs 보내는 방법 1
+                    val direction =
+                        MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(data.id)
+                    findNavController().navigate(direction)
+
+                    //SafeArgs 보내는 방법 2
+                    //findNavController().navigate(R.id.action_movieFragment_to_movieDetailFragment, bundleOf("movieId" to data.id))
                 }
             }
         }

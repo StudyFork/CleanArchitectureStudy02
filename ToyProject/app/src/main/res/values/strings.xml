@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MovieApplication</string>
+    <string name="title">Title</string>
+    <string name="release_date">Release date</string>
+    <string name="vote_average">Vote average</string>
+    <string name="vote_count">Vote count</string>
+    <string name="movie_summary">Movie summary</string>
+    <string name="actors">Actors</string>
 </resources>
