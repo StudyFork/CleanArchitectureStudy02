@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import com.egiwon.moviesearch.BR
 import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseActivity
+import com.egiwon.moviesearch.base.BaseIdentifier
 import com.egiwon.moviesearch.base.BaseRecyclerView
 import com.egiwon.moviesearch.base.BaseViewModel
 import com.egiwon.moviesearch.databinding.ActivityMovieDetailBinding
