@@ -2,9 +2,11 @@ package com.egiwon.moviesearch.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.egiwon.moviesearch.base.BaseViewModel
 import com.egiwon.moviesearch.data.MovieRepository
 import com.egiwon.moviesearch.data.model.mapToMovieDetailViewObject
+import com.egiwon.moviesearch.ui.model.MovieCastViewObject
 import com.egiwon.moviesearch.ui.model.MovieDetailViewObject
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
@@ -16,6 +18,10 @@ class MovieDetailViewModel(
 
     private val _movieDetailInfo = MutableLiveData<MovieDetailViewObject>()
     val movieDetailInfo: LiveData<MovieDetailViewObject> get() = _movieDetailInfo
+
+    val movieCastList: LiveData<List<MovieCastViewObject>> = Transformations.map(movieDetailInfo) {
+        it.castList
+    }
 
     fun getMovieDetailInfo(movieId: Int) {
         repository.getMovieDetailInfo(movieId)
