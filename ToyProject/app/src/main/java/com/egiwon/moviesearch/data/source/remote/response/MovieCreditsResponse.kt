@@ -26,7 +26,7 @@ fun MovieCreditsResponse.mapToMovieCreditEntity(): MovieCreditEntity =
     runCatching {
         MovieCreditEntity(
             id = id,
-            cast = cast.map { it.mapToMovieCastEntity() }
+            castList = cast.map { it.mapToMovieCastEntity() }
         )
     }.getOrNull() ?: MovieCreditEntity()
 

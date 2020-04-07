@@ -28,7 +28,7 @@ data class MovieDetailResponse(
 )
 
 fun MovieDetailResponse.mapToMovieDetailEntity(
-    movieCredit: List<MovieCastEntity> = emptyList()
+    movieCastList: List<MovieCastEntity> = emptyList()
 ) =
     runCatching {
         MovieDetailEntity(
@@ -39,6 +39,6 @@ fun MovieDetailResponse.mapToMovieDetailEntity(
             releaseDate = releaseDate,
             title = title,
             runtime = runtime,
-            movieCredits = movieCredit
+            movieCasts = movieCastList
         )
     }.getOrNull() ?: MovieDetailEntity()

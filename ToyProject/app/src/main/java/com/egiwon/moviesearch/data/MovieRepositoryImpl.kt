@@ -52,7 +52,7 @@ class MovieRepositoryImpl(
             movieRemoteDataSource.getMovieCredits(movieId),
             BiFunction { movieDetailResult, creditResult ->
                 movieDetailResult.mapToMovieDetailEntity(
-                    creditResult.mapToMovieCreditEntity().cast
+                    creditResult.mapToMovieCreditEntity().castList
                 )
             }
         )
