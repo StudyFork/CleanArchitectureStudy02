@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:orientation="horizontal"
-            app:layoutManager="GridLayoutManager"
+            app:layoutManager="LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@id/btn_preview"
             app:layout_constraintTop_toBottomOf="@id/tv_movie_overview"
             tools:listitem="@layout/item_cast" />
@@ -122,6 +122,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:text="@string/movie_preview_button_text"
+            android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_credit_cast" />
     </androidx.constraintlayout.widget.ConstraintLayout>

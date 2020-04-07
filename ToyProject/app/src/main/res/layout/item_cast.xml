@@ -8,12 +8,15 @@
         <variable
             name="vm"
             type="com.egiwon.moviesearch.ui.detail.MovieDetailViewModel" />
+
+        <variable
+            name="castOfCharacter"
+            type="com.egiwon.moviesearch.ui.model.MovieCastViewObject" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_width="50dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <Space
             android:layout_width="0dp"
@@ -23,26 +26,16 @@
             app:layout_constraintStart_toStartOf="@id/iv_cast_profile"
             app:layout_constraintTop_toTopOf="@id/iv_cast_profile" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_cast_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="50dp" />
-
         <ImageView
             android:id="@+id/iv_cast_profile"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="8dp"
             android:adjustViewBounds="true"
             android:contentDescription="@null"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_cast_profile"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:loadAsyncCastImage="@{vm.movieDetailInfo.posterPath}"
+            app:loadAsyncCastImage="@{castOfCharacter.profilePath}"
             tools:src="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
