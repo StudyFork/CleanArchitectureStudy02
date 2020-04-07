@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ToyProject</string>
+    <string name="commons_image">commons_image</string>
 </resources>
