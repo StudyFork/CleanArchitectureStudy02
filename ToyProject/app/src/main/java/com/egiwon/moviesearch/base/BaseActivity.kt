@@ -25,8 +25,11 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel>(
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutResId)
         binding.lifecycleOwner = this
+        binding.initAdapter()
         addObserves()
     }
+
+    open fun VDB.initAdapter() = Unit
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)

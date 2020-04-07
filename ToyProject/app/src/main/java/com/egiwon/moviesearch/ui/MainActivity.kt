@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import com.egiwon.moviesearch.BR
 import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseActivity
-import com.egiwon.moviesearch.base.BaseRecyclerView.BaseAdapter
+import com.egiwon.moviesearch.base.BaseRecyclerView.BasePagedAdapter
 import com.egiwon.moviesearch.base.BaseViewModel
 import com.egiwon.moviesearch.data.model.MovieEntity
 import com.egiwon.moviesearch.databinding.ActivityMainBinding
@@ -31,8 +31,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
         observingViewModel()
     }
 
-    private fun ActivityMainBinding.initAdapter() {
-        rvMovieList.adapter = object : BaseAdapter<MovieEntity, ItemMovieBinding>(
+    override fun ActivityMainBinding.initAdapter() {
+        rvMovieList.adapter = object : BasePagedAdapter<MovieEntity, ItemMovieBinding>(
             R.layout.item_movie,
             BR.movie,
             mutableMapOf<Int?, BaseViewModel>().apply {
