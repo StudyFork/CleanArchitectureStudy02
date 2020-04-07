@@ -7,9 +7,9 @@ import com.egiwon.moviesearch.base.BaseIdentifier
 import com.egiwon.moviesearch.base.BaseRecyclerView
 
 @Suppress("UNCHECKED_CAST")
-@BindingAdapter("replaceItems")
-fun <T : BaseIdentifier> RecyclerView.replaceItems(items: PagedList<T>?) {
-    (adapter as? BaseRecyclerView.BaseAdapter<T, *>)?.run {
-        replaceAll(items)
+@BindingAdapter("replacePagedItems")
+fun <T : BaseIdentifier> RecyclerView.replacePagedItems(items: PagedList<T>?) {
+    (adapter as? BaseRecyclerView.BasePagedAdapter<T, *>)?.run {
+        replaceAllPagedItems(items)
     }
 }
