@@ -10,7 +10,7 @@ data class MovieDetailEntity(
     val releaseDate: String = "",
     val title: String = "",
     val runtime: Int = 0,
-    val movieCredits: List<MovieCastEntity>? = emptyList()
+    val movieCasts: List<MovieCastEntity>? = emptyList()
 )
 
 fun MovieDetailEntity.mapToMovieDetailViewObject(): MovieDetailViewObject =
@@ -22,6 +22,7 @@ fun MovieDetailEntity.mapToMovieDetailViewObject(): MovieDetailViewObject =
             posterPath = posterPath,
             releaseDate = releaseDate,
             title = title,
-            runtime = runtime
+            runtime = runtime,
+            castList = movieCasts?.map { it.mapToMovieCastViewObject() } ?: emptyList()
         )
     }.getOrNull() ?: MovieDetailViewObject()
