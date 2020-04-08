@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import com.egiwon.moviesearch.BR
 import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseActivity
-import com.egiwon.moviesearch.base.BaseRecyclerView.BasePagedAdapter
+import com.egiwon.moviesearch.base.BasePagedAdapter
 import com.egiwon.moviesearch.base.BaseViewModel
 import com.egiwon.moviesearch.data.model.MovieEntity
 import com.egiwon.moviesearch.databinding.ActivityMainBinding

@@ -6,7 +6,7 @@ import com.egiwon.moviesearch.BR
 import com.egiwon.moviesearch.R
 import com.egiwon.moviesearch.base.BaseActivity
 import com.egiwon.moviesearch.base.BaseIdentifier
-import com.egiwon.moviesearch.base.BaseRecyclerView
+import com.egiwon.moviesearch.base.BaseListAdapter
 import com.egiwon.moviesearch.base.BaseViewModel
 import com.egiwon.moviesearch.databinding.ActivityMovieDetailBinding
 import com.egiwon.moviesearch.databinding.ItemCastBinding
@@ -35,7 +35,7 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
 
     override fun ActivityMovieDetailBinding.initAdapter() {
         rvCreditCast.adapter =
-            object : BaseRecyclerView.BaseListAdapter<MovieCastViewObject, ItemCastBinding>(
+            object : BaseListAdapter<MovieCastViewObject, ItemCastBinding>(
                 R.layout.item_cast,
                 BR.castOfCharacter,
                 mutableMapOf<Int?, BaseViewModel>().apply {
