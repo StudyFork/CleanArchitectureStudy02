@@ -3,6 +3,7 @@ package com.template.nanamare.vm
 import androidx.lifecycle.MutableLiveData
 import com.template.nanamare.base.ui.BaseViewModel
 import com.template.nanamare.data.source.impl.GenreDataSource
+import com.template.nanamare.ext.upCasting
 import com.template.nanamare.network.NetworkState
 import com.template.nanamare.network.response.BaseResponse
 import com.template.nanamare.network.response.GenreResponse
@@ -19,8 +20,8 @@ class MainViewModel(private val genreDataSource: GenreDataSource) : BaseViewMode
     fun requestMovieGenre() {
         compositeDisposable.add(
             getDisposable(
-                genreDataSource.requestGenre() as Single<Response<BaseResponse>>,
-                liveGenreNetworkState as MutableLiveData<NetworkState<BaseResponse>>
+                genreDataSource.requestGenre().upCasting(),
+                liveGenreNetworkState.upCasting()
             )
         )
     }

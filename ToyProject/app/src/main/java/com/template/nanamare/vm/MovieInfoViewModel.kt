@@ -6,6 +6,7 @@ import com.template.nanamare.data.source.impl.CreditDataSource
 import com.template.nanamare.data.source.impl.DetailDataSource
 import com.template.nanamare.data.source.impl.VideoDataSource
 import com.template.nanamare.data.vo.Actor
+import com.template.nanamare.ext.upCasting
 import com.template.nanamare.network.NetworkState
 import com.template.nanamare.network.response.*
 import io.reactivex.Single
@@ -46,8 +47,8 @@ class MovieInfoViewModel(
         movie?.let {
             compositeDisposable.add(
                 getDisposable(
-                    videoDataSource.getMovieVideos(it.id) as Single<Response<BaseResponse>>,
-                    liveMovieVideoState as MutableLiveData<NetworkState<BaseResponse>>
+                    videoDataSource.getMovieVideos(it.id).upCasting(),
+                    liveMovieVideoState.upCasting()
                 )
             )
         }
@@ -56,8 +57,8 @@ class MovieInfoViewModel(
     fun getMovieCredit(movieId: Int) {
         compositeDisposable.add(
             getDisposable(
-                creditDataSource.getMovieCredit(movieId) as Single<Response<BaseResponse>>,
-                liveMovieCreditState as MutableLiveData<NetworkState<BaseResponse>>
+                creditDataSource.getMovieCredit(movieId).upCasting(),
+                liveMovieCreditState.upCasting()
             )
         )
     }
@@ -65,8 +66,8 @@ class MovieInfoViewModel(
     fun getMovieDetail(creditId: Int) {
         compositeDisposable.add(
             getDisposable(
-                movieDetailDataSource.getMovieDetail(creditId) as Single<Response<BaseResponse>>,
-                liveMovieCreditState as MutableLiveData<NetworkState<BaseResponse>>
+                movieDetailDataSource.getMovieDetail(creditId).upCasting(),
+                liveMovieCreditState.upCasting()
             )
         )
     }
