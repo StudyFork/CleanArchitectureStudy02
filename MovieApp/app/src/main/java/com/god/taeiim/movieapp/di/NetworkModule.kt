@@ -26,7 +26,7 @@ val networkModule = module {
     factory { (chain: Interceptor.Chain) ->
         var req = chain.request()
         val url = req.url().newBuilder()
-            .addQueryParameter("api_key", "d8cef1cded16cd9e5bae792da0d70ed7")
+            .addQueryParameter("api_key", BuildConfig.SECRET_KEY)
             .addQueryParameter("language", "ko-KR")
             .build()
         req = req.newBuilder().url(url).build()
