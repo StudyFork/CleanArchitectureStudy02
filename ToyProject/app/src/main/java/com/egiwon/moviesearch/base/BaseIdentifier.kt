@@ -1,7 +1,7 @@
 package com.egiwon.moviesearch.base
 
-open class BaseIdentifier : Any() {
-    open val id = Any()
+abstract class BaseIdentifier : Any() {
+    abstract val id: Any
 
     override fun hashCode(): Int {
         return id.hashCode()

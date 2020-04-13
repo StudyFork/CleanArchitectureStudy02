@@ -15,7 +15,7 @@ data class MovieCastEntity(
 
 fun MovieCastEntity.mapToMovieCastViewObject(): MovieCastViewObject =
     MovieCastViewObject(
-        id = castId,
+        castId = castId,
         name = name,
         profilePath = profilePath
     )

@@ -49,7 +49,7 @@ fun MovieResponse.mapToMovieEntities(): List<MovieEntity> =
     this.results.map { movieResponse ->
         runCatching {
             MovieEntity(
-                id = movieResponse.id,
+                movieId = movieResponse.id,
                 title = movieResponse.title,
                 posterPath = movieResponse.posterPath
             )

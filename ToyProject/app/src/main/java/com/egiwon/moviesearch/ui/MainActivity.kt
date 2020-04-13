@@ -76,7 +76,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     private fun observingViewModel() {
         viewModel.movie.observe(this, Observer {
             val intent = Intent(this, MovieDetailActivity::class.java).apply {
-                putExtra(KEY_MOVIE_ID, it.id)
+                putExtra(KEY_MOVIE_ID, it.movieId)
             }
 
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this)
