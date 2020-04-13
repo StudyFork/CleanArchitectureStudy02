@@ -12,6 +12,7 @@ import com.egiwon.moviesearch.databinding.ActivityMovieDetailBinding
 import com.egiwon.moviesearch.databinding.ItemCastBinding
 import com.egiwon.moviesearch.ui.MainActivity
 import com.egiwon.moviesearch.ui.model.MovieCastViewObject
+import com.egiwon.moviesearch.ui.preview.PreviewDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetailViewModel>(
@@ -28,9 +29,17 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
 
         bind {
             initAdapter()
+            btnPreview.setOnClickListener {
+                showDialog()
+            }
         }
-
         observingViewModel()
+    }
+
+    private fun showDialog() {
+        val fragmentManager = supportFragmentManager
+        val newFragment = PreviewDialog()
+        newFragment.show(fragmentManager, "dialog")
     }
 
     override fun ActivityMovieDetailBinding.initAdapter() {
@@ -53,9 +62,9 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
 
         @Suppress("UNCHECKED_CAST")
         viewModel.movieCastList.observe(this, Observer {
-            (binding.rvCreditCast.adapter as? BaseRecyclerView.BaseListAdapter<MovieCastViewObject, ItemCastBinding>)?.replaceAll(
-                it
-            )
+            (binding.rvCreditCast.adapter as? BaseListAdapter<BaseIdentifier, *>)?.replaceAll(it)
         })
     }
+
+
 }
