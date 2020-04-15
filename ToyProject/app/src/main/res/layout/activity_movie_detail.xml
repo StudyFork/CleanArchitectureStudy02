@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.egiwon.moviesearch.ui.detail.MovieDetailViewModel" />
+
+        <variable
+            name="movieDetailInfo"
+            type="com.egiwon.moviesearch.ui.model.MovieDetailViewObject" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_movie_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="180dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_movie_detail_poster"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H,20:30"
+            app:layout_constraintEnd_toEndOf="@id/guideline_movie_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadAsyncImage="@{movieDetailInfo.posterPath}"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_movie_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="clip_vertical|start"
+            android:singleLine="true"
+            android:text="@{movieDetailInfo.title}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_movie_detail_poster"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="영화 이름" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/rating_bar_movie_start"
+            style="@style/AppRatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="@{(float)(movieDetailInfo.voteAverage / 2)}"
+            android:stepSize="0.5"
+            app:layout_constraintStart_toEndOf="@id/iv_movie_detail_poster"
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_title"
+            tools:rating="4.5" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_movie_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{movieDetailInfo.releaseDate}"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/iv_movie_detail_poster"
+            app:layout_constraintTop_toBottomOf="@id/rating_bar_movie_start"
+            tools:text="개봉일" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_movie_runtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{String.format(@string/string_running_time, movieDetailInfo.runtime)}"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/iv_movie_detail_poster"
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_release_date"
+            tools:text="러닝 타임" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_movie_overview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{movieDetailInfo.overview}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/rv_credit_cast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv_movie_detail_poster"
+            app:layout_constraintTop_toBottomOf="@id/iv_movie_detail_poster"
+            tools:text="영화의 간략한 줄거리를 보여줍니다" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_credit_cast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/btn_preview"
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_overview"
+            tools:listitem="@layout/item_cast" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/movie_preview_button_text"
+            android:textColor="@color/colorAccent"
+            app:onSingleClick="@{() -> vm.getMovieTrailerInfo(movieDetailInfo.id)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_credit_cast" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

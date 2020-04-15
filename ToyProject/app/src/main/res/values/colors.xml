@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/replyBlue</color>
+    <color name="colorPrimaryDark">@color/replyLightBlue</color>
+    <color name="colorAccent">@color/replyOrange</color>
+    <color name="colorBackground">#FFFFFF</color>
+
+    <color name="replyBlue">#344955</color>
+    <color name="replyLightBlue">#4A6572</color>
+    <color name="replyDarkBlue">#232f34</color>
+    <color name="replyOrange">#F9AA53</color>
+</resources>
