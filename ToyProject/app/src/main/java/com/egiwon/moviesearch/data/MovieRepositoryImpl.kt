@@ -5,11 +5,13 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.egiwon.moviesearch.data.model.MovieDetailEntity
 import com.egiwon.moviesearch.data.model.MovieEntity
+import com.egiwon.moviesearch.data.model.MovieTrailerEntity
 import com.egiwon.moviesearch.data.source.paging.MovieDataSourceFactory
 import com.egiwon.moviesearch.data.source.remote.MovieRemoteDataSource
 import com.egiwon.moviesearch.data.source.remote.response.mapToMovieCreditEntity
 import com.egiwon.moviesearch.data.source.remote.response.mapToMovieDetailEntity
 import com.egiwon.moviesearch.data.source.remote.response.mapToMovieEntities
+import com.egiwon.moviesearch.data.source.remote.response.mapToMovieTrailerEntity
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -56,5 +58,9 @@ class MovieRepositoryImpl(
                 )
             }
         )
+
+    override fun getMovieTrailerInfo(movieId: Int): Single<MovieTrailerEntity> =
+        movieRemoteDataSource.getMovieTrailerInfo(movieId)
+            .map { movieTrailerResponse -> movieTrailerResponse.mapToMovieTrailerEntity() }
 
 }

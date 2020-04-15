@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import com.egiwon.moviesearch.data.model.MovieDetailEntity
 import com.egiwon.moviesearch.data.model.MovieEntity
+import com.egiwon.moviesearch.data.model.MovieTrailerEntity
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 
@@ -16,4 +17,6 @@ interface MovieRepository {
     ): LiveData<PagedList<MovieEntity>>
 
     fun getMovieDetailInfo(movieId: Int): Single<MovieDetailEntity>
+
+    fun getMovieTrailerInfo(movieId: Int): Single<MovieTrailerEntity>
 }
