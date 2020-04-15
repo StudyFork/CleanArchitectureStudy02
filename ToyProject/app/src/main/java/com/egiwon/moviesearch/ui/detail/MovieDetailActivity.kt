@@ -1,6 +1,7 @@
 package com.egiwon.moviesearch.ui.detail
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import com.egiwon.moviesearch.BR
 import com.egiwon.moviesearch.R
@@ -12,6 +13,7 @@ import com.egiwon.moviesearch.databinding.ActivityMovieDetailBinding
 import com.egiwon.moviesearch.databinding.ItemCastBinding
 import com.egiwon.moviesearch.ui.MainActivity
 import com.egiwon.moviesearch.ui.model.MovieCastViewObject
+import com.egiwon.moviesearch.ui.model.MovieTrailerViewObject
 import com.egiwon.moviesearch.ui.preview.PreviewDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,16 +31,19 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
 
         bind {
             initAdapter()
-            btnPreview.setOnClickListener {
-                showDialog()
-            }
+            vm = viewModel
         }
         observingViewModel()
     }
 
-    private fun showDialog() {
+    private fun showDialog(movieTrailer: MovieTrailerViewObject) {
         val fragmentManager = supportFragmentManager
         val newFragment = PreviewDialog()
+
+        if (movieTrailer.trailers.isNotEmpty()) {
+            newFragment.arguments = bundleOf(KEY_TRAILER to movieTrailer.trailers[0].key)
+        }
+
         newFragment.show(fragmentManager, "dialog")
     }
 
@@ -62,9 +67,17 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
 
         @Suppress("UNCHECKED_CAST")
         viewModel.movieCastList.observe(this, Observer {
-            (binding.rvCreditCast.adapter as? BaseListAdapter<BaseIdentifier, *>)?.replaceAll(it)
+            (binding.rvCreditCast.adapter as? BaseListAdapter<BaseIdentifier, *>)
+                ?.replaceAll(it)
+        })
+
+        viewModel.movieTrailerInfo.observe(this, Observer {
+            showDialog(it)
         })
     }
 
 
+    companion object {
+        const val KEY_TRAILER = "key_trailer"
+    }
 }

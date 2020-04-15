@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="vm"
+            type="com.egiwon.moviesearch.ui.detail.MovieDetailViewModel" />
+
+        <variable
             name="movieDetailInfo"
             type="com.egiwon.moviesearch.ui.model.MovieDetailViewObject" />
     </data>
@@ -124,6 +128,7 @@
             android:layout_margin="8dp"
             android:text="@string/movie_preview_button_text"
             android:textColor="@color/colorAccent"
+            app:onSingleClick="@{() -> vm.getMovieTrailerInfo(movieDetailInfo.id)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_credit_cast" />
     </androidx.constraintlayout.widget.ConstraintLayout>
