@@ -3,6 +3,7 @@ package com.egiwon.moviesearch.data.source.remote.service
 import com.egiwon.moviesearch.data.source.remote.response.MovieCreditsResponse
 import com.egiwon.moviesearch.data.source.remote.response.MovieDetailResponse
 import com.egiwon.moviesearch.data.source.remote.response.MovieResponse
+import com.egiwon.moviesearch.data.source.remote.response.MovieTrailerResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -27,4 +28,10 @@ interface MovieService {
         @Path("movieId") movieId: Int,
         @Query("language") language: String = "ko"
     ): Single<MovieCreditsResponse>
+
+    @GET("3/movie/{movieId}/videos")
+    fun getMovieTrailers(
+        @Path("movieId") movieId: Int,
+        @Query("language") language: String = "ko"
+    ): Single<MovieTrailerResponse>
 }
