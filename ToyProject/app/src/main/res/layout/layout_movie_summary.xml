@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.template.nanamare.vm.MovieInfoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_300"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            style="@style/H2RegularBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Movie summary  :" />
+
+        <com.ms.square.android.expandabletextview.ExpandableTextView
+            style="@style/H2BoldBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:animAlphaStart="1"
+            app:animDuration="200"
+            app:collapseDrawable="@drawable/ic_keyboard_arrow_up_white_24dp"
+            app:expandDrawable="@drawable/ic_keyboard_arrow_down_white_24dp"
+            app:maxCollapsedLines="4"
+            app:text="@{vm.movie.overview}">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@id/expandable_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="sans-serif-light"
+                android:lineSpacingMultiplier="1.2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="14sp"
+                tools:text="content" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@id/expand_collapse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="3dp" />
+
+        </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+    </LinearLayout>
+</layout>
