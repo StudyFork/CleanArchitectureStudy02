@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.util.Consumer
 import androidx.core.view.ViewCompat
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.template.nanamare.R
 import com.template.nanamare.adapter.MovieAdapter
@@ -15,6 +14,8 @@ import com.template.nanamare.data.enum.RequestMovieApiType
 import com.template.nanamare.databinding.MovieCategoryFragmentBinding
 import com.template.nanamare.decoration.GridSpacingItemDecoration
 import com.template.nanamare.ext.intentFor
+import com.template.nanamare.ext.nonNull
+import com.template.nanamare.ext.observer
 import com.template.nanamare.network.response.GenreResponse
 import com.template.nanamare.ui.activity.MovieInfoActivity
 import com.template.nanamare.vm.MovieCategoryViewModel
@@ -58,14 +59,11 @@ class MovieCategoryFragment(private val genre: GenreResponse.Genre? = null) :
             }
         }
 
-        movieCategoryViewModel.liveMovies.observe(viewLifecycleOwner, Observer {
-            it?.observe(viewLifecycleOwner, Observer {
+        movieCategoryViewModel.liveMovies.nonNull().observer(viewLifecycleOwner) {
+            it.nonNull().observer(viewLifecycleOwner) {
                 movieAdapter.submitList(it)
-            }) ?: run {
-                movieAdapter.submitList(null)
             }
-        })
-
+        }
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

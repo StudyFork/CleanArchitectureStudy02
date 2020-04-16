@@ -8,9 +8,10 @@ import com.template.nanamare.data.source.impl.VideoDataSource
 import com.template.nanamare.data.vo.Actor
 import com.template.nanamare.ext.upCasting
 import com.template.nanamare.network.NetworkState
-import com.template.nanamare.network.response.*
-import io.reactivex.Single
-import retrofit2.Response
+import com.template.nanamare.network.response.CreditResponse
+import com.template.nanamare.network.response.DetailResponse
+import com.template.nanamare.network.response.MovieResponse
+import com.template.nanamare.network.response.VideoResponse
 
 @Suppress("UNCHECKED_CAST")
 class MovieInfoViewModel(
