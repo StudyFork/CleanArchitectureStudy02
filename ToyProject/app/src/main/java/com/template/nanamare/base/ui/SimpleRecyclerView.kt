@@ -22,6 +22,7 @@ abstract class SimpleRecyclerView {
                 this.items.run {
                     clear()
                     addAll(it)
+                    notifyDataSetChanged()
                 }
             }
         }
@@ -29,20 +30,23 @@ abstract class SimpleRecyclerView {
         fun removeAt(position: Int) {
             items.run {
                 removeAt(position)
+                notifyItemChanged(position)
             }
         }
 
         fun remove(item: ITEM) {
             items.run {
                 remove(item)
+                notifyItemChanged(indexOf(item))
             }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-                object : ViewHolder<B>(
-                        layoutRes = layoutRes,
-                        parent = parent,
-                        bindingVariableId = bindingVariableId) {}
+            object : ViewHolder<B>(
+                layoutRes = layoutRes,
+                parent = parent,
+                bindingVariableId = bindingVariableId
+            ) {}
 
         override fun getItemCount(): Int = items.size
 
@@ -52,12 +56,12 @@ abstract class SimpleRecyclerView {
     }
 
     abstract class ViewHolder<B : ViewDataBinding>(
-            @LayoutRes layoutRes: Int,
-            parent: ViewGroup?,
-            private val bindingVariableId: Int?
+        @LayoutRes layoutRes: Int,
+        parent: ViewGroup?,
+        private val bindingVariableId: Int?
     ) : RecyclerView.ViewHolder(
-            LayoutInflater.from(parent?.context)
-                    .inflate(layoutRes, parent, false)
+        LayoutInflater.from(parent?.context)
+            .inflate(layoutRes, parent, false)
     ) {
 
         val binding: B = DataBindingUtil.bind(itemView)!!

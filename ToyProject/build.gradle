@@ -24,7 +24,7 @@ buildscript {
         okhttpVersion = '3.9.1'
         retrofitVersion = '2.3.0'
         retrofitOldVersion = '2.1.0'
-        circleImageviewVersion = '2.2.0'
+        circleImageviewVersion = '3.1.0'
         koinAndroidVersion = '2.1.5'
         gsonVersion = '2.8.2'
         glideVersion = '4.8.0'
@@ -46,8 +46,18 @@ buildscript {
         jUnitVersion = '4.12'
         ktxVersion = '1.1.0'
         metarialsVersion = '1.2.0-alpha01'
+        expendableTextview = '0.1.4'
+        exoPlayer = '2.11.3'
 
         libraries = [
+
+                explayerCore           : "com.google.android.exoplayer:exoplayer-core:$exoPlayer",
+                exoplayerUI            : "com.google.android.exoplayer:exoplayer-ui:$exoPlayer",
+
+                circleImageView        : "de.hdodenhof:circleimageview:$circleImageviewVersion",
+                // expandable textView
+                expendableTextview     : "com.ms-square:expandableTextView:$expendableTextview",
+
                 // paging
                 pagingRuntime          : "android.arch.paging:runtime:$pagingVersion",
                 pagingRxJava2          : "android.arch.paging:rxjava2:$pagingVersion",

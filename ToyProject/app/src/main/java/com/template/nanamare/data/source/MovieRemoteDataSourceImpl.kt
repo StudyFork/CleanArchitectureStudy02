@@ -4,13 +4,17 @@ import android.annotation.SuppressLint
 import com.template.nanamare.data.enum.RequestMovieApiType
 import com.template.nanamare.data.source.impl.MovieDataSource
 import com.template.nanamare.ext.converterErrorBody
-import com.template.nanamare.ext.networkCommunication
-import com.template.nanamare.network.api.MovieAPI
+import com.template.nanamare.ext.networkDispatchToMain
+import com.template.nanamare.network.api.movie.DiscoverAPI
+import com.template.nanamare.network.api.movie.SearchAPI
 import com.template.nanamare.network.response.BaseErrorResponse
 import com.template.nanamare.network.response.MovieResponse
 
 @SuppressLint("CheckResult")
-class MovieRemoteDataSourceImpl(private val movieAPI: MovieAPI) : MovieDataSource {
+class MovieRemoteDataSourceImpl(
+    private val discoverAPI: DiscoverAPI,
+    private val searchAPI: SearchAPI
+) : MovieDataSource {
 
     override fun requestMovies(
         requestMovieApiType: RequestMovieApiType,
@@ -19,11 +23,10 @@ class MovieRemoteDataSourceImpl(private val movieAPI: MovieAPI) : MovieDataSourc
         success: (movieResponse: MovieResponse) -> Unit,
         failed: (errorResponse: BaseErrorResponse) -> Unit
     ) {
-
         when (requestMovieApiType) {
-            RequestMovieApiType.DISCOVER -> movieAPI.requestMovies(withGenres = query)
-            RequestMovieApiType.SEARCH -> movieAPI.searchMovies(query = query)
-        }.networkCommunication()
+            RequestMovieApiType.DISCOVER -> discoverAPI.requestMovies(withGenres = query)
+            RequestMovieApiType.SEARCH -> searchAPI.searchMovies(query = query)
+        }.networkDispatchToMain()
             .subscribe({ response ->
                 when (response.isSuccessful) {
                     true -> {
@@ -45,6 +48,5 @@ class MovieRemoteDataSourceImpl(private val movieAPI: MovieAPI) : MovieDataSourc
                 failed(BaseErrorResponse(-1, "", false))
             })
     }
-
 
 }

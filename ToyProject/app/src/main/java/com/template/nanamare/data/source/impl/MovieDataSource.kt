@@ -5,7 +5,6 @@ import com.template.nanamare.network.response.BaseErrorResponse
 import com.template.nanamare.network.response.MovieResponse
 
 interface MovieDataSource {
-
     fun requestMovies(
         requestMovieApiType: RequestMovieApiType,
         query: String = "",
@@ -13,5 +12,4 @@ interface MovieDataSource {
         success: (movieResponse: MovieResponse) -> Unit,
         failed: (errorResponse: BaseErrorResponse) -> Unit
     )
-
 }
